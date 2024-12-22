@@ -1,19 +1,32 @@
 <script setup>
 import { computed } from "vue";
-import { useThemeStore } from "@/core/stores";
+import { useDarkStore } from "@/core/stores";
+import { capitalCase } from "change-case";
 
 const props = defineProps({
-  darkIcon: String,
-  lightIcon: String,
+  darkIcon: {
+    type: String,
+    default: "fas fa-sun",
+  },
+  lightIcon: {
+    type: String,
+    default: "fas fa-moon",
+  },
 });
 
-const themeStore = useThemeStore();
+const darkStore = useDarkStore();
+const title = computed(() => `${capitalCase(darkStore.value)} Mode`);
 const icon = computed(() =>
-  themeStore.isDark ? props.lightIcon : props.darkIcon,
+  darkStore.isDark ? props.lightIcon : props.darkIcon,
 );
 </script>
+
 <template>
-  <a @click="themeStore.toggleDark()" href="#">
+  <a
+    @click="darkStore.toggleDark()"
+    v-bs-tooltip="{ title, placement: 'bottom' }"
+    href="#"
+  >
     <i :class="icon" /> <slot></slot>
   </a>
 </template>

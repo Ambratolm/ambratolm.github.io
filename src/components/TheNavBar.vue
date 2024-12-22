@@ -1,38 +1,21 @@
 <script setup>
-import { watch } from "vue";
 import { RouterLink } from "vue-router";
 import DarkToggleLink from "./DarkToggleLink.vue";
+import ThemeToggleLink from "./ThemeToggleLink.vue";
 import TheLogo from "./TheLogo.vue";
+import TheSearchBar from "./TheSearchBar.vue";
+import { useProfilesStore, useWorksStore } from "@/core/stores";
+import NavBarRouterLink from "./NavBarRouterLink.vue";
 
-//----------------------------------------------------------------------------------------------------
-// # Search Query
-//----------------------------------------------------------------------------------------------------
-import { useProfilesStore } from "@/core/stores";
 const profilesStore = useProfilesStore();
-watch(
-  () => profilesStore.query,
-  () => profilesStore.filter(),
-);
-
-//----------------------------------------------------------------------------------------------------
-// # Animate
-//----------------------------------------------------------------------------------------------------
-import { useTemplateRef } from "vue";
-import { animateCss } from "@/core/animate";
-const logo = useTemplateRef("logo");
+const worksStore = useWorksStore();
 </script>
 
 <template>
-  <nav
-    class="navbar navbar-expand-md"
-    style="
-      background-color: var(--bs-content-bg);
-      border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);
-    "
-  >
+  <nav class="navbar navbar-expand-md">
     <div class="container-fluid">
-      <RouterLink to="/" class="navbar-brand">
-        <TheLogo @click="animateCss(logo, 'rubberBand', '')" ref="logo" />
+      <RouterLink :to="{ name: 'home' }" class="navbar-brand">
+        <TheLogo />
       </RouterLink>
       <button
         type="button"
@@ -45,44 +28,45 @@ const logo = useTemplateRef("logo");
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse" id="navbar-collapse">
-        <fieldset class="input-group" role="Search">
-          <input
-            ref="search"
-            v-model="profilesStore.query"
-            type="search"
-            name="search"
-            placeholder="Search"
-            aria-label="Search"
-            class="form-control"
-          />
-          <button class="btn btn-primary text-nowrap">
-            <i class="fa fa-search" />
-          </button>
-        </fieldset>
-        <ul class="navbar-nav ms-auto text-center">
+      <TheSearchBar class="my-1 my-md-0 me-md-3" />
+      <div class="navbar-collapse collapse mt-3 mt-md-0" id="navbar-collapse">
+        <ul
+          class="nav nav-pills flex-md-nowrap justify-content-center mb-1 mb-md-0"
+        >
           <li class="nav-item">
-            <RouterLink to="/" class="nav-link">Home</RouterLink>
+            <NavBarRouterLink name="home" icon="fas fa-home" />
           </li>
           <li class="nav-item">
-            <RouterLink to="/works" class="nav-link">Works</RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink to="/profiles" class="nav-link">Profiles</RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink to="/contact" class="nav-link">Contact</RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink to="/about" class="nav-link">About</RouterLink>
-          </li>
-          <li class="nav-item">
-            <DarkToggleLink
-              light-icon="fa-solid fa-sun"
-              dark-icon="fa-solid fa-moon"
-              class="nav-link"
-              title="Toggle Dark Theme"
+            <NavBarRouterLink
+              name="works"
+              icon="fas fa-landmark"
+              :has-badge="worksStore.isFiltered"
+              :count="worksStore.filteredCount"
             />
+          </li>
+          <li class="nav-item">
+            <NavBarRouterLink
+              name="profiles"
+              icon="fas fa-address-card"
+              :has-badge="profilesStore.isFiltered"
+              :count="profilesStore.filteredCount"
+            />
+          </li>
+          <li class="nav-item">
+            <NavBarRouterLink name="contact" icon="fas fa-envelope" />
+          </li>
+          <li class="nav-item">
+            <NavBarRouterLink name="about" icon="fas fa-info-circle" />
+          </li>
+          <li class="nav-item">
+            <div
+              class="btn-group"
+              role="group"
+              aria-label="Theme Settings Group"
+            >
+              <DarkToggleLink class="btn btn-secondary" />
+              <ThemeToggleLink class="btn btn-secondary" />
+            </div>
           </li>
         </ul>
       </div>
@@ -91,29 +75,11 @@ const logo = useTemplateRef("logo");
 </template>
 
 <style scoped>
-/* nav {
-  border-bottom: 1px solid var(--pico-muted-border-color);
+nav {
+  background-color: var(--bs-content-bg);
+  border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);
 }
-ul.custom-navbar-search-item {
-  display: flex;
-  align-items: center;
-  flex: 1;
+.nav-item {
+  margin: 2px;
 }
-ul.custom-navbar-search-item li {
-  flex: 1;
-}
-ul.custom-navbar-search-item li input {
-  width: 100%;
-}
-@media (max-width: 1000px) {
-  nav,
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  .custom-navbar-links-item {
-    display: flex;
-    flex-direction: row;
-  }
-} */
 </style>

@@ -22,7 +22,7 @@ import check from "./check";
 // # Query Search
 //----------------------------------------------------------------------------------------------------
 export function search(items, keys, query = "") {
-  if (!check.string(query) || !query.trim()) return items;
+  if (!check.string(query) || !(query = query.trim())) return items;
   const fuse = new Fuse(items, { keys });
   return fuse.search(query).map((result) => result.item);
 }

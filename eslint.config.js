@@ -8,6 +8,6 @@ export default [
   { files: ["**/*.{js,mjs,cjs,vue}"] },
   { languageOptions: { globals: globals.browser } },
   pluginJs.configs.recommended,
-  ...pluginVue.configs["flat/essential"],
+  ...pluginVue.configs["flat/strongly-recommended"],
   eslintConfigPrettier,
 ];

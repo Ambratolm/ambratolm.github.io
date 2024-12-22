@@ -1,9 +1,9 @@
-<script setup>
-import PageCard from "../components/PageCard.vue";
-</script>
+<script setup></script>
 
 <template>
-  <PageCard title="Contact" subtitle="Send me a message">
+  <section>
+    Contact - Send me a message
+
     <div class="text-center mb-3">
       <label for="email" class="form-label">Email</label>
       <input type="email" class="form-control" id="email" placeholder="Email" />
@@ -20,7 +20,7 @@ import PageCard from "../components/PageCard.vue";
     <div class="text-center">
       <button type="button" class="btn btn-primary d-block w-100">Send</button>
     </div>
-  </PageCard>
+  </section>
 </template>
 
 <style scoped></style>

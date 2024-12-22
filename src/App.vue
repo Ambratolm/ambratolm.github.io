@@ -1,11 +1,18 @@
 <script setup>
 import TheNavBar from "@/components/TheNavBar.vue";
+import { onMounted } from "vue";
+import { useProfilesStore } from "@/core/stores";
+
+const profilesStore = useProfilesStore();
+onMounted(async () => await profilesStore.load());
 </script>
 
 <template>
   <header
     class="animate__animated animate__backInDown"
     style="margin-bottom: 20px"
+    data-bs-toggle="tooltip"
+    data-bs-title="I am the navbaro of the navbars :3"
   >
     <TheNavBar />
   </header>
@@ -29,15 +36,16 @@ import TheNavBar from "@/components/TheNavBar.vue";
 
   <!-------------------------------------------------------------------------------------------------------->
 
-  <footer
-    class="container-fluid animate__animated animate__backInUp mt-4"
-    style="
-      background-color: var(--bs-content-bg);
-      border-top: var(--bs-border-width) solid var(--bs-content-border-color);
-    "
-  >
+  <footer class="container-fluid animate__animated animate__backInUp mt-4">
     <section class="text-center p-5">
       <p>&copy; <strong>Ambratolm</strong> 2025</p>
     </section>
   </footer>
 </template>
+
+<style scoped>
+footer {
+  background-color: var(--bs-content-bg);
+  border-top: var(--bs-border-width) solid var(--bs-content-border-color);
+}
+</style>

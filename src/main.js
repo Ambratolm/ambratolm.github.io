@@ -1,17 +1,23 @@
 //====================================================================================================
 // @ Main
 //----------------------------------------------------------------------------------------------------
-// 		Main entry point.
+// 		Application main entry point.
 //====================================================================================================
 
 //----------------------------------------------------------------------------------------------------
 // # CSS
 //----------------------------------------------------------------------------------------------------
-import "halfmoon/css/halfmoon.min.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "animate.css";
+import "halfmoon/css/halfmoon.css";
+import "halfmoon/css/cores/halfmoon.cores.css";
 import "./style.css";
+
+//----------------------------------------------------------------------------------------------------
+// # JS
+//----------------------------------------------------------------------------------------------------
 import "bootstrap/js/dist/collapse";
+import "bootstrap/js/dist/dropdown";
 
 //----------------------------------------------------------------------------------------------------
 // # Router
@@ -22,11 +28,11 @@ import ProfilesView from "./views/ProfilesView.vue";
 import ContactView from "./views/ContactView.vue";
 import AboutView from "./views/AboutView.vue";
 const routes = [
-  { path: "/", component: HomeView },
-  { path: "/works", component: WorksView },
-  { path: "/profiles", component: ProfilesView },
-  { path: "/contact", component: ContactView },
-  { path: "/about", component: AboutView },
+  { name: "home", path: "/", component: HomeView },
+  { name: "works", path: "/works", component: WorksView },
+  { name: "profiles", path: "/profiles", component: ProfilesView },
+  { name: "contact", path: "/contact", component: ContactView },
+  { name: "about", path: "/about", component: AboutView },
 ];
 import { createWebHistory, createRouter } from "vue-router";
 const router = createRouter({
@@ -43,8 +49,20 @@ import { createPinia } from "pinia";
 const pinia = createPinia();
 
 //----------------------------------------------------------------------------------------------------
-// # Boot
+// # Application
 //----------------------------------------------------------------------------------------------------
 import { createApp } from "vue";
 import App from "./App.vue";
-createApp(App).use(router).use(pinia).mount("#app");
+const app = createApp(App);
+app.use(router).use(pinia);
+
+//----------------------------------------------------------------------------------------------------
+// # Global Directives
+//----------------------------------------------------------------------------------------------------
+import { bsTooltip } from "@/directives/tooltip";
+app.directive("bsTooltip", bsTooltip);
+
+//----------------------------------------------------------------------------------------------------
+// # Boot
+//----------------------------------------------------------------------------------------------------
+app.mount("#app");

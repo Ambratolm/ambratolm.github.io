@@ -1,9 +1,9 @@
-<script setup>
-import PageCard from "../components/PageCard.vue";
-</script>
+<script setup></script>
 
 <template>
-  <PageCard title="About" subtitle="About me">
+  <section>
+    About - About me
+
     <p style="text-align: justify">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor sit a
       asperiores similique veritatis odit obcaecati quo iusto et dicta rerum
@@ -29,7 +29,7 @@ import PageCard from "../components/PageCard.vue";
       magnam voluptatem dolor perferendis aperiam, id fugit, numquam
       reprehenderit veniam praesentium similique.
     </p>
-  </PageCard>
+  </section>
 </template>
 
 <style scoped></style>
