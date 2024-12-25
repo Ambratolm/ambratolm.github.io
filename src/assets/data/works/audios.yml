@@ -1,0 +1,39 @@
+#====================================================================================================
+# @ Audios
+#----------------------------------------------------------------------------------------------------
+# 		Works in audios category.
+#====================================================================================================
+---
+#----------------------------------------------------------------------------------------------------
+- name: music
+  title: Music
+  description: Background Music.
+  categories: audio
+  tags: music,bgm,ost,soundtrack
+  icon: fas fa-music
+  image: music
+  links:
+    - title: Music on SoundCloud
+      url: https://soundcloud.com/ambratolm
+      description: Contains my music albums and playlists.
+      categories: audio
+      icon: fab fa-soundcloud
+    - title: Music on Youtube
+      url: https://www.youtube.com/channel/UC90YiMGgUMGFsfzHXt2bLsQ
+      description: Contains videos with my music.
+      categories: audio
+      icon: fab fa-youtube
+#----------------------------------------------------------------------------------------------------
+- name: voice-over
+  title: Voice Over
+  description: Stories and Dialogues through voice recordings.
+  categories: audio
+  tags: voice,sound
+  icon: fas fa-microphone
+  image: voice-over
+  links:
+    - title: RPG videos on Youtube
+      url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
+      description: Contains rpg video which uses voice-over.
+      icon: fab fa-youtube
+#----------------------------------------------------------------------------------------------------

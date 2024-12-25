@@ -1,12 +1,13 @@
 //====================================================================================================
 // @ Stores
 //----------------------------------------------------------------------------------------------------
-// 		All data stores.
+// 		Manage all data stores.
 //====================================================================================================
-import { ref } from "vue";
+import { ref, watch, onMounted } from "vue";
 import { defineStore } from "pinia";
-import { readYaml } from "@/core/crud";
+import { importData, importImages } from "@/core/assets";
 import { search } from "@/core/search";
+import { camelCase } from "change-case";
 
 //----------------------------------------------------------------------------------------------------
 // # Dark Store
@@ -66,38 +67,47 @@ export const useThemeStore = defineStore("theme", () => {
 //----------------------------------------------------------------------------------------------------
 export const useSearchStore = defineStore("search", () => {
   const query = ref("");
-  return { query };
+  const worksStore = useWorksStore();
+  const profilesStore = useProfilesStore();
+  const search = (value = query.value) => {
+    worksStore.query = value;
+    profilesStore.query = value;
+  };
+  watch(query, search);
+  return { query, search };
 });
 
 //----------------------------------------------------------------------------------------------------
-// # Profiles Store
+// # List Stores
 //----------------------------------------------------------------------------------------------------
-export const useProfilesStore = defineStore(
-  "profiles",
-  createListStoreSetup("profiles", [
-    "title",
-    "subtitle",
-    "username",
-    "url",
-    "category",
-    "tags",
-    "icon",
-  ]),
-);
-
-//----------------------------------------------------------------------------------------------------
-// # Works Store
-//----------------------------------------------------------------------------------------------------
+const commonQueryKeys = [
+  "name",
+  "username",
+  "title",
+  "subtitle",
+  "description",
+  "categories",
+  "tags",
+  "icon",
+  "image",
+];
 export const useWorksStore = defineStore(
   "works",
-  createListStoreSetup("works", ["title", "tags"]), // todo: add more keys
+  createListStoreSetup(importData("works", 1), [
+    ...commonQueryKeys,
+    ["links", ...commonQueryKeys],
+  ]),
+);
+export const useProfilesStore = defineStore(
+  "profiles",
+  createListStoreSetup(importData("profiles"), commonQueryKeys),
 );
 
 //----------------------------------------------------------------------------------------------------
 // # List Store Setup
 //----------------------------------------------------------------------------------------------------
 import random from "random";
-function createListStoreSetup(itemsPath, queryKeys) {
+function createListStoreSetup(dataArray, queryKeys) {
   return () => {
     const query = ref("");
     const items = ref([]);
@@ -107,33 +117,28 @@ function createListStoreSetup(itemsPath, queryKeys) {
     const hasItems = computed(() => items.value.length !== 0);
     const hasFilteredItems = computed(() => filteredItems.value.length !== 0);
     const isFiltered = computed(
-      () => items.value.length !== 0 && query.value.trim() !== "",
+      () => items.value.length !== 0 && query.value?.trim() !== "",
     );
     function getRandomItem() {
       return random.choice(items.value);
     }
     function getRandomItems(max = 5) {
       const randomItems = [];
-      // while (randomItems.length < max) {
-      //   let randomItem = random.choice(items.value);
-      //   if (randomItems.length > 0 && randomItems.includes(randomItem))
-      //     continue;
-      //   randomItems.push(randomItem);
-      // }
-      // return randomItems;
       for (let i = 0; i < max; i++) {
         let randomItem = random.choice(items.value);
         randomItems.push(randomItem);
       }
       return randomItems;
     }
-    async function load() {
-      items.value = await readYaml(itemsPath);
+    function load() {
+      items.value = dataArray;
       filteredItems.value = items.value.reverse();
     }
-    function filter() {
-      filteredItems.value = search(items.value, queryKeys, query.value);
-    }
+    onMounted(async () => await load());
+    watch(
+      query,
+      (query) => (filteredItems.value = search(items.value, queryKeys, query)),
+    );
     return {
       query,
       items,
@@ -146,7 +151,6 @@ function createListStoreSetup(itemsPath, queryKeys) {
       getRandomItem,
       getRandomItems,
       load,
-      filter,
     };
   };
 }

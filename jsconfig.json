@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Bundler",
+    // "checkJs": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "@data/*": ["./src/assets/data/*"],
+      "@images/*": ["./src/assets/images/*"],
+      "@videos/*": ["./src/assets/videos/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

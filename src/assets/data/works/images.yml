@@ -1,0 +1,86 @@
+#====================================================================================================
+# @ Images
+#----------------------------------------------------------------------------------------------------
+# 		Works in images category.
+#====================================================================================================
+---
+- title: M~PiXo
+  description: Gallery of Photos
+  url: http://mpixo.blogspot.com
+  image: mpixo.jpg
+  icon: fas fa-image
+  languages: "english"
+#----------------------------------------------------------------------------------------------------
+- title: Ambratolm™ CF
+  description: Gallery of Drawings and Graphics used in my various Creative Projects
+  url: https://www.ambratolm.cf
+  image: cf.ambratolm.jpg
+  icon: fas fa-crown
+  languages: "english"
+#----------------------------------------------------------------------------------------------------
+- title: Manga in PDF
+  description: Download Manga in PDF Format
+  url: https://www.pdfman.ga
+  image: pdfmanga.jpg
+  icon: fas fa-book
+  languages: "arabic"
+#----------------------------------------------------------------------------------------------------
+- name: artworks
+  title: Artworks
+  description: Drawings and Graphics.
+  categories: image
+  tags: drawing,graphic,anime,comic,cartoon,art
+  icon: fas fa-palette
+  image: artworks.jpg
+  links:
+    - title: Gallery on Ambratolm CF
+      url: http://elhafid-project.blogspot.com
+      description: Gallery of Drawings and Graphics used in my various Creative Projects.
+      icon: fab fa-blogger
+    - title: Gallery on DeviantArt
+      url: https://deviantart.com/ambratolm
+      description: DeviantArt is a community for artwork, videography, and photography.
+      icon: fab fa-deviantart
+    - title: Gallery on ArtStation
+      url: https://ambratolm.artstation.com
+      description: ArtStation is an art showcase platform.
+      icon: fab fa-artstation
+#----------------------------------------------------------------------------------------------------
+- name: animations
+  title: Animations
+  description: Animations and visual effects.
+  categories: image,video
+  tags: animation,drawing,graphic,anime,comic,cartoon,art
+  icon: fas fa-cat
+  image: animations.jpg
+  links:
+    - title: Playlist on YouTube
+      url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z-UvgHKv6ofIaSOLMIlEFwt
+      description: Contains some videos with animation effects.
+      icon: fab fa-youtube
+#----------------------------------------------------------------------------------------------------
+- name: photos
+  title: Photos
+  description: Taken Photos and Pictures.
+  categories: image
+  tags: photo,picture,art
+  icon: fas fa-photo
+  image: photos.jpg
+  links:
+    - title: Gallery on M~PiXo
+      url: http://mpixo.blogspot.com
+      description: Gallery of taken photos.
+      icon: fab fa-blogger
+#----------------------------------------------------------------------------------------------------
+- name: wracurd-art-book
+  title: Wracurd Art Book
+  description: Artworks compilation book.
+  categories: image,document
+  tags: art,book
+  icon: fas fa-book
+  image: wracurd-art-book.jpg
+  links:
+    - title: Book on Lulu
+      url: http://www.lulu.com/shop/ambratolm/wracurd/ebook/product-23263158.html
+      description: Book Details and Purchase Page.
+      icon: fas fa-link

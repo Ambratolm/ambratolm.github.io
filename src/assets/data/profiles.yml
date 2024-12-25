@@ -9,7 +9,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://github.com/ambratolm
-  category: program
+  categories: program
   tags: ""
   icon: fab fa-github
 #----------------------------------------------------------------------------------------------------
@@ -17,7 +17,7 @@
   subtitle: Main Profile
   username: "10682020"
   url: https://stackoverflow.com/users/10682020/ambratolm
-  category: program
+  categories: program
   tags: ""
   icon: fab fa-stack-overflow
 #----------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://ambratolm.itch.io
-  category: game
+  categories: game
   tags: ""
   icon: fab fa-itch-io
 #----------------------------------------------------------------------------------------------------
@@ -33,31 +33,31 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://gamejolt.com/@ambratolm
-  category: game
+  categories: game
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Gamejolt
   subtitle: Main Portfolio
   username: ambratolm
   url: https://ambratolm.gamejolt.io
-  category: game
+  categories: game
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Indiexpo
   subtitle: Main Profile
   username: ambratolm
   url: https://www.indiexpo.net/fr/users/Ambratolm
-  category: game
+  categories: game
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: SoundCloud
   subtitle: Main Profile
   username: ambratolm
   url: https://soundcloud.com/ambratolm
-  category: audio
+  categories: audio
   tags: ""
   icon: fab fa-soundcloud
 #----------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@
   subtitle: Music Channel
   username: ambratolmMusic
   url: https://www.youtube.com/channel/UC90YiMGgUMGFsfzHXt2bLsQ
-  category: audio
+  categories: audio
   tags: ""
   icon: fab fa-youtube
 #----------------------------------------------------------------------------------------------------
@@ -73,15 +73,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://theartistunion.com/ambratolm
-  category: audio
+  categories: audio
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Bandcamp
   subtitle: Main Profile
   username: ambratolm
   url: https://ambratolm.bandcamp.com
-  category: audio
+  categories: audio
   tags: ""
   icon: fab fa-bandcamp
 #----------------------------------------------------------------------------------------------------
@@ -89,15 +89,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://logamp.com/ambratolm
-  category: audio, image
+  categories: audio, image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: YouTube
   subtitle: Main Channel
   username: ambratolm
   url: https://youtube.com/ambratolm
-  category: video
+  categories: video
   tags: ""
   icon: fab fa-youtube
 #----------------------------------------------------------------------------------------------------
@@ -105,7 +105,7 @@
   subtitle: Main Page
   username: ambratolm2
   url: https://facebook.com/ambratolm2
-  category: document,image,video
+  categories: document,image,video
   tags: ""
   icon: fab fa-facebook
 #----------------------------------------------------------------------------------------------------
@@ -113,7 +113,7 @@
   subtitle: Channel
   username: ambratolm
   url: https://twitch.tv/ambratolm
-  category: video
+  categories: video
   tags: ""
   icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------
@@ -121,7 +121,7 @@
   subtitle: Channel
   username: ambratolm
   url: https://www.dailymotion.com/Ambratolm
-  category: video
+  categories: video
   tags: ""
   icon: fab fa-dailymotion
 #----------------------------------------------------------------------------------------------------
@@ -129,7 +129,7 @@
   subtitle: Channel
   username: ambratolm
   url: https://vimeo.com/ambratolm
-  category: video
+  categories: video
   tags: ""
   icon: fab fa-vimeo
 #----------------------------------------------------------------------------------------------------
@@ -137,15 +137,15 @@
   subtitle: Channel
   username: ambratolm
   url: https://www.metacafe.com/channels/ambratolm
-  category: video
+  categories: video
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Instagram
   subtitle: Main Profile
   username: ambratolm
   url: https://instagram.com/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-instagram
 #----------------------------------------------------------------------------------------------------
@@ -153,7 +153,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://www.pinterest.com/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-pinterest
 #----------------------------------------------------------------------------------------------------
@@ -161,15 +161,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://ambratolm.imgur.com
-  category: image
+  categories: image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Flickr
   subtitle: Main Profile
   username: ambratolm
   url: https://www.flickr.com/photos/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-flickr
 #----------------------------------------------------------------------------------------------------
@@ -177,15 +177,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://suar.me/u/ambratolm
-  category: image
+  categories: image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: DeviantArt
   subtitle: Main Profile
   username: ambratolm
   url: https://deviantart.com/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-deviantart
 #----------------------------------------------------------------------------------------------------
@@ -193,7 +193,7 @@
   subtitle: AI Art Profile
   username: ambratolmAI
   url: https://deviantart.com/ambratolmAI
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-deviantart
 #----------------------------------------------------------------------------------------------------
@@ -201,7 +201,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://artstation.com/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-artstation
 #----------------------------------------------------------------------------------------------------
@@ -209,7 +209,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://www.behance.net/ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-behance
 #----------------------------------------------------------------------------------------------------
@@ -217,7 +217,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://dribbble.com/Ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-dribbble
 #----------------------------------------------------------------------------------------------------
@@ -225,47 +225,47 @@
   subtitle: Main Profile
   username: "35570648"
   url: https://www.pixiv.net/member.php?id=35570648
-  category: image
+  categories: image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Mangaido
   subtitle: Main Profile
   username: ambratolm
   url: https://mangaido.com/en/u/ambratolm
-  category: image
+  categories: image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: WebToon
   subtitle: Main Profile
   username: ambratolm
   url: https://www.webtoons.com/search?searchMode=AUTHOR&keyword=Ambratolm
-  category: image,document
+  categories: image,document
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Tapas
   subtitle: Main Profile
   username: ambratolm
   url: https://tapas.io/ambratolm
-  category: image,document
+  categories: image,document
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: BeComics
   subtitle: Main Profile
   username: ambratolm
   url: http://www.becomics.com/profile/5e39c7d2b93927094b871b27
-  category: image,document
+  categories: image,document
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Tumblr
   subtitle: Main Profile
   username: ambratolm
   url: https://ambratolm.tumblr.com
-  category: image,document
+  categories: image,document
   tags: ""
   icon: fab fa-tumblr
 #----------------------------------------------------------------------------------------------------
@@ -273,7 +273,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://www.reddit.com/user/Ambratolm
-  category: document, image
+  categories: document, image
   tags: ""
   icon: fab fa-reddit
 #----------------------------------------------------------------------------------------------------
@@ -281,7 +281,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://facebook.com/ambratolm
-  category: document,image,video
+  categories: document,image,video
   tags: ""
   icon: fab fa-facebook
 #----------------------------------------------------------------------------------------------------
@@ -289,15 +289,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://x.com/ambratolm
-  category: document,image
+  categories: document,image
   tags: twitter
-  icon: fab fa-x
+  icon: fab fa-x-twitter
 #----------------------------------------------------------------------------------------------------
 - title: LinkedIn
   subtitle: Main Profile
   username: ambratolm
   url: https://www.linkedin.com/in/ambratolm
-  category: document
+  categories: document
   tags: ""
   icon: fab fa-linkedin
 #----------------------------------------------------------------------------------------------------
@@ -305,15 +305,15 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://about.me/ambratolm
-  category: document
+  categories: document
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Blogger
   subtitle: Main Profile
   username: "11842963546009788883"
   url: https://www.blogger.com/profile/11842963546009788883
-  category: document
+  categories: document
   tags: ""
   icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
@@ -321,77 +321,77 @@
   subtitle: Main Profile
   username: ambratolm
   url: http://www.lulu.com/spotlight/ambratolm
-  category: document
+  categories: document
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Fiverr
   subtitle: Main Profile
   username: ambratolm
   url: https://fiverr.com/ambratolm
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: Zeerk
   subtitle: Main Profile
   username: ambratolm
   url: https://zeerk.com/user/Ambratolm
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: Khamsat
   subtitle: Main Profile
   username: ambratolm
   url: https://khamsat.com/user/ambratolm
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: Upwork
   subtitle: Main Profile
   username: ambratolm
   url: https://www.upwork.com/o/profiles/users/_~0114fea700c8e1d4fc
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: Fine Art America
   subtitle: Main Profile
   username: ambratolm
   url: https://fineartamerica.com/profiles/abdelhakim-elhafid
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: ArtPal
   subtitle: Main Profile
   username: ambratolm
   url: https://www.artpal.com/ambratolm
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: Redbubble
   subtitle: Main Profile
   username: ambratolm
   url: https://www.redbubble.com/people/ambratolm
-  category: money,fund,support,image
+  categories: money,fund,support,image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: eBay
   subtitle: Main Profile
   username: ambratolm
   url: https://www.ebay.com/usr/ambratolm
-  category: money,fund,support,store,market
+  categories: money,fund,support,store,market
   tags: ""
   icon: fab fa-ebay
 #----------------------------------------------------------------------------------------------------
@@ -399,7 +399,7 @@
   subtitle: Main Profile
   username: jzlkws2z
   url: https://www.etsy.com/shop/ambratolm
-  category: money,fund,support,store,market
+  categories: money,fund,support,store,market
   tags: ""
   icon: fab fa-etsy
 #----------------------------------------------------------------------------------------------------
@@ -407,7 +407,7 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://www.patreon.com/Ambratolm
-  category: image
+  categories: image
   tags: ""
   icon: fab fa-patreon
   fund: true
@@ -416,16 +416,16 @@
   subtitle: Main Profile
   username: ambratolm
   url: https://ko-fi.com/ambratolm
-  category: image
+  categories: image
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
   fund: true
 #----------------------------------------------------------------------------------------------------
 - title: PayPal
   subtitle: PayPal.Me Page
   username: ambratolm
   url: https://www.paypal.me/ambratolm
-  category: program,support,fund,tip,contribute
+  categories: program,support,fund,tip,contribute
   tags: ""
   icon: fab fa-paypal
   fund: true
@@ -434,7 +434,7 @@
   subtitle: Search Results
   username: Ambratolm
   url: https://www.google.com/search?q=Ambratolm
-  category: search
+  categories: search
   tags: ""
   icon: fa-brands fa-google
   search: true
@@ -443,7 +443,7 @@
   subtitle: Main Email
   username: ambratolm@gmail.com
   url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=ambratolm@gmail.com
-  category: ""
+  categories: ""
   tags: ""
   icon: fa-brands fa-google
 #----------------------------------------------------------------------------------------------------
@@ -451,23 +451,23 @@
   subtitle: Main Profile
   username: ambratolm
   url: ...
-  category: ...
+  categories: ...
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: ...
   subtitle: Main Profile
   username: ambratolm
   url: ...
-  category: ...
+  categories: ...
   tags: ""
-  icon: fas fa-circle
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 # - title: ...
 #   subtitle: Main Profile
 #   username: ambratolm
 #   url: ...
-#   category: ...
+#   categories: ...
 # tags: ""
-#   icon: fas fa-circle
+#   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------

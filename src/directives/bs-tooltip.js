@@ -1,12 +1,12 @@
 //====================================================================================================
-// @ Tooltip
+// @ Bootstrap Tooltip
 //----------------------------------------------------------------------------------------------------
-// 		Tooltip directives.
+// 		Display bootstrap tooltip.
 //====================================================================================================
 import Tooltip from "bootstrap/js/dist/tooltip";
 import check from "@/core/check";
 
-export const bsTooltip = {
+export default {
   mounted(element, binding) {
     let value = getBsTooltipBindingValue(binding);
     const instance = Tooltip.getOrCreateInstance(element, {

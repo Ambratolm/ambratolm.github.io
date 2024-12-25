@@ -1,0 +1,57 @@
+#====================================================================================================
+# @ Videos
+#----------------------------------------------------------------------------------------------------
+# 		Works in videos category.
+#====================================================================================================
+---
+#----------------------------------------------------------------------------------------------------
+- name: films
+  title: Films
+  description: Live and Animation clips and movies.
+  categories: video
+  tags: film,movie,cinema,clip,serie,tv,youtube,animation,art
+  icon: fas fa-film
+  links:
+    - title: Student First Series
+      url: http://www.mediafire.com/folder/nx777jx0279to/STUDENT_FIRST
+      description: Series about a good student who gets in trouble few weeks before his final graduation exam involving himself in a problem of his best friend and thus putting his career into a cruel challenge.
+      icon: fas fa-film
+      download: true
+    - title: Confrontation Movies
+      url: http://www.mediafire.com/folder/xwdxcxarodfg8/CONFRONTATION
+      description: Short movie series about an eternal fight between two super powerful rivals.
+      icon: fas fa-film
+      download: true
+#----------------------------------------------------------------------------------------------------
+- name: rpg-videos
+  title: RPG Videos
+  description: RPG styled Stories & Conversations.
+  categories: video
+  tags: rpg,game,youtube
+  icon: fas fa-video
+  links:
+    - title: Playlist on Youtube
+      url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
+      description: Contains all of my rpg videos.
+      icon: fab fa-youtube
+    - title: Playlist on Twitch
+      url: https://www.twitch.tv/collections/HUmqy8A9ShXkog
+      description: Contains all of my imported youtube rpg videos.
+      icon: fab fa-twitch
+#----------------------------------------------------------------------------------------------------
+- name: league-of-legends
+  title: League of Legends Content
+  description: League of Legends videos.
+  categories: video
+  tags: League of Legends,YouTube
+  icon: fas fa-gamepad
+  links:
+    - title: Playlist on Youtube
+      url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9-qTt19zZ8RRHPe4WYfXIH
+      description: Contains all of my League of Legends videos.
+      icon: fab fa-youtube
+    - title: Videos on Twitch
+      url: https://www.twitch.tv/ambratolm/videos
+      description: Contains all of my imported youtube League of Legends videos.
+      icon: fab fa-twitch
+#----------------------------------------------------------------------------------------------------

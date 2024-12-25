@@ -3,11 +3,11 @@ import { computed, useTemplateRef } from "vue";
 import { useDarkStore } from "@/core/stores";
 import { useImage } from "@vueuse/core";
 import { animateCss } from "@/core/animate";
-import logoLightSrc from "@/assets/logos/ambratolm-logo-light.png";
-import logoDarkSrc from "@/assets/logos/ambratolm-logo-dark.png";
+import lightLogoSrc from "@images/logos/ambratolm-logo-light.png";
+import darkLogoSrc from "@images/logos/ambratolm-logo-dark.png";
 
 const darkStore = useDarkStore();
-const logoSrc = computed(() => (darkStore.isDark ? logoLightSrc : logoDarkSrc));
+const logoSrc = computed(() => (darkStore.isDark ? lightLogoSrc : darkLogoSrc));
 const { isLoading } = useImage({ src: logoSrc.value });
 const logo = useTemplateRef("logo");
 </script>

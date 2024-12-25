@@ -1,7 +1,7 @@
 //====================================================================================================
 // @ Check
 //----------------------------------------------------------------------------------------------------
-// 		Common checking of data types
+// 		Check common data types.
 //====================================================================================================
 
 export default {
@@ -44,5 +44,8 @@ export default {
   },
   arrayLike(value) {
     return this.object(value) && !this.array(value) && "length" in value;
+  },
+  function(value) {
+    return typeof value === "function";
   },
 };

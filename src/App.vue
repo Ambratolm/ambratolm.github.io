@@ -1,10 +1,5 @@
 <script setup>
 import TheNavBar from "@/components/TheNavBar.vue";
-import { onMounted } from "vue";
-import { useProfilesStore } from "@/core/stores";
-
-const profilesStore = useProfilesStore();
-onMounted(async () => await profilesStore.load());
 </script>
 
 <template>

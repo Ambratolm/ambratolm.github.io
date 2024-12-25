@@ -55,12 +55,15 @@ import { createApp } from "vue";
 import App from "./App.vue";
 const app = createApp(App);
 app.use(router).use(pinia);
+app.config.suspense = { warnings: false };
 
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
 //----------------------------------------------------------------------------------------------------
-import { bsTooltip } from "@/directives/tooltip";
+import bsTooltip from "@/directives/bs-tooltip";
+import safeImage from "@/directives/safe-image";
 app.directive("bsTooltip", bsTooltip);
+app.directive("safeImage", safeImage);
 
 //----------------------------------------------------------------------------------------------------
 // # Boot
