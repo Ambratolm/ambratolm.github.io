@@ -3,11 +3,10 @@
 //----------------------------------------------------------------------------------------------------
 // 		Manage all data stores.
 //====================================================================================================
-import { ref, watch, onMounted } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { importData, importImages } from "@/core/assets";
 import { search } from "@/core/search";
-import { camelCase } from "change-case";
 
 //----------------------------------------------------------------------------------------------------
 // # Dark Store
@@ -19,7 +18,7 @@ export const useDarkStore = defineStore("dark", () => {
     valueLight: "light",
   };
   const isDark = useDark({
-    storageKey: "dark-mode",
+    storageKey: "theme-dark",
     selector: "html",
     attribute: "data-bs-theme",
     ...values,
@@ -74,13 +73,14 @@ export const useSearchStore = defineStore("search", () => {
     profilesStore.query = value;
   };
   watch(query, search);
+  useStorage("query", query);
   return { query, search };
 });
 
 //----------------------------------------------------------------------------------------------------
 // # List Stores
 //----------------------------------------------------------------------------------------------------
-const commonQueryKeys = [
+const COMMON_QUERY_KEYS = [
   "name",
   "username",
   "title",
@@ -91,66 +91,70 @@ const commonQueryKeys = [
   "icon",
   "image",
 ];
-export const useWorksStore = defineStore(
+export const useWorksStore = defineCollectionStore(
   "works",
-  createListStoreSetup(importData("works", 1), [
-    ...commonQueryKeys,
-    ["links", ...commonQueryKeys],
-  ]),
+  (name) => {
+    const works = importData(name, 1);
+    const worksImages = importImages(name);
+    for (const work of works)
+      work.image = worksImages[work.image] || worksImages.default;
+    return works;
+  },
+  [...COMMON_QUERY_KEYS, ["links", ...COMMON_QUERY_KEYS]],
 );
-export const useProfilesStore = defineStore(
+export const useProfilesStore = defineCollectionStore(
   "profiles",
-  createListStoreSetup(importData("profiles"), commonQueryKeys),
+  importData,
+  COMMON_QUERY_KEYS,
 );
 
 //----------------------------------------------------------------------------------------------------
 // # List Store Setup
 //----------------------------------------------------------------------------------------------------
 import random from "random";
-function createListStoreSetup(dataArray, queryKeys) {
-  return () => {
-    const query = ref("");
-    const items = ref([]);
-    const filteredItems = ref([]);
-    const count = computed(() => items.value.length);
-    const filteredCount = computed(() => filteredItems.value.length);
-    const hasItems = computed(() => items.value.length !== 0);
-    const hasFilteredItems = computed(() => filteredItems.value.length !== 0);
-    const isFiltered = computed(
-      () => items.value.length !== 0 && query.value?.trim() !== "",
-    );
-    function getRandomItem() {
-      return random.choice(items.value);
-    }
-    function getRandomItems(max = 5) {
-      const randomItems = [];
-      for (let i = 0; i < max; i++) {
-        let randomItem = random.choice(items.value);
-        randomItems.push(randomItem);
+import { useStorage } from "@vueuse/core";
+function defineCollectionStore(name, itemsArrayFn, queryKeys) {
+  return defineStore(name, () => {
+    {
+      const query = ref("");
+      const items = ref(itemsArrayFn(name));
+      const filteredItems = ref(items.value.reverse());
+      const count = computed(() => items.value.length);
+      const filteredCount = computed(() => filteredItems.value.length);
+      const hasItems = computed(() => items.value.length !== 0);
+      const hasFilteredItems = computed(() => filteredItems.value.length !== 0);
+      const isFiltered = computed(
+        () => items.value.length !== 0 && query.value?.trim() !== "",
+      );
+      function getRandomItem() {
+        return random.choice(items.value);
       }
-      return randomItems;
+      function getRandomItems(max = 5) {
+        const randomItems = [];
+        for (let i = 0; i < max; i++) {
+          let randomItem = random.choice(items.value);
+          randomItems.push(randomItem);
+        }
+        return randomItems;
+      }
+      watch(
+        query,
+        (query) =>
+          (filteredItems.value = search(items.value, queryKeys, query)),
+      );
+      useStorage(`query-${name}`, query);
+      return {
+        query,
+        items,
+        count,
+        hasItems,
+        filteredItems,
+        filteredCount,
+        hasFilteredItems,
+        isFiltered,
+        getRandomItem,
+        getRandomItems,
+      };
     }
-    function load() {
-      items.value = dataArray;
-      filteredItems.value = items.value.reverse();
-    }
-    onMounted(async () => await load());
-    watch(
-      query,
-      (query) => (filteredItems.value = search(items.value, queryKeys, query)),
-    );
-    return {
-      query,
-      items,
-      count,
-      hasItems,
-      filteredItems,
-      filteredCount,
-      hasFilteredItems,
-      isFiltered,
-      getRandomItem,
-      getRandomItems,
-      load,
-    };
-  };
+  });
 }

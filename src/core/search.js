@@ -7,6 +7,15 @@ import Fuse from "fuse.js";
 import check from "./check";
 
 //----------------------------------------------------------------------------------------------------
+// # Query Search
+//----------------------------------------------------------------------------------------------------
+export function search(items, keys, query = "") {
+  if (!check.string(query) || !(query = query.trim())) return items;
+  const fuse = new Fuse(items, { keys });
+  return fuse.search(query).map((result) => result.item);
+}
+
+//----------------------------------------------------------------------------------------------------
 // # Name Search
 //----------------------------------------------------------------------------------------------------
 // export function find(items, key, value) {
@@ -17,15 +26,6 @@ import check from "./check";
 //       item[key].trim().toLowerCase() === value.trim().toLowerCase(),
 //   );
 // }
-
-//----------------------------------------------------------------------------------------------------
-// # Query Search
-//----------------------------------------------------------------------------------------------------
-export function search(items, keys, query = "") {
-  if (!check.string(query) || !(query = query.trim())) return items;
-  const fuse = new Fuse(items, { keys });
-  return fuse.search(query).map((result) => result.item);
-}
 
 //----------------------------------------------------------------------------------------------------
 // # Tag Search

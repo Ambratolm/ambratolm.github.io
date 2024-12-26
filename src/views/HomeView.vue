@@ -82,7 +82,6 @@ onMounted(setRandomProfiles);
                   {{ profile?.title }}
                 </span>
               </div>
-              <!-- <span class="badge text-bg-primary rounded-pill">$19.99</span> -->
             </a>
           </div>
         </div>

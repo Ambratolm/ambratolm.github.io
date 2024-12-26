@@ -8,17 +8,16 @@
 - name: flower-in-pain
   title: Flower in Pain
   description: Free 2D enigmatic-adventure and puzzle video-game for Windows.
-  categories: game
-  tags: pc,windows,2d,rpg,puzzle,adventure
+  categories: [game]
+  tags: [pc, windows, 2d, rpg, puzzle, adventure]
   icon: fab fa-windows
   image: flower-in-pain
   links:
-    - title: Flower in Pain Official Website
+    - title: Official Website
       url: http://flowerinpain.blogspot.com
       description: Flower in Pain Vide-Game Official Website is the official Website containing all informations about the game.
       icon: fas fa-link
-      image: flowerinpain.jpg
-      languages: english,french
+      languages: [english, french]
     - title: Page on Ambratolm CF
       url: http://elhafid-project.blogspot.com/2014/01/flower-in-pain-game-project-screen-shots.html
       description: Ambratolm CF is my gallery of Drawings and Graphics used in my various Creative Projects.

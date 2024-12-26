@@ -26,6 +26,7 @@ export const flattenObjectToArray = (obj, depth) => {
     else return acc.concat(value);
   }, []);
 };
+
 // export const flatten = (obj, depth, includeArrays) => {
 //   if (depth === 0) return check.array(obj) ? obj : Object.values(obj);
 //   if (includeArrays && check.array(obj))

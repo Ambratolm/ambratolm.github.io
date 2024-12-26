@@ -11,24 +11,29 @@ import { flattenObjectToArray, filterObject } from "./misc";
 //----------------------------------------------------------------------------------------------------
 // # Serve
 //----------------------------------------------------------------------------------------------------
+const ASSETS = {
+  data: importGroup("data"),
+  images: importGroup("images"),
+  videos: importGroup("videos"),
+};
 export const importData = (collectionName, flatDepth) =>
-  importArray("data", collectionName, flatDepth);
-export const importImages = (collectionName = "", isFlat) =>
-  importObject("images", collectionName, isFlat);
+  importArray(ASSETS.data, collectionName, flatDepth);
+export const importImages = (collectionName, isFlat) =>
+  importObject(ASSETS.images, collectionName, isFlat);
 
 //----------------------------------------------------------------------------------------------------
-// # Asset Group Serving
+// # Assets Group Serving
 //----------------------------------------------------------------------------------------------------
-const importArray = (groupName, collectionName, flatDepth) => {
-  const groupItems = importGroupItemsAsNested(groupName);
+const importArray = (group, collectionName, flatDepth) => {
+  const groupItems = importGroupItemsAsNested(group);
   return collectionName
     ? flattenObjectToArray(groupItems[collectionName] || {}, flatDepth)
     : flattenObjectToArray(groupItems, flatDepth);
 };
-const importObject = (groupName, collectionName, isFlat) => {
+const importObject = (group, collectionName, isFlat) => {
   const groupItems = isFlat
-    ? importGroupItemsAsFlat(groupName)
-    : importGroupItemsAsNested(groupName);
+    ? importGroupItemsAsFlat(group)
+    : importGroupItemsAsNested(group);
 
   return collectionName
     ? isFlat
@@ -38,7 +43,53 @@ const importObject = (groupName, collectionName, isFlat) => {
 };
 
 //----------------------------------------------------------------------------------------------------
-// # Asset Group
+// # Assets Group Importation
+//----------------------------------------------------------------------------------------------------
+function importGroupItemsAsFlat(group) {
+  return importGroupItems(group, flattenGroupItems);
+}
+function importGroupItemsAsNested(group) {
+  return importGroupItems(group, nestGroupItems);
+}
+function importGroupItems(group, transformFn) {
+  if (!group) return {};
+  if (!check.function(transformFn)) return group.items;
+  const output = {};
+  for (const [key, value] of Object.entries(group.items))
+    transformFn({ key, value, output }, group);
+  return output;
+}
+
+//----------------------------------------------------------------------------------------------------
+// # Assets Group Transformation
+//----------------------------------------------------------------------------------------------------
+function shortPath(path, dirName) {
+  return path.split(`/${dirName}/`)[1].replace(extname(path), "");
+}
+function flattenGroupItems(key, value, output, name, parseFn) {
+  let newKey = shortPath(key, name)
+    .split(sep)
+    .map((keyPart) => camelCase(keyPart))
+    .join(sep);
+  output[newKey] = parseFn ? parseFn(value) : value;
+}
+function nestGroupItems({ key, value, output }, { name, parseFn }) {
+  let current = output;
+  const newKey = shortPath(key, name);
+  const keyParts = newKey.split(sep);
+  const lastKeyPartsIndex = keyParts.length - 1;
+  for (let i = 0; i < lastKeyPartsIndex; i++) {
+    const keyPart = camelCase(keyParts[i]);
+    if (!current[keyPart]) current[keyPart] = {};
+    current = current[keyPart];
+  }
+  current[camelCase(keyParts[lastKeyPartsIndex])] = parseFn
+    ? parseFn(value)
+    : value;
+}
+
+//----------------------------------------------------------------------------------------------------
+// # Assets Group
 //----------------------------------------------------------------------------------------------------
 import { load } from "js-yaml";
 function importGroup(name) {
@@ -67,50 +118,6 @@ function importGroup(name) {
       break;
   }
   return items ? { name, items, parseFn } : null;
-}
-
-//----------------------------------------------------------------------------------------------------
-// # Asset Group Transformation
-//----------------------------------------------------------------------------------------------------
-function shortPath(path, dirName) {
-  return path.split(`/${dirName}/`)[1].replace(extname(path), "");
-}
-function importGroupItemsAsFlat(groupName) {
-  const group = importGroup(groupName);
-  if (!group) return {};
-  const { name, items, parseFn } = group;
-  const output = {};
-  const isParsable = check.function(parseFn);
-  for (const [key, value] of Object.entries(items)) {
-    let newKey = shortPath(key, name)
-      .split(sep)
-      .map((keyPart) => camelCase(keyPart))
-      .join(sep);
-    output[newKey] = isParsable ? parseFn(value) : value;
-  }
-  return output;
-}
-function importGroupItemsAsNested(groupName) {
-  const group = importGroup(groupName);
-  if (!group) return {};
-  const { name, items, parseFn } = group;
-  const output = {};
-  const isParsable = check.function(parseFn);
-  for (const [key, value] of Object.entries(items)) {
-    let asset = output;
-    const newKey = shortPath(key, name);
-    const keyParts = newKey.split(sep);
-    const lastKeyPartsIndex = keyParts.length - 1;
-    for (let i = 0; i < lastKeyPartsIndex; i++) {
-      const keyPart = camelCase(keyParts[i]);
-      if (!asset[keyPart]) asset[keyPart] = {};
-      asset = asset[keyPart];
-    }
-    asset[camelCase(keyParts[lastKeyPartsIndex])] = isParsable
-      ? parseFn(value)
-      : value;
-  }
-  return output;
 }
 
 //----------------------------------------------------------------------------------------------------

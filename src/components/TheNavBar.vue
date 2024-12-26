@@ -1,18 +1,19 @@
 <script setup>
 import { RouterLink } from "vue-router";
-import DarkToggleLink from "./DarkToggleLink.vue";
-import ThemeToggleLink from "./ThemeToggleLink.vue";
+import ThemeToggle from "./ThemeToggle.vue";
 import TheLogo from "./TheLogo.vue";
-import TheSearchBar from "./TheSearchBar.vue";
+import SearchBar from "./SearchBar.vue";
 import { useProfilesStore, useWorksStore } from "@/core/stores";
 import NavBarRouterLink from "./NavBarRouterLink.vue";
+import { useSearchStore } from "@/core/stores";
 
 const profilesStore = useProfilesStore();
 const worksStore = useWorksStore();
+const searchStore = useSearchStore();
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-md">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <RouterLink :to="{ name: 'home' }" class="navbar-brand">
         <TheLogo />
@@ -28,8 +29,13 @@ const worksStore = useWorksStore();
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <TheSearchBar class="my-1 my-md-0 me-md-3" />
-      <div class="navbar-collapse collapse mt-3 mt-md-0" id="navbar-collapse">
+      <SearchBar
+        v-model="searchStore.query"
+        :has-button="true"
+        @search="searchStore.search()"
+        class="my-1 my-lg-0 me-lg-3"
+      />
+      <div class="navbar-collapse collapse mt-3 mt-lg-0" id="navbar-collapse">
         <ul
           class="nav nav-pills flex-md-nowrap justify-content-center mb-1 mb-md-0"
         >
@@ -59,14 +65,7 @@ const worksStore = useWorksStore();
             <NavBarRouterLink name="about" icon="fas fa-info-circle" />
           </li>
           <li class="nav-item">
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Theme Settings Group"
-            >
-              <DarkToggleLink class="btn btn-secondary" />
-              <ThemeToggleLink class="btn btn-secondary" />
-            </div>
+            <ThemeToggle />
           </li>
         </ul>
       </div>

@@ -61,9 +61,9 @@ app.config.suspense = { warnings: false };
 // # Global Directives
 //----------------------------------------------------------------------------------------------------
 import bsTooltip from "@/directives/bs-tooltip";
-import safeImage from "@/directives/safe-image";
+import imgSrcAlt from "@/directives/img-src-alt";
 app.directive("bsTooltip", bsTooltip);
-app.directive("safeImage", safeImage);
+app.directive("imgSrcAlt", imgSrcAlt);
 
 //----------------------------------------------------------------------------------------------------
 // # Boot

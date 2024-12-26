@@ -1,14 +1,17 @@
 //====================================================================================================
-// @ Safe Img
+// @ Image Source Alternative
 //----------------------------------------------------------------------------------------------------
-// 		Display a fallback image.
+// 		Display an alternative fallback image.
 //====================================================================================================
 import { importImages } from "@/core/assets";
 
 export default {
-  beforeMount(element) {
-    const images = importImages();
-    element.onerror = () => (element.src = images.error);
-    if (!element.src) element.src = images.empty;
-  },
+  beforeMount: SecureImageSrc,
+  updated: SecureImageSrc,
 };
+
+function SecureImageSrc(element) {
+  const { error, empty } = importImages();
+  element.onerror = () => (element.src = error);
+  if (!element.src) element.src = empty;
+}

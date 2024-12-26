@@ -6,9 +6,12 @@
 import Tooltip from "bootstrap/js/dist/tooltip";
 import check from "@/core/check";
 
+//----------------------------------------------------------------------------------------------------
+// # BS Tooltip
+//----------------------------------------------------------------------------------------------------
 export default {
   mounted(element, binding) {
-    let value = getBsTooltipBindingValue(binding);
+    let value = parseBindingValue(binding.value);
     const instance = Tooltip.getOrCreateInstance(element, {
       trigger: "hover",
       ...value,
@@ -17,7 +20,7 @@ export default {
   },
   updated(element, binding) {
     if (binding.value === binding.oldValue) return;
-    let value = getBsTooltipBindingValue(binding);
+    let value = parseBindingValue(binding.value);
     const instance =
       element._tooltipInstance || Tooltip.getOrCreateInstance(element);
     if (value.title) instance.setContent({ ".tooltip-inner": value.title });
@@ -32,8 +35,7 @@ export default {
   },
 };
 
-function getBsTooltipBindingValue(binding) {
-  let value = binding.value;
+function parseBindingValue(value) {
   if (check.string(value) || check.number(value))
     return { title: String(value) };
   if (check.array(value)) return { title: value.join(", ") };
