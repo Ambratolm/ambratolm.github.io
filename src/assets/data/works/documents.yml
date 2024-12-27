@@ -5,13 +5,19 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
-- title: Topic2Read
-  description: Old blog using royalty free articles in variety of subjects
-  categories: document
-  url: http://topic2read.blogspot.com/
-  image: topic2read
+- name: topic2read
+  title: Topic 2 Read
+  description: Old blog using royalty free articles in variety of subjects.
+  categories: [document]
+  tags: [blogger, article, newspaper, magazine]
   icon: fas fa-file-alt
-  languages: "english"
+  links:
+    - title: Topic2Read
+      description: Blogger website.
+      url: http://topic2read.blogspot.com/
+      image: topic2read
+      icon: fas fa-link
+      languages: "english"
 #----------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------------

@@ -4,32 +4,44 @@
 # 		Works in images category.
 #====================================================================================================
 ---
-- title: M~PiXo
+- name: m-pixo
+  title: M~PiXo
   description: Gallery of Photos
   url: http://mpixo.blogspot.com
   image: mpixo.jpg
   icon: fas fa-image
-  languages: "english"
+  languages: ["english"]
+  links:
+    - title: M~PiXo
+      icon: fas fa-image
 #----------------------------------------------------------------------------------------------------
-- title: Ambratolm™ CF
+- name: ambratolm-cf
+  title: Ambratolm™ CF
   description: Gallery of Drawings and Graphics used in my various Creative Projects
-  url: https://www.ambratolm.cf
   image: cf.ambratolm.jpg
   icon: fas fa-crown
-  languages: "english"
+  languages: ["english"]
+  links:
+    - title:
+      url: https://www.ambratolm.cf
+      icon: fas fa-crown
 #----------------------------------------------------------------------------------------------------
-- title: Manga in PDF
+- name: manga-in-pdf
+  title: Manga in PDF
   description: Download Manga in PDF Format
-  url: https://www.pdfman.ga
   image: pdfmanga.jpg
   icon: fas fa-book
-  languages: "arabic"
+  languages: ["arabic"]
+  links:
+    - title:
+      url: https://www.pdfman.ga
+      icon: fas fa-book
 #----------------------------------------------------------------------------------------------------
 - name: artworks
   title: Artworks
   description: Drawings and Graphics.
-  categories: image
-  tags: drawing,graphic,anime,comic,cartoon,art
+  categories: [image]
+  tags: [drawing, graphic, anime, comic, cartoon, art]
   icon: fas fa-palette
   image: artworks.jpg
   links:
@@ -49,8 +61,8 @@
 - name: animations
   title: Animations
   description: Animations and visual effects.
-  categories: image,video
-  tags: animation,drawing,graphic,anime,comic,cartoon,art
+  categories: [image, video]
+  tags: [animation, drawing, graphic, anime, comic, cartoon, art]
   icon: fas fa-cat
   image: animations.jpg
   links:
@@ -62,8 +74,8 @@
 - name: photos
   title: Photos
   description: Taken Photos and Pictures.
-  categories: image
-  tags: photo,picture,art
+  categories: [image]
+  tags: [photo, picture, art]
   icon: fas fa-photo
   image: photos.jpg
   links:
@@ -75,8 +87,8 @@
 - name: wracurd-art-book
   title: Wracurd Art Book
   description: Artworks compilation book.
-  categories: image,document
-  tags: art,book
+  categories: [image, document]
+  tags: [art, book]
   icon: fas fa-book
   image: wracurd-art-book.jpg
   links:

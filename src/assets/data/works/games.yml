@@ -12,12 +12,12 @@
   tags: [pc, windows, 2d, rpg, puzzle, adventure]
   icon: fab fa-windows
   image: flower-in-pain
+  languages: [english, french]
   links:
     - title: Official Website
       url: http://flowerinpain.blogspot.com
       description: Flower in Pain Vide-Game Official Website is the official Website containing all informations about the game.
       icon: fas fa-link
-      languages: [english, french]
     - title: Page on Ambratolm CF
       url: http://elhafid-project.blogspot.com/2014/01/flower-in-pain-game-project-screen-shots.html
       description: Ambratolm CF is my gallery of Drawings and Graphics used in my various Creative Projects.
@@ -43,8 +43,8 @@
 - name: darkina
   title: Darkina
   description: Free 2D arcade video-game for Android.
-  categories: game
-  tags: android,2d,arcade
+  categories: [game]
+  tags: [android, 2d, arcade]
   icon: fab fa-android
   image: darkina.jpg
   links:

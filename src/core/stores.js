@@ -90,6 +90,7 @@ const COMMON_QUERY_KEYS = [
   "tags",
   "icon",
   "image",
+  "languages",
 ];
 export const useWorksStore = defineCollectionStore(
   "works",

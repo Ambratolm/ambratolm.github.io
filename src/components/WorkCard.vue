@@ -1,11 +1,10 @@
 <script setup>
-const props = defineProps({
+defineProps({
   work: {
     type: Object,
     default: () => {},
   },
 });
-console.log(props.work);
 </script>
 
 <template>
@@ -16,114 +15,60 @@ console.log(props.work);
       :alt="work?.title"
       class="card-img-top"
     />
-    <div class="card-body pb-1">
+    <div class="card-body m-0 pb-2">
       <h5 class="card-title"><i :class="work?.icon" /> {{ work?.title }}</h5>
-      <div class="card-text mb-1 text-capitalize">
-        <small
-          v-for="(category, i) in work?.categories"
-          :key="i"
-          class="card-text badge text-bg-secondary"
-        >
-          {{ category }}
-        </small>
-      </div>
-      <p class="card-text lh-1">
+      <p class="card-text text-secondary lh-1 mb-2">
         {{ work?.description }}
       </p>
     </div>
-    <ul class="list-group list-group-flush">
-      <li
+    <div class="list-group list-group-flush">
+      <a
         v-for="(link, i) in work?.links"
         :key="i"
-        class="list-group-item list-group-item-action"
+        :href="link.url"
+        :title="link.url"
+        target="_blank"
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center px-2"
       >
-        <i :class="link.icon" />
-        <div>
-          <a :href="link.url" :title="link.url">{{ link.title }}</a>
+        <div class="specific-w-50 me-2 text-center">
+          <i :class="link.icon" :title="link.title" class="fa-2x" />
         </div>
-        <span class="text-body-secondary">{{ link.description }}</span>
-      </li>
-    </ul>
-    <!-- <div class="accordion accordion-flush" id="links">
-      <div v-for="(link, i) in work?.links" :key="i" class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            :data-bs-target="`#${work?.name}-link-${i}`"
-            aria-expanded="false"
-            :aria-controls="`#${work?.name}-link-${i}`"
+        <div class="w-100">
+          <div class="fw-bold">{{ link.title }}</div>
+          <p
+            :title="link.description"
+            class="text-body-secondary pe-2 py-1 m-0 lh-1"
           >
-            <i :class="link.icon" />&nbsp; {{ link.title }}
-          </button>
-        </h2>
-        <div
-          :id="`${work?.name}-link-${i}`"
-          class="accordion-collapse collapse"
-          data-bs-parent="#links"
-        >
-          <div class="accordion-body text-body-secondary lh-1">
-            <p>{{ link.description }}</p>
-            <a :href="link.url" target="_blank" class="card-link">Visit</a>
-          </div>
+            {{ $filters.strLimit(link.description, 60) }}
+          </p>
         </div>
-      </div>
-    </div> -->
-
-    <div class="card-body">
-      <a href="#" class="card-link">Card link</a>
-      <a href="#" class="card-link">Another link</a>
+      </a>
     </div>
     <div class="card-footer">
-      <!-- <a
-        href=""
+      <button
+        @click="console.log(category)"
+        v-for="(category, i) in work?.categories"
+        :key="i"
+        class="btn btn-sm btn-secondary fw-bold text-lowercase me-1 mb-1"
+      >
+        <i class="fas fa-tag" /> {{ category }}
+      </button>
+      <button
+        @click="console.log(language)"
+        v-for="(language, i) in work?.languages"
+        :key="i"
+        class="btn btn-sm btn-secondary text-lowercase me-1 mb-1"
+      >
+        <i class="fas fa-language" /> {{ language }}
+      </button>
+      <button
+        @click="console.log(tag)"
         v-for="(tag, i) in work?.tags"
         :key="i"
-        class="badge text-bg-secondary"
+        class="btn btn-sm btn-secondary text-lowercase fst-italic me-1 mb-1"
       >
-        <small> #{{ tag }} </small>
-      </a> -->
+        <i class="fas fa-hashtag" /> {{ tag }}
+      </button>
     </div>
   </article>
-
-  <!-- <article class="card text-center">
-    <img
-      v-img-src-alt
-      :src="work?.image"
-      :alt="work?.title"
-      class="card-img-top"
-    />
-
-    <div class="card-body">
-      <hgroup>
-        <h5 class="card-title position-relative">
-          <i :class="work?.icon" class="fa-3x" />
-          <span
-            v-if="work?.fund"
-            v-bs-tooltip="'Fund'"
-            class="badge rounded-pill position-absolute start-100 top-0 translate-middle text-bg-secondary"
-          >
-            <i class="fas fa-dollar-sign fa-2xs" />
-          </span>
-        </h5>
-        <h5 class="card-title text-capitalize">{{ work?.title }}</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary text-capitalize">
-          {{ work?.subtitle }}
-        </h6>
-      </hgroup>
-      <span class="text-break">
-        <a
-          :href="work?.url"
-          :title="work?.url"
-          target="_blank"
-          class="link-primary text-lowercase"
-        >
-          <i
-            :class="work?.search ? 'fas fa-search fa-sm' : 'far fa-at fa-sm'"
-          />{{ work?.username }}
-        </a>
-      </span>
-    </div>
-  </article> -->
 </template>

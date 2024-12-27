@@ -55,7 +55,16 @@ import { createApp } from "vue";
 import App from "./App.vue";
 const app = createApp(App);
 app.use(router).use(pinia);
-app.config.suspense = { warnings: false };
+app.config.globalProperties.$filters = {
+  strLimit(value, size = 50, dotsSuffix = "...") {
+    value = value ? String(value) : "";
+    return value
+      ? value.length <= size
+        ? value
+        : value.substr(0, size) + dotsSuffix
+      : "";
+  },
+};
 
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
