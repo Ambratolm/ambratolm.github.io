@@ -3,15 +3,21 @@
 //----------------------------------------------------------------------------------------------------
 // 		Display an alternative fallback image.
 //====================================================================================================
-import { importImages } from "@/core/assets";
+import { getImages } from "@/core/assets";
 
+//----------------------------------------------------------------------------------------------------
+// # Directive
+//----------------------------------------------------------------------------------------------------
 export default {
   beforeMount: SecureImageSrc,
   updated: SecureImageSrc,
 };
 
+//----------------------------------------------------------------------------------------------------
+// # General Handling
+//----------------------------------------------------------------------------------------------------
 function SecureImageSrc(element) {
-  const { error, empty } = importImages();
+  const { error, empty } = getImages();
   element.onerror = () => (element.src = error);
   if (!element.src) element.src = empty;
 }

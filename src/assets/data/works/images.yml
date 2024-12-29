@@ -8,7 +8,7 @@
   title: M~PiXo
   description: Gallery of Photos
   url: http://mpixo.blogspot.com
-  image: mpixo.jpg
+  image: mpixo
   icon: fas fa-image
   languages: ["english"]
   links:
@@ -18,7 +18,7 @@
 - name: ambratolm-cf
   title: Ambratolm™ CF
   description: Gallery of Drawings and Graphics used in my various Creative Projects
-  image: cf.ambratolm.jpg
+  image: cf.ambratolm
   icon: fas fa-crown
   languages: ["english"]
   links:
@@ -29,7 +29,7 @@
 - name: manga-in-pdf
   title: Manga in PDF
   description: Download Manga in PDF Format
-  image: pdfmanga.jpg
+  image: pdfmanga
   icon: fas fa-book
   languages: ["arabic"]
   links:
@@ -43,7 +43,7 @@
   categories: [image]
   tags: [drawing, graphic, anime, comic, cartoon, art]
   icon: fas fa-palette
-  image: artworks.jpg
+  image: artworks
   links:
     - title: Gallery on Ambratolm CF
       url: http://elhafid-project.blogspot.com
@@ -64,7 +64,7 @@
   categories: [image, video]
   tags: [animation, drawing, graphic, anime, comic, cartoon, art]
   icon: fas fa-cat
-  image: animations.jpg
+  image: animations
   links:
     - title: Playlist on YouTube
       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z-UvgHKv6ofIaSOLMIlEFwt
@@ -77,7 +77,7 @@
   categories: [image]
   tags: [photo, picture, art]
   icon: fas fa-photo
-  image: photos.jpg
+  image: photos
   links:
     - title: Gallery on M~PiXo
       url: http://mpixo.blogspot.com
@@ -90,7 +90,7 @@
   categories: [image, document]
   tags: [art, book]
   icon: fas fa-book
-  image: wracurd-art-book.jpg
+  image: wracurd-art-book
   links:
     - title: Book on Lulu
       url: http://www.lulu.com/shop/ambratolm/wracurd/ebook/product-23263158.html

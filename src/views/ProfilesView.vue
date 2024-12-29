@@ -13,7 +13,7 @@ const profilesStore = useProfilesStore();
         <div class="col">
           <h6 class="m-0 fw-normal d-block">
             <span class="title me-1">
-              <i class="fas fa-address-card" /> Profiles Card
+              <i class="fas fa-address-card" /> Profiles
             </span>
             <span
               class="badge badge-sm"
@@ -48,7 +48,10 @@ const profilesStore = useProfilesStore();
           :key="i"
           class="col-xl-2 col-lg-3 col-md-4 col-sm-6"
         >
-          <ProfileCard :profile="profile" />
+          <ProfileCard
+            :profile="profile"
+            v-animate-css="'@mouseenter pulse faster'"
+          />
         </div>
       </transition-group>
       <transition

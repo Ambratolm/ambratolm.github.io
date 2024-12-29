@@ -7,11 +7,11 @@ import Tooltip from "bootstrap/js/dist/tooltip";
 import check from "@/core/check";
 
 //----------------------------------------------------------------------------------------------------
-// # BS Tooltip
+// # Directive
 //----------------------------------------------------------------------------------------------------
 export default {
   mounted(element, binding) {
-    let value = parseBindingValue(binding.value);
+    let value = parseValue(binding.value);
     const instance = Tooltip.getOrCreateInstance(element, {
       trigger: "hover",
       ...value,
@@ -20,7 +20,7 @@ export default {
   },
   updated(element, binding) {
     if (binding.value === binding.oldValue) return;
-    let value = parseBindingValue(binding.value);
+    let value = parseValue(binding.value);
     const instance =
       element._tooltipInstance || Tooltip.getOrCreateInstance(element);
     if (value.title) instance.setContent({ ".tooltip-inner": value.title });
@@ -35,13 +35,17 @@ export default {
   },
 };
 
-function parseBindingValue(value) {
+//----------------------------------------------------------------------------------------------------
+// # General Handling
+//----------------------------------------------------------------------------------------------------
+function parseValue(value) {
   if (check.string(value) || check.number(value))
     return { title: String(value) };
   if (check.array(value)) return { title: value.join(", ") };
   return value;
 }
 
+//----------------------------------------------------------------------------------------------------
 // function enableTooltips() {
 //   [...document.querySelectorAll("[data-bs-toggle='tooltip']")].map(
 //     (element) => new Tooltip(element),

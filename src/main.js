@@ -71,8 +71,11 @@ app.config.globalProperties.$filters = {
 //----------------------------------------------------------------------------------------------------
 import bsTooltip from "@/directives/bs-tooltip";
 import imgSrcAlt from "@/directives/img-src-alt";
+import { animateCss, animateFa } from "@/directives/animate";
 app.directive("bsTooltip", bsTooltip);
 app.directive("imgSrcAlt", imgSrcAlt);
+app.directive("animateCss", animateCss);
+app.directive("animateFa", animateFa);
 
 //----------------------------------------------------------------------------------------------------
 // # Boot

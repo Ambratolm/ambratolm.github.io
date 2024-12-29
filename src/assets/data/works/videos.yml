@@ -11,6 +11,7 @@
   categories: [video]
   tags: [film, movie, cinema, clip, serie, tv, youtube, animation, art]
   icon: fas fa-film
+  image: films
   links:
     - title: Student First Series
       url: http://www.mediafire.com/folder/nx777jx0279to/STUDENT_FIRST

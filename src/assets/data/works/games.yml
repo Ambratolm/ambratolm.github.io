@@ -46,7 +46,7 @@
   categories: [game]
   tags: [android, 2d, arcade]
   icon: fab fa-android
-  image: darkina.jpg
+  image: darkina
   links:
     - title: Page on itch.io
       url: https://ambratolm.itch.io/darkina

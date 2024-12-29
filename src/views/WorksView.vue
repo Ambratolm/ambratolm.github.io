@@ -1,37 +1,54 @@
 <script setup>
 import SearchBar from "@/components/SearchBar.vue";
 import WorkCard from "@/components/WorkCard.vue";
-import { useWorksStore } from "@/core/stores";
+import NavBar from "@/components/NavBar.vue";
+import { useWorksStore, useCategoriesStore } from "@/core/stores";
+import TheLogo from "@/components/TheLogo.vue";
 
 const worksStore = useWorksStore();
+const categoriesStore = useCategoriesStore();
 </script>
+
 <template>
-  <article class="card h-100">
-    <div class="card-header text-center text-sm-start">
-      <div class="row justify-content-between align-items-center">
-        <div class="col">
-          <h6 class="m-0 fw-normal d-block">
-            <span class="title me-1">
-              <i class="fas fa-landmark" /> Works Card
+  <article class="card">
+    <div class="card-header p-0">
+      <NavBar name="works">
+        <template #start>
+          <TheLogo mode="symbol" width="32px" class="me-2 mb-1 mb-md-0" />
+          <!-- <h5 class="m-0"><i class="fas fa-landmark" /> Profiles</h5> -->
+          <!-- <button class="btn btn-secondary">
+            <i class="fas fa-landmark" /> <b>Works</b>
+          </button> -->
+        </template>
+        <template #default>
+          <fieldset class="input-group my-1 my-lg-0 me-lg-3" role="Search">
+            <span class="input-group-text">
+              <h6 class="m-0"><i class="fas fa-landmark" /> Profiles</h6>
             </span>
-            <span
-              class="badge badge-sm"
-              :class="
-                worksStore.isFiltered
-                  ? worksStore.hasFilteredItems
-                    ? 'text-bg-success'
-                    : 'text-bg-danger'
-                  : 'text-bg-secondary'
-              "
+            <SearchBar v-model="worksStore.query" class="" />
+          </fieldset>
+        </template>
+        <template #collapse>
+          <ul
+            class="nav nav-pills flex-md-nowrap justify-content-center mb-1 mb-md-0"
+          >
+            <li
+              v-for="(category, i) in categoriesStore.items"
+              :key="i"
+              class="nav-item"
             >
-              {{ worksStore.filteredCount }}
-            </span>
-          </h6>
-        </div>
-        <div class="col-lg-3 col-sm-6 mt-1 mt-sm-0">
-          <SearchBar v-model="worksStore.query" />
-        </div>
-      </div>
+              <button
+                @click="worksStore.category = category.name"
+                :class="{ active: category.name === worksStore.category }"
+                v-bs-tooltip="category.title"
+                class="nav-link d-inline-flex align-items-center text-capitalize"
+              >
+                <i :class="category.icon" />
+              </button>
+            </li>
+          </ul>
+        </template>
+      </NavBar>
     </div>
     <div class="card-body">
       <transition-group
@@ -47,7 +64,10 @@ const worksStore = useWorksStore();
           :key="i"
           class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
         >
-          <WorkCard :work="work" class="" />
+          <WorkCard
+            :work="work"
+            @category-click="(category) => (worksStore.category = category)"
+          />
         </div>
       </transition-group>
       <transition

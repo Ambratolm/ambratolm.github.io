@@ -5,6 +5,7 @@ defineProps({
     default: () => {},
   },
 });
+defineEmits(["category-click", "language-click", "tag-click"]);
 </script>
 
 <template>
@@ -46,7 +47,7 @@ defineProps({
     </div>
     <div class="card-footer">
       <button
-        @click="console.log(category)"
+        @click="$emit('category-click', category)"
         v-for="(category, i) in work?.categories"
         :key="i"
         class="btn btn-sm btn-secondary fw-bold text-lowercase me-1 mb-1"
@@ -54,7 +55,7 @@ defineProps({
         <i class="fas fa-tag" /> {{ category }}
       </button>
       <button
-        @click="console.log(language)"
+        @click="$emit('language-click', language)"
         v-for="(language, i) in work?.languages"
         :key="i"
         class="btn btn-sm btn-secondary text-lowercase me-1 mb-1"
@@ -62,7 +63,7 @@ defineProps({
         <i class="fas fa-language" /> {{ language }}
       </button>
       <button
-        @click="console.log(tag)"
+        @click="$emit('tag-click', tag)"
         v-for="(tag, i) in work?.tags"
         :key="i"
         class="btn btn-sm btn-secondary text-lowercase fst-italic me-1 mb-1"

@@ -5,7 +5,7 @@
 //====================================================================================================
 import { ref, watch } from "vue";
 import { defineStore } from "pinia";
-import { importData, importImages } from "@/core/assets";
+import { getData, getImages } from "@/core/assets";
 import { search } from "@/core/search";
 
 //----------------------------------------------------------------------------------------------------
@@ -95,18 +95,23 @@ const COMMON_QUERY_KEYS = [
 export const useWorksStore = defineCollectionStore(
   "works",
   (name) => {
-    const works = importData(name, 1);
-    const worksImages = importImages(name);
+    const works = getData(name, { flatDepth: 2 });
+    const worksImages = getImages(name, { hasLiteralKey: true });
     for (const work of works)
-      work.image = worksImages[work.image] || worksImages.default;
+      work.image = worksImages[work.image] || worksImages["_default"];
     return works;
   },
   [...COMMON_QUERY_KEYS, ["links", ...COMMON_QUERY_KEYS]],
 );
 export const useProfilesStore = defineCollectionStore(
   "profiles",
-  importData,
+  getData,
   COMMON_QUERY_KEYS,
+);
+export const useCategoriesStore = defineCollectionStore(
+  "categories",
+  getData,
+  [],
 );
 
 //----------------------------------------------------------------------------------------------------
@@ -118,8 +123,9 @@ function defineCollectionStore(name, itemsArrayFn, queryKeys) {
   return defineStore(name, () => {
     {
       const query = ref("");
+      const category = ref("");
       const items = ref(itemsArrayFn(name));
-      const filteredItems = ref(items.value.reverse());
+      const filteredItems = ref(items.value);
       const count = computed(() => items.value.length);
       const filteredCount = computed(() => filteredItems.value.length);
       const hasItems = computed(() => items.value.length !== 0);
@@ -143,9 +149,17 @@ function defineCollectionStore(name, itemsArrayFn, queryKeys) {
         (query) =>
           (filteredItems.value = search(items.value, queryKeys, query)),
       );
+      watch(
+        category,
+        (category) =>
+          (filteredItems.value = category
+            ? items.value.filter((item) => item.categories?.includes(category))
+            : items.value),
+      );
       useStorage(`query-${name}`, query);
       return {
         query,
+        category,
         items,
         count,
         hasItems,
