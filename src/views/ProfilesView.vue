@@ -37,8 +37,8 @@ const profilesStore = useProfilesStore();
     <div class="card-body">
       <transition-group
         v-if="profilesStore.hasFilteredItems"
-        enter-active-class="animate__animated animate__bounceInUp"
-        leave-active-class="animate__animated animate__bounceOutDown"
+        :enter-active-class="$animateCss('bounceInUp').class"
+        :leave-active-class="$animateCss('bounceOutDown').class"
         mode="out-in"
         tag="div"
         class="row g-3"
@@ -50,21 +50,23 @@ const profilesStore = useProfilesStore();
         >
           <ProfileCard
             :profile="profile"
-            v-animate-css="'@mouseenter pulse faster'"
+            @mouseenter="
+              $animateCss('pulse', 'faster').element = $event.toElement
+            "
           />
         </div>
       </transition-group>
       <transition
-        enter-active-class="animate__animated animate__fadeIn"
-        leave-active-class="animate__animated animate__fadeOut"
+        :enter-active-class="$animateCss('fadeIn').class"
+        :leave-active-class="$animateCss('fadeOut').class"
         mode="out-in"
       >
-        <small
+        <div
           v-if="!profilesStore.hasFilteredItems"
-          class="text-secondary fst-italic"
+          class="text-secondary fst-italic text-center"
         >
           No items found
-        </small>
+        </div>
       </transition>
     </div>
   </article>

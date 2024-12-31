@@ -23,35 +23,6 @@ export function search(items, keys, query) {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Name Search
-//----------------------------------------------------------------------------------------------------
-// export function find(items, key, value) {
-//   if (!check.string(key) || !(key = key.trim().toLowerCase())) return;
-//   return items.find(
-//     (item) =>
-//       check.string(item[key]) &&
-//       item[key].trim().toLowerCase() === value.trim().toLowerCase(),
-//   );
-// }
-
-//----------------------------------------------------------------------------------------------------
-// # Tag Search
-//----------------------------------------------------------------------------------------------------
-// export function searchByTag(items, tag = "") {
-//   if (!check.string(tag) || !(tag = tag.trim().toLowerCase())) return items;
-//   return items.filter(
-//     (item) =>
-//       check.string(item.tags) &&
-//       item.tags
-//         .trim()
-//         .toLowerCase()
-//         .split(",")
-//         .map((item) => item.trim())
-//         .includes(tag),
-//   );
-// }
-
-//----------------------------------------------------------------------------------------------------
 // # Filter Object
 //----------------------------------------------------------------------------------------------------
 /**
@@ -91,16 +62,3 @@ export const flattenObjectToArray = (obj, depth) => {
     else return acc.concat(value);
   }, []);
 };
-
-// export const flatten = (obj, depth, includeArrays) => {
-//   if (depth === 0) return check.array(obj) ? obj : Object.values(obj);
-//   if (includeArrays && check.array(obj))
-//     return obj.flatMap((item) => {
-//       if (check.object(item)) return flatten(item, depth - 1, includeArrays);
-//       return item;
-//     });
-//     return Object.values(obj).flatMap((value) => {
-//       if (check.object(value)) return flatten(value, depth - 1, includeArrays);
-//       return value;
-//     });
-// };

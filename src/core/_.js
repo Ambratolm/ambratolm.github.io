@@ -3,111 +3,84 @@
 //----------------------------------------------------------------------------------------------------
 // 		Animate DOM elements by inserting CSS animation classes.
 //====================================================================================================
-import check from "@/core/check";
+// import check from "@/core/check";
 
 //----------------------------------------------------------------------------------------------------
 // # AnimateCSS Directive
 //----------------------------------------------------------------------------------------------------
-export const animateCss = {
-  async beforeMount(element, binding) {
-    const { event, classes } = parseAnimateCssValue(binding.value);
-    const triggerAnimation = async () =>
-      await insertAnimateCss(element, classes);
-    if (!event) return await triggerAnimation();
-    element.addEventListener(event, triggerAnimation);
-    element._cleanupAnimation = () =>
-      element.removeEventListener(event, triggerAnimation);
-  },
-  unmounted(element) {
-    if (!element._cleanupAnimation) return;
-    element._cleanupAnimation();
-    delete element._cleanupAnimation;
-  },
-};
+// export const animateCss = {
+//   async beforeMount(element, binding) {
+//     const { event, classes } = parseAnimateCssValue(binding.value);
+//     const triggerAnimation = async () =>
+//       await insertAnimateCss(element, classes);
+//     if (!event) return await triggerAnimation();
+//     element.addEventListener(event, triggerAnimation);
+//     element._cleanupAnimation = () =>
+//       element.removeEventListener(event, triggerAnimation);
+//   },
+//   unmounted(element) {
+//     if (!element._cleanupAnimation) return;
+//     element._cleanupAnimation();
+//     delete element._cleanupAnimation;
+//   },
+// };
 
 //----------------------------------------------------------------------------------------------------
 // # AnimateCSS General Handling
 //----------------------------------------------------------------------------------------------------
-function parseAnimateCssValue(value) {
-  if (check.string(value)) {
-    let [event, ...classes] = value.split(" ");
-    if (event?.startsWith("@")) event = event.slice(1);
-    return { event, classes };
-  }
-  return check.object(value) ? value : {};
-}
-async function insertAnimateCss(element, classes = ["flash"]) {
-  return await insertAnimationClassList(
-    element,
-    ["animated", ...classes],
-    "animate__",
-  );
-}
+// function parseAnimateCssValue(value) {
+//   if (check.string(value)) {
+//     let [event, ...classes] = value.split(" ");
+//     if (event?.startsWith("@")) event = event.slice(1);
+//     return { event, classes };
+//   }
+//   return check.object(value) ? value : {};
+// }
+// async function insertAnimateCss(element, classes = ["flash"]) {
+//   return await insertAnimationClassList(
+//     element,
+//     ["animated", ...classes],
+//     "animate__",
+//   );
+// }
 
 //----------------------------------------------------------------------------------------------------
 // # AnimateFontAwesome Directive
 //----------------------------------------------------------------------------------------------------
-export const animateFa = {
-  async beforeMount(element, binding) {
-    const { classes, isInfinite } = parseFontAwesomeValue(binding.value);
-    await insertFontAwesome(element, classes, isInfinite);
-  },
-};
+// export const animateFa = {
+//   async beforeMount(element, binding) {
+//     const { classes, isInfinite } = parseFontAwesomeValue(binding.value);
+//     await insertFontAwesome(element, classes, isInfinite);
+//   },
+// };
 
 //----------------------------------------------------------------------------------------------------
 // # AnimateFontAwesome General Handling
 //----------------------------------------------------------------------------------------------------
-function parseFontAwesomeValue(value) {
-  if (check.string(value)) {
-    let classes = value.split(" ");
-    let isInfinite = !!classes.find((c) => c.startsWith("inf"));
-    return { classes, isInfinite };
-  }
-  return check.object(value) ? value : {};
-}
-async function insertFontAwesome(
-  element,
-  classes = ["beat"],
-  isInfinite = false,
-) {
-  return await insertAnimationClassList(
-    element,
-    classes,
-    "fa-",
-    isInfinite ? "animationEnd" : "animationiteration",
-  );
-}
+// function parseFontAwesomeValue(value) {
+//   if (check.string(value)) {
+//     let classes = value.split(" ");
+//     let isInfinite = !!classes.find((c) => c.startsWith("inf"));
+//     return { classes, isInfinite };
+//   }
+//   return check.object(value) ? value : {};
+// }
+// async function insertFontAwesome(
+//   element,
+//   classes = ["beat"],
+//   isInfinite = false,
+// ) {
+//   return await insertAnimationClassList(
+//     element,
+//     classes,
+//     "fa-",
+//     isInfinite ? "animationEnd" : "animationiteration",
+//   );
+// }
 
 //----------------------------------------------------------------------------------------------------
 // # General Handling
 //----------------------------------------------------------------------------------------------------
-export async function insertAnimationClassList(
-  htmlElement,
-  classList = [],
-  classPrefix = "",
-  cleanupEventName = "animationend",
-) {
-  if (check.object(htmlElement) && "$el" in htmlElement)
-    htmlElement = htmlElement.$el;
-  if (!htmlElement || !(htmlElement instanceof HTMLElement)) {
-    console.error("Element is not a valid HTMLElement:", htmlElement);
-    return;
-  }
-  return new Promise((resolve) => {
-    if (classPrefix)
-      classList = classList.map((className) => `${classPrefix}${className}`);
-    htmlElement.classList.add(...classList);
-    htmlElement.addEventListener(
-      cleanupEventName,
-      (event) => {
-        event.stopPropagation();
-        htmlElement.classList.remove(...classList);
-        resolve("Animation Ended");
-      },
-      { once: true },
-    );
-  });
-}
 
 //----------------------------------------------------------------------------------------------------
 // # AnimateCSS Cheatsheet

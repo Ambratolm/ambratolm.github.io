@@ -5,7 +5,7 @@
 //====================================================================================================
 
 //----------------------------------------------------------------------------------------------------
-// # CSS
+// # CSS Style
 //----------------------------------------------------------------------------------------------------
 import "@fortawesome/fontawesome-free/css/all.css";
 import "animate.css";
@@ -14,39 +14,10 @@ import "halfmoon/css/cores/halfmoon.cores.css";
 import "./style.css";
 
 //----------------------------------------------------------------------------------------------------
-// # JS
+// # JS Style
 //----------------------------------------------------------------------------------------------------
 import "bootstrap/js/dist/collapse";
 import "bootstrap/js/dist/dropdown";
-
-//----------------------------------------------------------------------------------------------------
-// # Router
-//----------------------------------------------------------------------------------------------------
-import HomeView from "./views/HomeView.vue";
-import WorksView from "./views/WorksView.vue";
-import ProfilesView from "./views/ProfilesView.vue";
-import ContactView from "./views/ContactView.vue";
-import AboutView from "./views/AboutView.vue";
-const routes = [
-  { name: "home", path: "/", component: HomeView },
-  { name: "works", path: "/works", component: WorksView },
-  { name: "profiles", path: "/profiles", component: ProfilesView },
-  { name: "contact", path: "/contact", component: ContactView },
-  { name: "about", path: "/about", component: AboutView },
-];
-import { createWebHistory, createRouter } from "vue-router";
-const router = createRouter({
-  linkActiveClass: "active",
-  linkExactActiveClass: "active",
-  history: createWebHistory(),
-  routes,
-});
-
-//----------------------------------------------------------------------------------------------------
-// # Store
-//----------------------------------------------------------------------------------------------------
-import { createPinia } from "pinia";
-const pinia = createPinia();
 
 //----------------------------------------------------------------------------------------------------
 // # Application
@@ -54,30 +25,44 @@ const pinia = createPinia();
 import { createApp } from "vue";
 import App from "./App.vue";
 const app = createApp(App);
-app.use(router).use(pinia);
-app.config.globalProperties.$filters = {
-  strLimit(value, size = 50, dotsSuffix = "...") {
-    value = value ? String(value) : "";
-    return value
-      ? value.length <= size
-        ? value
-        : value.substr(0, size) + dotsSuffix
-      : "";
-  },
-};
+
+//----------------------------------------------------------------------------------------------------
+// # Store
+//----------------------------------------------------------------------------------------------------
+import { createPinia } from "pinia";
+const pinia = createPinia();
+app.use(pinia);
+
+//----------------------------------------------------------------------------------------------------
+// # Router
+//----------------------------------------------------------------------------------------------------
+import routes from "./routes";
+import { createWebHistory, createRouter } from "vue-router";
+const router = createRouter({
+  linkActiveClass: "active",
+  linkExactActiveClass: "active",
+  history: createWebHistory(),
+  routes,
+});
+app.use(router);
+
+//----------------------------------------------------------------------------------------------------
+// # Global Properties
+//----------------------------------------------------------------------------------------------------
+import { strLimit, animateCss } from "@/core/misc";
+import { capitalCase } from "change-case";
+app.config.globalProperties.$navRoutes = routes.filter((route) => route.$isNav);
+app.config.globalProperties.$filters = { strLimit, capitalCase };
+app.config.globalProperties.$animateCss = animateCss;
 
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
 //----------------------------------------------------------------------------------------------------
-import bsTooltip from "@/directives/bs-tooltip";
-import imgSrcAlt from "@/directives/img-src-alt";
-import { animateCss, animateFa } from "@/directives/animate";
+import { imgSrcAlt, bsTooltip } from "@/core/directives";
 app.directive("bsTooltip", bsTooltip);
 app.directive("imgSrcAlt", imgSrcAlt);
-app.directive("animateCss", animateCss);
-app.directive("animateFa", animateFa);
 
 //----------------------------------------------------------------------------------------------------
-// # Boot
+// # Application Boot
 //----------------------------------------------------------------------------------------------------
 app.mount("#app");

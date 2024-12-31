@@ -46,7 +46,7 @@ const logo = useTemplateRef("logo");
         v-if="src"
         :src="src"
         :width="width"
-        v-animate-css="'@click rubberBand'"
+        @click="$animateCss('rubberBand').element = logo"
         ref="logo"
         alt="Ambratolm Logo"
       />

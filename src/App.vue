@@ -1,21 +1,33 @@
 <script setup>
 import NavBar from "@/components/NavBar.vue";
-import { useSearchStore, useProfilesStore, useWorksStore } from "@/core/stores";
 import { RouterLink } from "vue-router";
 import ThemeToggle from "@/components//ThemeToggle.vue";
 import TheLogo from "@/components//TheLogo.vue";
 import SearchBar from "@/components//SearchBar.vue";
-import SearchBadge from "./components/SearchBadge.vue";
+import { onMounted, ref, watch } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
-defineProps({});
+const router = useRouter();
+const route = useRoute();
+const query = ref("");
 
-const profilesStore = useProfilesStore();
-const worksStore = useWorksStore();
-const searchStore = useSearchStore();
+function search(query) {
+  if (!query?.trim()) return;
+  router.replace({
+    name: "search",
+    query: { query },
+  });
+}
+
+onMounted(async () => {
+  await router.isReady();
+  query.value = route.query["query"] || "";
+});
+watch(query, search);
 </script>
 
 <template>
-  <header class="animate__animated animate__backInDown mb-3">
+  <header class="mb-3">
     <NavBar name="main">
       <template #start>
         <div class="navbar-brand">
@@ -26,11 +38,12 @@ const searchStore = useSearchStore();
       </template>
       <template #default>
         <fieldset class="input-group my-1 my-lg-0 me-lg-3" role="Search">
-          <SearchBar v-model="searchStore.query" />
+          <SearchBar @keydown.enter="search(query)" v-model="query" />
           <button
-            @click="searchStore.search()"
-            type="button"
-            class="btn btn-secondary"
+            @click="search(query)"
+            class="btn"
+            :class="$route.name === 'search' ? 'btn-primary' : 'btn-secondary'"
+            aria-label="Search"
           >
             <i class="fas fa-search" aria-hidden="true" />
             <span class="visually-hidden">Execute search</span>
@@ -41,59 +54,19 @@ const searchStore = useSearchStore();
         <ul
           class="nav nav-pills flex-md-nowrap justify-content-center mb-1 mb-md-0"
         >
-          <li class="nav-item">
+          <li
+            v-for="{ name, $icon } in $navRoutes"
+            :key="name"
+            class="nav-item"
+          >
             <RouterLink
-              :to="{ name: 'home' }"
+              :to="{ name }"
               class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
             >
-              <i class="fas fa-home me-1" /> Home
+              <i :class="$icon" class="me-1" aria-hidden="true" /> {{ name }}
             </RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink
-              :to="{ name: 'works' }"
-              :class="{
-                'text-bg-secondary':
-                  worksStore.isFiltered && $route.name != 'works',
-              }"
-              class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
-            >
-              <i class="fas fa-landmark me-1" /> Works
-              <SearchBadge
-                v-if="worksStore.isFiltered"
-                :value="worksStore.filteredCount"
-              />
-            </RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink
-              :to="{ name: 'profiles' }"
-              :class="{
-                'text-bg-secondary':
-                  profilesStore.hasFilteredItems && $route.name != 'profiles',
-              }"
-              class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
-            >
-              <i class="fas fa-address-card me-1" /> Profiles
-            </RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink
-              :to="{ name: 'contact' }"
-              class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
-            >
-              <i class="fas fa-envelope me-1" /> Contact
-            </RouterLink>
-          </li>
-          <li class="nav-item">
-            <RouterLink
-              :to="{ name: 'about' }"
-              class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
-            >
-              <i class="fas fa-info-circle me-1" /> About
-            </RouterLink>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item ms-3">
             <ThemeToggle />
           </li>
         </ul>
@@ -103,7 +76,7 @@ const searchStore = useSearchStore();
 
   <!-------------------------------------------------------------------------------------------------------->
 
-  <main class="container animate__animated animate__backInUp">
+  <main class="container">
     <Suspense>
       <RouterView v-slot="{ Component }">
         <transition
@@ -120,9 +93,24 @@ const searchStore = useSearchStore();
 
   <!-------------------------------------------------------------------------------------------------------->
 
-  <footer class="container-fluid animate__animated animate__backInUp mt-4">
+  <footer class="container-fluid mt-4">
     <section class="text-center p-5">
-      <p>&copy; <strong>Ambratolm</strong> 2025</p>
+      <div class="row">
+        <div class="col">
+          <a href="#" class="nav-link"><i class="fas fa-square" /></a>
+          <a href="#" class="nav-link"><i class="fas fa-square" /></a>
+          <a href="#" class="nav-link"><i class="fas fa-square" /></a>
+        </div>
+        <div class="col">
+          <TheLogo mode="symbol" width="64px" class="pb-3" />
+          <p>&copy; <strong>Ambratolm</strong> 2025</p>
+        </div>
+        <div class="col">
+          <a href="#" class="nav-link">Some Link Link</a>
+          <a href="#" class="nav-link">Some Link Some Link</a>
+          <a href="#" class="nav-link">Some Link</a>
+        </div>
+      </div>
     </section>
   </footer>
 </template>

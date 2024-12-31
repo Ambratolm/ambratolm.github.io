@@ -1,17 +1,31 @@
 //====================================================================================================
-// @ Bootstrap Tooltip
+// @ Directives
 //----------------------------------------------------------------------------------------------------
-// 		Display bootstrap tooltip.
+// 		Vue directives.
 //====================================================================================================
-import Tooltip from "bootstrap/js/dist/tooltip";
 import check from "@/core/check";
 
 //----------------------------------------------------------------------------------------------------
-// # Directive
+// # Image Source Alternative Directive
 //----------------------------------------------------------------------------------------------------
-export default {
+import { getImages } from "@/core/assets";
+export const imgSrcAlt = {
+  beforeMount: SecureImageSrc,
+  updated: SecureImageSrc,
+};
+function SecureImageSrc(element) {
+  const { error, empty } = getImages();
+  element.onerror = () => (element.src = error);
+  if (!element.src) element.src = empty;
+}
+
+//----------------------------------------------------------------------------------------------------
+// # Bootstrap Tooltip Directive
+//----------------------------------------------------------------------------------------------------
+import Tooltip from "bootstrap/js/dist/tooltip";
+export const bsTooltip = {
   mounted(element, binding) {
-    let value = parseValue(binding.value);
+    const value = parseBootstrapTooltipValue(binding.value);
     const instance = Tooltip.getOrCreateInstance(element, {
       trigger: "hover",
       ...value,
@@ -20,7 +34,7 @@ export default {
   },
   updated(element, binding) {
     if (binding.value === binding.oldValue) return;
-    let value = parseValue(binding.value);
+    const value = parseBootstrapTooltipValue(binding.value);
     const instance =
       element._tooltipInstance || Tooltip.getOrCreateInstance(element);
     if (value.title) instance.setContent({ ".tooltip-inner": value.title });
@@ -34,20 +48,9 @@ export default {
     }
   },
 };
-
-//----------------------------------------------------------------------------------------------------
-// # General Handling
-//----------------------------------------------------------------------------------------------------
-function parseValue(value) {
+function parseBootstrapTooltipValue(value) {
   if (check.string(value) || check.number(value))
     return { title: String(value) };
   if (check.array(value)) return { title: value.join(", ") };
   return value;
 }
-
-//----------------------------------------------------------------------------------------------------
-// function enableTooltips() {
-//   [...document.querySelectorAll("[data-bs-toggle='tooltip']")].map(
-//     (element) => new Tooltip(element),
-//   );
-// }

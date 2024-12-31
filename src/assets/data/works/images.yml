@@ -4,16 +4,6 @@
 # 		Works in images category.
 #====================================================================================================
 ---
-- name: m-pixo
-  title: M~PiXo
-  description: Gallery of Photos
-  url: http://mpixo.blogspot.com
-  image: mpixo
-  icon: fas fa-image
-  languages: ["english"]
-  links:
-    - title: M~PiXo
-      icon: fas fa-image
 #----------------------------------------------------------------------------------------------------
 - name: ambratolm-cf
   title: Ambratolm™ CF
@@ -25,17 +15,6 @@
     - title:
       url: https://www.ambratolm.cf
       icon: fas fa-crown
-#----------------------------------------------------------------------------------------------------
-- name: manga-in-pdf
-  title: Manga in PDF
-  description: Download Manga in PDF Format
-  image: pdfmanga
-  icon: fas fa-book
-  languages: ["arabic"]
-  links:
-    - title:
-      url: https://www.pdfman.ga
-      icon: fas fa-book
 #----------------------------------------------------------------------------------------------------
 - name: artworks
   title: Artworks

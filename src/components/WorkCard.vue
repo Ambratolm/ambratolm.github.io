@@ -1,4 +1,6 @@
 <script setup>
+import { useCategoriesStore } from "@/core/stores";
+
 defineProps({
   work: {
     type: Object,
@@ -6,6 +8,8 @@ defineProps({
   },
 });
 defineEmits(["category-click", "language-click", "tag-click"]);
+
+const categoriesStore = useCategoriesStore();
 </script>
 
 <template>
@@ -50,18 +54,28 @@ defineEmits(["category-click", "language-click", "tag-click"]);
         @click="$emit('category-click', category)"
         v-for="(category, i) in work?.categories"
         :key="i"
-        class="btn btn-sm btn-secondary fw-bold text-lowercase me-1 mb-1"
+        class="btn btn-sm fw-bold text-capitalize me-1"
+        :class="
+          category === categoriesStore.current?.name
+            ? 'btn-primary disabled'
+            : 'btn-secondary'
+        "
       >
-        <i class="fas fa-tag" /> {{ category }}
+        <i :class="categoriesStore.getCategory(category)?.icon" />
+        {{ categoriesStore.getCategory(category)?.title }}
       </button>
+    </div>
+    <div class="card-footer">
       <button
         @click="$emit('language-click', language)"
         v-for="(language, i) in work?.languages"
         :key="i"
-        class="btn btn-sm btn-secondary text-lowercase me-1 mb-1"
+        class="btn btn-sm btn-secondary text-lowercase me-1"
       >
         <i class="fas fa-language" /> {{ language }}
       </button>
+    </div>
+    <div class="card-footer">
       <button
         @click="$emit('tag-click', tag)"
         v-for="(tag, i) in work?.tags"

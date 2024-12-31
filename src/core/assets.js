@@ -16,11 +16,28 @@ const ASSETS = {
   images: importGroup("images"),
   videos: importGroup("videos"),
 };
+/**
+ * Retrieves data from ASSETS.data based on the given collection name.
+ * @param {string} collectionName - The name of the collection to retrieve data from.
+ * @param {Object} [options={}] - Configuration options for the retrieval.
+ * @param {number} [options.flatDepth=1] - Depth of flattening for nested objects.
+ * @returns {Promise<Array<T>>} A promise resolving to an array of flattened objects.
+ * @example const data = await getData('works', { flatDepth: 2 });
+ */
 export const getData = (collectionName, { flatDepth = 1 } = {}) =>
   flattenObjectToArray(
     getGroupItems(ASSETS.data, { startKey: collectionName }),
     flatDepth,
   );
+/**
+ * Retrieves images from ASSETS.images based on the given collection name.
+ * @param {string} collectionName - The name of the image collection to retrieve.
+ * @param {Object} [options={}] - Configuration options for the retrieval.
+ * @param {boolean} [options.isFlat=true] - Whether to return flat data structure.
+ * @param {boolean} [options.hasLiteralKey=false] - Whether to include literal keys in the result.
+ * @returns {Promise<Array<T>>} A promise resolving to an array of images.
+ * @example const images = await getImages('works',  { hasLiteralKey: true });
+ */
 export const getImages = (
   collectionName,
   { isFlat = true, hasLiteralKey = false } = {},
@@ -39,8 +56,9 @@ export const getImages = (
  * @param {Object} group - The group object containing items to process.
  * @param {Object} [options={}] - Optional configuration options.
  * @param {string} [options.startKey] - Starting key for filtering items.
- * @param {boolean} [options.hasFullKey=true] - Whether to include full keys.
- * @param {boolean} [options.isFlat=false] - Whether to flatten nested structures.
+ * @param {boolean} [options.hasFullKey] - Whether to have full path keys.
+ * @param {boolean} [options.hasLiteralKey] - Whether to have string literal keys.
+ * @param {boolean} [options.isFlat] - Whether to flatten nested structures.
  * @returns {Object} Processed group items.
  */
 function getGroupItems(
@@ -67,8 +85,10 @@ function getGroupItems(
       : hasLiteralKey
         ? basename(key)
         : camelCase(basename(key));
-    if (isFlat) output[key] = parseFn ? parseFn(value) : value;
-    else current[key] = parseFn ? parseFn(value) : value;
+    value = parseFn ? parseFn(value) : value;
+    if (!value) continue;
+    if (isFlat) output[key] = value;
+    else current[key] = value;
   }
   return output;
 }
@@ -109,29 +129,3 @@ function importGroup(name) {
   }
   return items ? { name, items, parseFn } : null;
 }
-
-//----------------------------------------------------------------------------------------------------
-// (Old way using AJAX)
-//----------------------------------------------------------------------------------------------------
-// # Client
-//----------------------------------------------------------------------------------------------------
-// import axios from "axios";
-// const client = axios.create({
-//   baseURL: "data",
-//   withCredentials: false,
-//   headers: {
-//     Accept: "text/yaml",
-//     "Content-Type": "text/yaml",
-//   },
-// });
-//----------------------------------------------------------------------------------------------------
-// # Operations
-//----------------------------------------------------------------------------------------------------
-// export const createYaml = async (path, data) =>
-//   load((await client.post(`${path}.yml`, data)).data);
-// export const readYaml = async (path) =>
-//   load((await client.get(`${path}.yml`)).data);
-// export const updateYaml = async (path, data) =>
-//   load(await client.put(`${path}.yml`, data).data);
-// export const deleteYaml = async (path) =>
-//   load(await client.delete(`${path}.yml`).data);

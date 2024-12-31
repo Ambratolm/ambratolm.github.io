@@ -62,23 +62,29 @@ export const useThemeStore = defineStore("theme", () => {
 });
 
 //----------------------------------------------------------------------------------------------------
-// # Search Store
+// # Categories Store
 //----------------------------------------------------------------------------------------------------
-export const useSearchStore = defineStore("search", () => {
-  const query = ref("");
+export const useCategoriesStore = defineStore("categories", () => {
   const worksStore = useWorksStore();
-  const profilesStore = useProfilesStore();
-  const search = (value = query.value) => {
-    worksStore.query = value;
-    profilesStore.query = value;
-  };
-  watch(query, search);
-  useStorage("query", query);
-  return { query, search };
+  const items = ref(getData("categories"));
+  const current = ref(null);
+  const setCurrent = (name) =>
+    (current.value = items.value.find(
+      (category) => category.name === (name || ""),
+    ));
+  setCurrent(worksStore.category.value);
+  watch(
+    () => worksStore.category,
+    (name) => setCurrent(name),
+  );
+  function getCategory(name) {
+    return items.value.find((category) => category.name === (name || ""));
+  }
+  return { items, current, getCategory };
 });
 
 //----------------------------------------------------------------------------------------------------
-// # List Stores
+// # Collection Stores
 //----------------------------------------------------------------------------------------------------
 const COMMON_QUERY_KEYS = [
   "name",
@@ -108,22 +114,26 @@ export const useProfilesStore = defineCollectionStore(
   getData,
   COMMON_QUERY_KEYS,
 );
-export const useCategoriesStore = defineCollectionStore(
-  "categories",
-  getData,
-  [],
-);
 
 //----------------------------------------------------------------------------------------------------
 // # List Store Setup
 //----------------------------------------------------------------------------------------------------
 import random from "random";
-import { useStorage } from "@vueuse/core";
+// import { useStorage } from "@vueuse/core";
+/**
+ * Creates a Pinia `useStore` for managing a collection of items.
+ * @param {string} name - Name of the collection store.
+ * @param {Function} itemsArrayFn - Function to generate initial array of items.
+ * @param {Object} queryKeys - Query keys for searching.
+ * @returns {Object} Pinia `useStore` instance with reactive state and actions.
+ */
 function defineCollectionStore(name, itemsArrayFn, queryKeys) {
   return defineStore(name, () => {
     {
-      const query = ref("");
       const category = ref("");
+      const tag = ref("");
+      const language = ref("");
+      const query = ref("");
       const items = ref(itemsArrayFn(name));
       const filteredItems = ref(items.value);
       const count = computed(() => items.value.length);
@@ -144,22 +154,28 @@ function defineCollectionStore(name, itemsArrayFn, queryKeys) {
         }
         return randomItems;
       }
-      watch(
-        query,
-        (query) =>
-          (filteredItems.value = search(items.value, queryKeys, query)),
-      );
-      watch(
-        category,
-        (category) =>
-          (filteredItems.value = category
-            ? items.value.filter((item) => item.categories?.includes(category))
-            : items.value),
-      );
-      useStorage(`query-${name}`, query);
+      function filterAndSearch() {
+        filteredItems.value = search(
+          items.value.filter(
+            (item) =>
+              (!category.value || item.categories?.includes(category.value)) &&
+              (!tag.value || item.tags?.includes(tag.value)) &&
+              (!language.value || item.languages?.includes(language.value)),
+          ),
+          queryKeys,
+          query.value,
+        );
+      }
+      watch(category, filterAndSearch);
+      watch(tag, filterAndSearch);
+      watch(language, filterAndSearch);
+      watch(query, filterAndSearch);
+      // useStorage(`query-${name}`, query);
       return {
         query,
         category,
+        tag,
+        language,
         items,
         count,
         hasItems,
