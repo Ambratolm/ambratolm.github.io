@@ -1,0 +1,18 @@
+arabic:
+  name: arabic
+  title: Arabic
+  nativeTitle: العربية
+  code: ar
+  rtl: true
+
+english:
+  name: english
+  title: English
+  nativeTitle: English
+  code: en
+
+french:
+  name: french
+  title: French
+  nativeTitle: Français
+  code: fr

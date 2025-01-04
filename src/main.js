@@ -49,18 +49,15 @@ app.use(router);
 //----------------------------------------------------------------------------------------------------
 // # Global Properties
 //----------------------------------------------------------------------------------------------------
-import { strLimit, animateCss } from "@/core/misc";
-import { capitalCase } from "change-case";
 app.config.globalProperties.$navRoutes = routes.filter((route) => route.$isNav);
-app.config.globalProperties.$filters = { strLimit, capitalCase };
-app.config.globalProperties.$animateCss = animateCss;
 
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
 //----------------------------------------------------------------------------------------------------
-import { imgSrcAlt, bsTooltip } from "@/core/directives";
-app.directive("bsTooltip", bsTooltip);
-app.directive("imgSrcAlt", imgSrcAlt);
+// import { imgSrcAlt, bsTooltip } from "@/core/directives";
+import { bsTooltip } from "@/core/directives";
+app.directive("tooltip", bsTooltip);
+// app.directive("imgSrcAlt", imgSrcAlt);
 
 //----------------------------------------------------------------------------------------------------
 // # Application Boot

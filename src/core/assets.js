@@ -3,70 +3,47 @@
 //----------------------------------------------------------------------------------------------------
 // 		Access assets folder files.
 //====================================================================================================
-import check from "./check";
 import { sep, basename, extname } from "path";
 import { camelCase } from "change-case";
-import { flattenObjectToArray } from "./search";
+import { load } from "js-yaml";
+import { flattenObject, flattenObjectToArray, resolveKeys } from "./utils";
 
 //----------------------------------------------------------------------------------------------------
 // # Assets
 //----------------------------------------------------------------------------------------------------
-const ASSETS = {
-  data: importGroup("data"),
-  images: importGroup("images"),
-  videos: importGroup("videos"),
-};
-/**
- * Retrieves data from ASSETS.data based on the given collection name.
- * @param {string} collectionName - The name of the collection to retrieve data from.
- * @param {Object} [options={}] - Configuration options for the retrieval.
- * @param {number} [options.flatDepth=1] - Depth of flattening for nested objects.
- * @returns {Promise<Array<T>>} A promise resolving to an array of flattened objects.
- * @example const data = await getData('works', { flatDepth: 2 });
- */
-export const getData = (collectionName, { flatDepth = 1 } = {}) =>
-  flattenObjectToArray(
-    getGroupItems(ASSETS.data, { startKey: collectionName }),
-    flatDepth,
-  );
-/**
- * Retrieves images from ASSETS.images based on the given collection name.
- * @param {string} collectionName - The name of the image collection to retrieve.
- * @param {Object} [options={}] - Configuration options for the retrieval.
- * @param {boolean} [options.isFlat=true] - Whether to return flat data structure.
- * @param {boolean} [options.hasLiteralKey=false] - Whether to include literal keys in the result.
- * @returns {Promise<Array<T>>} A promise resolving to an array of images.
- * @example const images = await getImages('works',  { hasLiteralKey: true });
- */
-export const getImages = (
-  collectionName,
-  { isFlat = true, hasLiteralKey = false } = {},
-) =>
-  getGroupItems(ASSETS.images, {
-    startKey: collectionName,
-    isFlat,
-    hasLiteralKey,
-  });
+const DATA = getDocuments(importCollection("data"));
+const IMAGES = getDocuments(importCollection("images"), {
+  hasLiteralKey: true,
+});
+// const VIDEOS = getGroupItems(importGroup("videos"), { hasLiteralKey: true });
+//----------------------------------------------------------------------------------------------------
+const categories = DATA.categories;
+const languages = DATA.languages;
+const works = flattenObjectToArray(DATA.works, 2);
+const worksImages = flattenObject(IMAGES.works, 2);
+for (const work of works) {
+  work.categories = resolveKeys(work.categories, categories);
+  work.languages = resolveKeys(work.languages, languages);
+  work.image = worksImages[work.image] || worksImages["_default"];
+}
+const profiles = DATA.profiles;
+const logos = IMAGES.logos;
+//----------------------------------------------------------------------------------------------------
+export { categories, languages, works, profiles, logos };
 
 //----------------------------------------------------------------------------------------------------
-// # Assets Group Items
+// # Assets Documents
 //----------------------------------------------------------------------------------------------------
-/**
- * Gets processed group items.
- * @param {Object} group - The group object containing items to process.
- * @param {Object} [options={}] - Optional configuration options.
- * @param {string} [options.startKey] - Starting key for filtering items.
- * @param {boolean} [options.hasFullKey] - Whether to have full path keys.
- * @param {boolean} [options.hasLiteralKey] - Whether to have string literal keys.
- * @param {boolean} [options.isFlat] - Whether to flatten nested structures.
- * @returns {Object} Processed group items.
- */
-function getGroupItems(
-  group,
-  { startKey, hasFullKey, hasLiteralKey, isFlat } = {},
+function getDocuments(
+  collection = {},
+  {
+    startKey = "",
+    hasFullKey = false,
+    hasLiteralKey = false,
+    isFlat = false,
+  } = {},
 ) {
-  if (!check.object(group)) return {};
-  const { name, items, parseFn } = group;
+  const { name, items, parseFn } = collection;
   const output = {};
   for (let [key, value] of Object.entries(items)) {
     key = key.split(`/${name}/`)[1].replace(extname(key), "");
@@ -94,15 +71,9 @@ function getGroupItems(
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Assets Group
+// # Assets Collection
 //----------------------------------------------------------------------------------------------------
-import { load } from "js-yaml";
-/**
- * Imports a group of assets.
- * @param {String} name - Group name
- * @returns {Object|Null} - { name, items, parseFn }
- */
-function importGroup(name) {
+function importCollection(name = "") {
   let items;
   let parseFn;
   switch (name) {
@@ -127,5 +98,5 @@ function importGroup(name) {
       });
       break;
   }
-  return items ? { name, items, parseFn } : null;
+  return items ? { name, items, parseFn } : undefined;
 }

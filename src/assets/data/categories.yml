@@ -1,13 +1,6 @@
 ---
-- name: ""
-  title: All
-  subtitle: All creations by Ambratolm
-  description: I make Programs, Games, Audios, Videos, Images, and Documents
-  icon: fas fa-asterisk
-  image:
-  video:
-
-- name: program
+program:
+  name: program
   title: Program
   subtitle: Applications and Source Codes
   description:
@@ -26,7 +19,8 @@
       description: Published open source programs.
       icon: fab fa-github
 
-- name: game
+game:
+  name: game
   title: Game
   subtitle: Video-games and entertainment applications
   description:
@@ -46,7 +40,8 @@
       description: Games store page.
       icon: fas fa-link
 
-- name: audio
+audio:
+  name: audio
   title: Audio
   subtitle: Sounds, Voices and Music
   description:
@@ -58,7 +53,8 @@
   video: audio
   embed: https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/116672289&color=%2367515c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true
 
-- name: video
+video:
+  name: video
   title: Video
   subtitle: Video edits and motion productions
   description:
@@ -73,7 +69,8 @@
       description: Contains my video edits.
       icon: fab fa-youtube
 
-- name: image
+image:
+  name: image
   title: Image
   subtitle: Pictures and Photos
   description:
@@ -83,7 +80,8 @@
   image: image.png
   video: image
 
-- name: document
+document:
+  name: document
   title: Document
   substring: Articles, topics, tutotrials, summaries and Books
   description:
