@@ -6,7 +6,7 @@
 import { sep, basename, extname } from "path";
 import { camelCase } from "change-case";
 import { load } from "js-yaml";
-import { flattenObject, flattenObjectToArray, resolveKeys } from "./utils";
+import { flattenObject, flattenObjectToArray, resolveKeys } from "./utilities";
 
 //----------------------------------------------------------------------------------------------------
 // # Assets
@@ -15,21 +15,22 @@ const DATA = getDocuments(importCollection("data"));
 const IMAGES = getDocuments(importCollection("images"), {
   hasLiteralKey: true,
 });
-// const VIDEOS = getGroupItems(importGroup("videos"), { hasLiteralKey: true });
+const VIDEOS = getDocuments(importCollection("videos"), {
+  hasLiteralKey: true,
+});
 //----------------------------------------------------------------------------------------------------
-const categories = DATA.categories;
-const languages = DATA.languages;
-const works = flattenObjectToArray(DATA.works, 2);
-const worksImages = flattenObject(IMAGES.works, 2);
-for (const work of works) {
-  work.categories = resolveKeys(work.categories, categories);
-  work.languages = resolveKeys(work.languages, languages);
-  work.image = worksImages[work.image] || worksImages["_default"];
-}
-const profiles = DATA.profiles;
-const logos = IMAGES.logos;
-//----------------------------------------------------------------------------------------------------
-export { categories, languages, works, profiles, logos };
+DATA.works = (() => {
+  const works = flattenObjectToArray(DATA.works, 2);
+  const worksImages = flattenObject(IMAGES.works, 2);
+  const { categories, languages } = DATA;
+  for (const work of works) {
+    work.categories = resolveKeys(work.categories, categories);
+    work.languages = resolveKeys(work.languages, languages);
+    work.image = worksImages[work.image] || worksImages["_default"];
+  }
+  return works;
+})();
+export { DATA, IMAGES, VIDEOS };
 
 //----------------------------------------------------------------------------------------------------
 // # Assets Documents

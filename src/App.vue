@@ -34,5 +34,3 @@ import TheNavBar from "./components/TheNavBar.vue";
     </section>
   </footer>
 </template>
-
-<style scoped></style>

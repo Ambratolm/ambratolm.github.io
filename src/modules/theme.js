@@ -31,7 +31,7 @@ export function useDarkTheme() {
   });
   const current = computed(() => (isDark.value ? modes.dark : modes.light));
   const toggle = useToggle(isDark);
-  return reactive({ toggle, current, modes });
+  return reactive({ toggle, current, modes, isDark });
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -4,7 +4,6 @@
 // 		Utility functions for common tasks.
 //====================================================================================================
 import Fuse from "fuse.js";
-import random from "random";
 
 //----------------------------------------------------------------------------------------------------
 // # Fuzzy Search
@@ -41,16 +40,20 @@ export function searchExact(items = [], query = {}, operator = "$and") {
 //----------------------------------------------------------------------------------------------------
 // # Random Pick
 //----------------------------------------------------------------------------------------------------
-export function getRandomItem(items) {
-  return random.choice(items);
+export function pickOne(items = []) {
+  return items[Math.floor(Math.random() * items.length)];
 }
-export function getRandomItems(items, max = 5) {
-  const randomItems = [];
-  for (let i = 0; i < max; i++) {
-    let randomItem = random.choice(items);
-    randomItems.push(randomItem);
+export function pickMany(items = [], max = 1) {
+  const elements = [];
+  function getRandomElement(arr) {
+    if (elements.length < max) {
+      const index = Math.floor(Math.random() * arr.length);
+      const element = arr.splice(index, 1)[0];
+      elements.push(element);
+      return getRandomElement(arr);
+    } else return elements;
   }
-  return randomItems;
+  return getRandomElement([...items]);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -61,13 +64,13 @@ export function resolveKeys(keys = [], refObj = {}) {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Title
+// # Object Entries
 //----------------------------------------------------------------------------------------------------
-export function getObjectEntries(obj = {}, includeFalsyValue = false) {
+export function getObjectEntries(obj = {}, includeFalsy = false) {
   const entries = Object.entries(obj).map(([key, value]) =>
-    value || includeFalsyValue ? { [key]: value } : undefined,
+    value || includeFalsy ? { [key]: value } : undefined,
   );
-  return includeFalsyValue ? entries : entries.filter(Boolean);
+  return includeFalsy ? entries : entries.filter(Boolean);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -110,4 +113,16 @@ export function flattenObjectToArray(obj = {}, depth = 0) {
       return acc.concat(flattenObjectToArray(value, depth - 1));
     else return acc.concat(value);
   }, []);
+}
+
+//----------------------------------------------------------------------------------------------------
+// # String Limit
+//----------------------------------------------------------------------------------------------------
+export function strLimit(value, size = 50, dotsSuffix = "...") {
+  value = value ? String(value) : "";
+  return value
+    ? value.length <= size
+      ? value
+      : value.substr(0, size) + dotsSuffix
+    : "";
 }

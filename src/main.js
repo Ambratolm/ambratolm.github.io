@@ -54,10 +54,9 @@ app.config.globalProperties.$navRoutes = routes.filter((route) => route.$isNav);
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
 //----------------------------------------------------------------------------------------------------
-// import { imgSrcAlt, bsTooltip } from "@/core/directives";
-import { bsTooltip } from "@/core/directives";
-app.directive("tooltip", bsTooltip);
-// app.directive("imgSrcAlt", imgSrcAlt);
+import { imgSrcAlt, tooltip } from "@/modules/directives";
+app.directive("tooltip", tooltip);
+app.directive("imgSrcAlt", imgSrcAlt);
 
 //----------------------------------------------------------------------------------------------------
 // # Application Boot

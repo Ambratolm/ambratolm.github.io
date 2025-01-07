@@ -1,18 +1,20 @@
-arabic:
-  name: arabic
-  title: Arabic
-  nativeTitle: العربية
-  code: ar
-  rtl: true
-
 english:
   name: english
   title: English
   nativeTitle: English
   code: en
+  icon: fas fa-flag-usa
 
 french:
   name: french
   title: French
   nativeTitle: Français
   code: fr
+  icon: fas fa-flag
+
+arabic:
+  name: arabic
+  title: Arabic
+  nativeTitle: العربية
+  code: ar
+  icon: fas fa-flag

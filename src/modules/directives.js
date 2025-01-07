@@ -3,26 +3,26 @@
 //----------------------------------------------------------------------------------------------------
 // 		Directives.
 //====================================================================================================
-// import { getImages } from "@/core/assets";
+import { IMAGES } from "@/modules/assets";
 import Tooltip from "bootstrap/js/dist/tooltip";
 
 //----------------------------------------------------------------------------------------------------
 // # Image Source Alternative Directive
 //----------------------------------------------------------------------------------------------------
-// export const imgSrcAlt = {
-//   beforeMount: SecureImageSrc,
-//   updated: SecureImageSrc,
-// };
-// function SecureImageSrc(element) {
-//   const { error, empty } = getImages();
-//   element.onerror = () => (element.src = error);
-//   if (!element.src) element.src = empty;
-// }
+export const imgSrcAlt = {
+  beforeMount: SecureImageSrc,
+  updated: SecureImageSrc,
+};
+function SecureImageSrc(element) {
+  const { _error, _empty } = IMAGES;
+  element.onerror = () => (element.src = _error);
+  if (!element.src) element.src = _empty;
+}
 
 //----------------------------------------------------------------------------------------------------
 // # Bootstrap Tooltip Directive
 //----------------------------------------------------------------------------------------------------
-export const bsTooltip = {
+export const tooltip = {
   mounted(element, binding) {
     const value = parseBootstrapTooltipValue(binding.value);
     const instance = Tooltip.getOrCreateInstance(element, {
