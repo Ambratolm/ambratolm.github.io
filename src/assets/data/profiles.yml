@@ -425,8 +425,8 @@
   subtitle: PayPal.Me Page
   username: ambratolm
   url: https://www.paypal.me/ambratolm
-  categories: [program]
-  tags: [support, fund, tip, contribute]
+  categories: []
+  tags: [money, support, fund, tip, contribute]
   icon: fab fa-paypal
   fund: true
 #----------------------------------------------------------------------------------------------------

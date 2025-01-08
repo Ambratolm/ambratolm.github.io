@@ -3,7 +3,7 @@
 <template>
   <section class="row g-3">
     <div class="col-md-3">
-      <article class="card">
+      <article class="card border">
         <div
           class="card-header d-flex no-wrap justify-content-between align-items-center"
         >
@@ -20,7 +20,7 @@
       </article>
     </div>
     <div class="col">
-      <article class="card">
+      <article class="card border">
         <div
           class="card-header d-flex no-wrap justify-content-between align-items-center"
         >

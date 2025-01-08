@@ -21,7 +21,7 @@ watch(searchQuery, search);
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg border-bottom">
     <div class="container-fluid">
       <div class="navbar-brand align-self-center">
         <RouterLink :to="{ name: 'home' }">
@@ -94,13 +94,8 @@ watch(searchQuery, search);
 <style scoped>
 nav {
   background-color: var(--bs-content-bg);
-  border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);
 }
 .nav-item {
   margin: 2px;
-}
-footer {
-  background-color: var(--bs-content-bg);
-  border-top: var(--bs-border-width) solid var(--bs-content-border-color);
 }
 </style>

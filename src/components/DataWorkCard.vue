@@ -26,36 +26,13 @@ defineEmits(["category-click", "language-click", "tag-click"]);
       :alt="work?.title"
       class="card-img-top"
     />
-    <div class="card-body m-0 pb-2">
-      <h5 class="card-title"><i :class="work?.icon" /> {{ work?.title }}</h5>
+    <div class="card-body m-0 py-2">
+      <h5 class="card-title mb-1">
+        <i :class="work?.icon" /> {{ work?.title }}
+      </h5>
       <p class="card-text text-secondary lh-1 mb-2">
         {{ work?.description }}
       </p>
-    </div>
-    <div class="list-group list-group-flush">
-      <a
-        v-for="(link, i) in work?.links"
-        :key="i"
-        :href="link.url"
-        :title="link.url"
-        target="_blank"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center px-2"
-      >
-        <div class="specific-w-50 me-2 text-center">
-          <i :class="link.icon" :title="link.title" class="fa-2x" />
-        </div>
-        <div class="w-100">
-          <div class="fw-bold">{{ link.title }}</div>
-          <p
-            :title="link.description"
-            class="text-body-secondary pe-2 py-1 m-0 lh-1"
-          >
-            {{ strLimit(link.description, 60) }}
-          </p>
-        </div>
-      </a>
-    </div>
-    <div class="card-footer">
       <button
         @click="$emit('category-click', category.name)"
         v-for="(category, i) in work?.categories"
@@ -70,8 +47,6 @@ defineEmits(["category-click", "language-click", "tag-click"]);
         <i :class="category.icon" />
         {{ category.title }}
       </button>
-    </div>
-    <div class="card-footer">
       <button
         @click="$emit('language-click', language.name)"
         v-for="(language, i) in work?.languages"
@@ -85,6 +60,29 @@ defineEmits(["category-click", "language-click", "tag-click"]);
       >
         <i :class="language.icon" /> {{ language.title }}
       </button>
+    </div>
+    <div class="list-group list-group-flush">
+      <a
+        v-for="(link, i) in work?.links"
+        :key="i"
+        :href="link.url"
+        :title="link.url"
+        target="_blank"
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-2"
+      >
+        <div class="specific-w-50 me-2 text-center">
+          <i :class="link.icon" :title="link.title" class="fa-2x" />
+        </div>
+        <div class="w-100">
+          <div class="fw-bold">{{ link.title }}</div>
+          <p
+            :title="link.description"
+            class="text-body-secondary pe-2 py-0 m-0 lh-1"
+          >
+            {{ strLimit(link.description, 50) }}
+          </p>
+        </div>
+      </a>
     </div>
     <div class="card-footer">
       <button

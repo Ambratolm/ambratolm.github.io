@@ -15,7 +15,7 @@ import TheNavBar from "./components/TheNavBar.vue";
 
   <!-------------------------------------------------------------------------------------------------------->
 
-  <footer class="container-fluid mt-4">
+  <footer class="container-fluid border-top mt-4">
     <section class="text-center p-5">
       <div class="row">
         <div class="col">
@@ -34,3 +34,9 @@ import TheNavBar from "./components/TheNavBar.vue";
     </section>
   </footer>
 </template>
+
+<style scoped>
+footer {
+  background-color: var(--bs-content-bg);
+}
+</style>

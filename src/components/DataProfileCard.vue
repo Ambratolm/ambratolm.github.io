@@ -16,7 +16,7 @@ defineProps({
           <i :class="profile?.icon" class="fa-3x" />
           <span
             v-if="profile?.fund"
-            v-bs-tooltip="'Fund'"
+            title="Fund"
             class="badge rounded-pill position-absolute start-100 top-0 translate-middle text-bg-secondary"
           >
             <i class="fas fa-dollar-sign fa-2xs" />

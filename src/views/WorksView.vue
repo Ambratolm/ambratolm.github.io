@@ -12,7 +12,7 @@ const languagesStore = useLanguagesStore();
 </script>
 
 <template>
-  <section class="card">
+  <section class="card border">
     <header class="card-header">
       <nav class="row g-2 align-items-center">
         <div class="col-auto">
@@ -162,12 +162,17 @@ const languagesStore = useLanguagesStore();
       </nav>
     </header>
     <div class="card-body">
-      <div class="row g-3">
-        <div
-          v-for="work in worksStore.items"
-          :key="work.name"
-          class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
-        >
+      <masonry-wall
+        :items="worksStore.items"
+        :ssr-columns="1"
+        :column-width="300"
+        :gap="16"
+      >
+        <template #default="{ item: work }">
+          <!-- <div :style="{ height: `${(index + 1) * 100}px` }">
+            <h1>{{ item.title }}</h1>
+            <span>{{ item.description }}</span>
+          </div> -->
           <DataWorkCard
             :work="work"
             :selected="{
@@ -182,9 +187,18 @@ const languagesStore = useLanguagesStore();
               (language) => (worksStore.query.language = language)
             "
             @tag-click="(tag) => (worksStore.query.tag = tag)"
+            class="border"
           />
+        </template>
+      </masonry-wall>
+      <!-- <div class="row g-3">
+        <div
+          v-for="work in worksStore.items"
+          :key="work.name"
+          class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
+        >
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

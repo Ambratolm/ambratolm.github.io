@@ -26,9 +26,18 @@ DATA.works = (() => {
   for (const work of works) {
     work.categories = resolveKeys(work.categories, categories);
     work.languages = resolveKeys(work.languages, languages);
-    work.image = worksImages[work.image] || worksImages["_default"];
+    work.image = worksImages[work.image] || worksImages["_work"];
   }
   return works;
+})();
+DATA.profiles = (() => {
+  const profiles = DATA.profiles;
+  const { categories, languages } = DATA;
+  for (const profile of profiles) {
+    profile.categories = resolveKeys(profile.categories, categories);
+    profile.languages = resolveKeys(profile.languages, languages);
+  }
+  return profiles;
 })();
 export { DATA, IMAGES, VIDEOS };
 
