@@ -3,19 +3,19 @@ import { IMAGES } from "@/modules/assets";
 import ThemeImage from "@/components/ThemeImage.vue";
 import ThemeToggle from "@/components/ThemeToggle.vue";
 import { ref, watch } from "vue";
-import { useRouter, useRoute } from "vue-router";
+// import { useRouteQuery } from "@vueuse/router";
+import { useWorksStore, useProfilesStore } from "@/modules/stores";
+import SearchBadge from "./SearchBadge.vue";
 
-const router = useRouter();
-const route = useRoute();
-const searchQuery = ref(route.query["q"] || "");
+const worksStore = useWorksStore();
+const profilesStore = useProfilesStore();
+// const searchQuery = useRouteQuery("search");
+const searchQuery = ref("");
 const { logos } = IMAGES;
 
-function search(query) {
-  if (!query?.trim()) return;
-  router.replace({
-    name: "search",
-    query: { q: searchQuery.value },
-  });
+function search(keyword) {
+  // searchQuery.value = keyword;
+  worksStore.query.keyword = profilesStore.query.keyword = keyword;
 }
 watch(searchQuery, search);
 </script>
@@ -55,8 +55,7 @@ watch(searchQuery, search);
         />
         <button
           @click="search(searchQuery)"
-          class="btn"
-          :class="$route.name === 'search' ? 'btn-primary' : 'btn-secondary'"
+          class="btn btn-secondary"
           aria-label="Search"
         >
           <i class="fas fa-search" aria-hidden="true" />
@@ -78,8 +77,24 @@ watch(searchQuery, search);
             <RouterLink
               :to="{ name }"
               class="nav-link d-inline-flex align-items-center position-relative text-capitalize"
+              :class="
+                (name === 'works' && worksStore.isFiltered) ||
+                (name === 'connect' && profilesStore.isFiltered)
+                  ? 'border'
+                  : ''
+              "
             >
               <i :class="$icon" class="me-1" aria-hidden="true" /> {{ name }}
+              <SearchBadge
+                v-if="name === 'works' && worksStore.isFiltered"
+                :name="name"
+                :value="worksStore.items.length"
+              />
+              <SearchBadge
+                v-if="name === 'connect' && profilesStore.isFiltered"
+                :name="name"
+                :value="profilesStore.items.length"
+              />
             </RouterLink>
           </li>
           <li class="nav-item ms-3">

@@ -1,26 +1,29 @@
-<script setup></script>
+<script setup>
+import DataWorkCard from "@/components/DataWorkCard.vue";
+import { useWorksStore } from "@/modules/stores";
+
+const worksStore = useWorksStore();
+const randomWork = worksStore.randomItem();
+</script>
 
 <template>
   <section class="row g-3">
     <div class="col-md-3">
-      <article class="card border">
+      <article class="card">
         <div
           class="card-header d-flex no-wrap justify-content-between align-items-center"
         >
           <h6 class="card-title m-0">
-            <i class="fas fa-address-card" /> Lorem ipsum
+            <i class="fas fa-address-card" /> Random Work
           </h6>
         </div>
         <div class="card-body">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          tenetur, iste aspernatur aperiam quasi nihil eveniet dicta. Culpa
-          facilis voluptatibus, illo ipsa hic commodi molestias fuga iste
-          sapiente aspernatur veritatis!
+          <DataWorkCard :work="randomWork" />
         </div>
       </article>
     </div>
     <div class="col">
-      <article class="card border">
+      <article class="card">
         <div
           class="card-header d-flex no-wrap justify-content-between align-items-center"
         >

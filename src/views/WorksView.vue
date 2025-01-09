@@ -12,7 +12,7 @@ const languagesStore = useLanguagesStore();
 </script>
 
 <template>
-  <section class="card border">
+  <section class="card">
     <header class="card-header">
       <nav class="row g-2 align-items-center">
         <div class="col-auto">
@@ -163,18 +163,15 @@ const languagesStore = useLanguagesStore();
     </header>
     <div class="card-body">
       <masonry-wall
+        v-if="worksStore.items.length"
         :items="worksStore.items"
         :ssr-columns="1"
         :column-width="300"
         :gap="16"
       >
-        <template #default="{ item: work }">
-          <!-- <div :style="{ height: `${(index + 1) * 100}px` }">
-            <h1>{{ item.title }}</h1>
-            <span>{{ item.description }}</span>
-          </div> -->
+        <template #default="{ item }">
           <DataWorkCard
-            :work="work"
+            :work="item"
             :selected="{
               categories: [worksStore.query.category],
               languages: [worksStore.query.language],
@@ -187,10 +184,14 @@ const languagesStore = useLanguagesStore();
               (language) => (worksStore.query.language = language)
             "
             @tag-click="(tag) => (worksStore.query.tag = tag)"
-            class="border"
+            class=""
           />
         </template>
       </masonry-wall>
+      <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
+        <i class="fas fa-triangle-exclamation fa-3x" />
+        <div>No works found.</div>
+      </div>
       <!-- <div class="row g-3">
         <div
           v-for="work in worksStore.items"

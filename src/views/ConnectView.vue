@@ -5,36 +5,87 @@ import {
   useProfilesStore,
 } from "@/modules/stores";
 import DataProfileCard from "@/components/DataProfileCard.vue";
+import avatarSrc from "@/assets/images/avatar.png";
 
 const profilesStore = useProfilesStore();
 const categoriesStore = useCategoriesStore();
 const languagesStore = useLanguagesStore();
+
+const featuredProfiles = profilesStore.items?.filter(
+  (profile) => profile.feature,
+);
+const mainEmailProfile = profilesStore.items?.find((profile) => profile.email);
 </script>
 
 <template>
   <section class="row g-3">
     <div class="col-md-3">
-      <article class="card border">
-        <img v-img-src-alt :src="undefined" alt="" class="card-img" />
+      <article class="card">
+        <img v-img-src-alt :src="avatarSrc" alt="" class="card-img" />
         <div class="card-body">
           <article>
-            <h5 class="card-title">Ambratolm</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            <h5 class="card-title">
+              Ambratolm
+              <i
+                class="fas fa-circle-check text-secondary"
+                v-tooltip="'EL HAFID'"
+              />
+            </h5>
+            <p class="card-text text-secondary">
+              <span class="badge me-1 mb-1" title="Free">
+                <i class="fas fa-crown" /> Hobbyist
+              </span>
+              <span class="badge me-1 mb-1" title="Artist and Graphic Designer">
+                <i class="fas fa-palette" /> Graphist
+              </span>
+              <span class="badge me-1 mb-1" title="Video Editor">
+                <i class="fas fa-clapperboard" /> Videditor
+              </span>
+              <span class="badge me-1 mb-1" title="Software Developer">
+                <i class="fas fa-code" /> Developer
+              </span>
             </p>
-            <button type="button" class="btn btn-secondary d-block w-100">
-              <i class="fas fa-envelope" /> Send Message
-            </button>
+            <p class="card-text" style="text-justify: newspaper">
+              My passion lies in the creation of multimedia experiences across
+              various mediums. Programming, design, audio, and video—these are
+              the fields I delve into, utilizing my own distinctive methods and
+              tools. Art and technology are equally important to my work, as is
+              my appreciation for gaming, movies, and entertainment. My goal is
+              to create distinctive, engaging content that ventures into
+              uncharted territory, without sacrificing the core values of
+              creativity and innovation.
+            </p>
+            <a
+              :href="mainEmailProfile?.url"
+              :title="mainEmailProfile?.username"
+              target="_blank"
+              role="button"
+              class="btn btn-secondary d-block w-100"
+            >
+              <i class="fas fa-envelope" /> Send Email
+            </a>
           </article>
         </div>
       </article>
     </div>
     <div class="col">
-      <article class="card border mb-3">
-        <div class="card-body">Main Profiles here...</div>
+      <!-------------------------------------------------------------------------------------------------------->
+      <!-- # Featured Profiles -->
+      <!-------------------------------------------------------------------------------------------------------->
+      <article class="card mb-3">
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div
+              v-for="profile in featuredProfiles"
+              :key="profile.name"
+              class="col-auto text-center"
+            >
+              <DataProfileCard :profile="profile" view="icon" />
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="card border">
+      <article class="card">
         <header class="card-header">
           <nav class="row g-2 align-items-center">
             <div class="col-auto">
@@ -198,14 +249,18 @@ const languagesStore = useLanguagesStore();
           </nav>
         </header>
         <div class="card-body">
-          <div class="row g-3">
+          <div v-if="profilesStore.items.length" class="row g-3">
             <div
               v-for="profile in profilesStore.items"
               :key="profile.name"
               class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
             >
-              <DataProfileCard :profile="profile" class="h-100 border" />
+              <DataProfileCard :profile="profile" class="h-100" />
             </div>
+          </div>
+          <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
+            <i class="fas fa-triangle-exclamation fa-3x" />
+            <div>No profiles found.</div>
           </div>
         </div>
       </article>

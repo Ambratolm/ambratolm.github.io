@@ -5,19 +5,32 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
+- title: Gmail
+  subtitle: Main Email
+  username: ambratolm@gmail.com
+  url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=ambratolm@gmail.com
+  categories: []
+  languages: [english]
+  tags: []
+  icon: fa-brands fa-google
+  email: true
+#----------------------------------------------------------------------------------------------------
 - title: GitHub
   subtitle: Main Profile
   username: ambratolm
   url: https://github.com/ambratolm
   categories: [program]
+  languages: [english]
   tags: []
   icon: fab fa-github
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Stack Overflow
   subtitle: Main Profile
   username: "10682020"
   url: https://stackoverflow.com/users/10682020/ambratolm
   categories: [program]
+  languages: [english]
   tags: []
   icon: fab fa-stack-overflow
 #----------------------------------------------------------------------------------------------------
@@ -26,22 +39,17 @@
   username: ambratolm
   url: https://ambratolm.itch.io
   categories: [game]
+  languages: [english]
   tags: []
   icon: fab fa-itch-io
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Game Jolt
   subtitle: Main Profile
   username: ambratolm
   url: https://gamejolt.com/@ambratolm
   categories: [game]
-  tags: []
-  icon: fas fa-globe
-#----------------------------------------------------------------------------------------------------
-- title: Gamejolt
-  subtitle: Main Portfolio
-  username: ambratolm
-  url: https://ambratolm.gamejolt.io
-  categories: [game]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -50,6 +58,7 @@
   username: ambratolm
   url: https://www.indiexpo.net/fr/users/Ambratolm
   categories: [game]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -58,14 +67,17 @@
   username: ambratolm
   url: https://soundcloud.com/ambratolm
   categories: [audio]
+  languages: [english]
   tags: []
   icon: fab fa-soundcloud
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Youtube
   subtitle: Music Channel
   username: ambratolmMusic
   url: https://www.youtube.com/channel/UC90YiMGgUMGFsfzHXt2bLsQ
   categories: [audio]
+  languages: [english]
   tags: []
   icon: fab fa-youtube
 #----------------------------------------------------------------------------------------------------
@@ -74,6 +86,7 @@
   username: ambratolm
   url: https://theartistunion.com/ambratolm
   categories: [audio]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -82,6 +95,7 @@
   username: ambratolm
   url: https://ambratolm.bandcamp.com
   categories: [audio]
+  languages: [english]
   tags: []
   icon: fab fa-bandcamp
 #----------------------------------------------------------------------------------------------------
@@ -90,6 +104,7 @@
   username: ambratolm
   url: https://logamp.com/ambratolm
   categories: [audio, image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -98,22 +113,17 @@
   username: ambratolm
   url: https://youtube.com/ambratolm
   categories: [video]
+  languages: [english]
   tags: []
   icon: fab fa-youtube
-#----------------------------------------------------------------------------------------------------
-- title: Facebook
-  subtitle: Main Page
-  username: ambratolm2
-  url: https://facebook.com/ambratolm2
-  categories: [document, image, video]
-  tags: []
-  icon: fab fa-facebook
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Twitch
   subtitle: Channel
   username: ambratolm
   url: https://twitch.tv/ambratolm
   categories: [video]
+  languages: [english]
   tags: []
   icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------
@@ -122,6 +132,7 @@
   username: ambratolm
   url: https://www.dailymotion.com/Ambratolm
   categories: [video]
+  languages: [english]
   tags: []
   icon: fab fa-dailymotion
 #----------------------------------------------------------------------------------------------------
@@ -130,6 +141,7 @@
   username: ambratolm
   url: https://vimeo.com/ambratolm
   categories: [video]
+  languages: [english]
   tags: []
   icon: fab fa-vimeo
 #----------------------------------------------------------------------------------------------------
@@ -138,6 +150,7 @@
   username: ambratolm
   url: https://www.metacafe.com/channels/ambratolm
   categories: [video]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -146,14 +159,17 @@
   username: ambratolm
   url: https://instagram.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-instagram
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Pinterest
   subtitle: Main Profile
   username: ambratolm
   url: https://www.pinterest.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-pinterest
 #----------------------------------------------------------------------------------------------------
@@ -162,6 +178,7 @@
   username: ambratolm
   url: https://ambratolm.imgur.com
   categories: [image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -170,6 +187,7 @@
   username: ambratolm
   url: https://www.flickr.com/photos/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-flickr
 #----------------------------------------------------------------------------------------------------
@@ -178,6 +196,7 @@
   username: ambratolm
   url: https://suar.me/u/ambratolm
   categories: [image]
+  languages: [arabic]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -186,14 +205,17 @@
   username: ambratolm
   url: https://deviantart.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-deviantart
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: DeviantArt
   subtitle: AI Art Profile
   username: ambratolmAI
   url: https://deviantart.com/ambratolmAI
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-deviantart
 #----------------------------------------------------------------------------------------------------
@@ -202,6 +224,7 @@
   username: ambratolm
   url: https://artstation.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-artstation
 #----------------------------------------------------------------------------------------------------
@@ -210,6 +233,7 @@
   username: ambratolm
   url: https://www.behance.net/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-behance
 #----------------------------------------------------------------------------------------------------
@@ -218,6 +242,7 @@
   username: ambratolm
   url: https://dribbble.com/Ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-dribbble
 #----------------------------------------------------------------------------------------------------
@@ -226,6 +251,7 @@
   username: "35570648"
   url: https://www.pixiv.net/member.php?id=35570648
   categories: [image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -234,22 +260,26 @@
   username: ambratolm
   url: https://mangaido.com/en/u/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 - title: WebToon
   subtitle: Main Profile
   username: ambratolm
-  url: https://www.webtoons.com/search?searchMode=AUTHOR&keyword=Ambratolm
+  url: https://www.webtoons.com/p/community/en/u/ambratolm
   categories: [image, document]
-  tags: []
+  languages: [english]
+  tags: [manga, manhwa]
   icon: fas fa-globe
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Tapas
   subtitle: Main Profile
   username: ambratolm
   url: https://tapas.io/ambratolm
   categories: [image, document]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -258,6 +288,7 @@
   username: ambratolm
   url: http://www.becomics.com/profile/5e39c7d2b93927094b871b27
   categories: [image, document]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -266,6 +297,7 @@
   username: ambratolm
   url: https://ambratolm.tumblr.com
   categories: [image, document]
+  languages: [english]
   tags: []
   icon: fab fa-tumblr
 #----------------------------------------------------------------------------------------------------
@@ -274,30 +306,47 @@
   username: ambratolm
   url: https://www.reddit.com/user/Ambratolm
   categories: [document, image]
+  languages: [english]
   tags: []
   icon: fab fa-reddit
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: Facebook
   subtitle: Main Profile
   username: ambratolm
   url: https://facebook.com/ambratolm
   categories: [document, image, video]
+  languages: [english]
   tags: []
   icon: fab fa-facebook
+  feature: true
+#----------------------------------------------------------------------------------------------------
+- title: Messenger
+  subtitle: Main Profile
+  username: ambratolm
+  url: http://m.me/ambratolm
+  categories: [document]
+  languages: [english]
+  tags: [facebook, chat]
+  icon: fab fa-facebook-messenger
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: X
   subtitle: Main Profile
   username: ambratolm
   url: https://x.com/ambratolm
   categories: [document, image]
+  languages: [english]
   tags: twitter
   icon: fab fa-x-twitter
+  feature: true
 #----------------------------------------------------------------------------------------------------
 - title: LinkedIn
   subtitle: Main Profile
   username: ambratolm
   url: https://www.linkedin.com/in/ambratolm
   categories: [document]
+  languages: [english]
   tags: []
   icon: fab fa-linkedin
 #----------------------------------------------------------------------------------------------------
@@ -306,6 +355,7 @@
   username: ambratolm
   url: https://about.me/ambratolm
   categories: [document]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -314,6 +364,7 @@
   username: "11842963546009788883"
   url: https://www.blogger.com/profile/11842963546009788883
   categories: [document]
+  languages: [english]
   tags: []
   icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
@@ -322,6 +373,7 @@
   username: ambratolm
   url: http://www.lulu.com/spotlight/ambratolm
   categories: [document]
+  languages: [english]
   tags: []
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -330,6 +382,7 @@
   username: ambratolm
   url: https://fiverr.com/ambratolm
   categories: [money, fund, support, image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
   fund: true
@@ -339,6 +392,7 @@
   username: ambratolm
   url: https://zeerk.com/user/Ambratolm
   categories: [money, fund, support, image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
   fund: true
@@ -348,6 +402,7 @@
   username: ambratolm
   url: https://khamsat.com/user/ambratolm
   categories: [money, fund, support, image]
+  languages: [arabic]
   tags: []
   icon: fas fa-globe
   fund: true
@@ -357,6 +412,7 @@
   username: ambratolm
   url: https://www.upwork.com/o/profiles/users/_~0114fea700c8e1d4fc
   categories: [image]
+  languages: [english]
   tags: [money, fund, support]
   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
@@ -365,6 +421,7 @@
   username: ambratolm
   url: https://fineartamerica.com/profiles/abdelhakim-elhafid
   categories: [image]
+  languages: [english]
   tags: [money, fund, support]
   icon: fas fa-globe
   fund: true
@@ -374,6 +431,7 @@
   username: ambratolm
   url: https://www.artpal.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: [money, fund, support]
   icon: fas fa-globe
   fund: true
@@ -383,6 +441,7 @@
   username: ambratolm
   url: https://www.redbubble.com/people/ambratolm
   categories: [image]
+  languages: [english]
   tags: [money, fund, support]
   icon: fas fa-globe
   fund: true
@@ -392,6 +451,7 @@
   username: ambratolm
   url: https://www.ebay.com/usr/ambratolm
   categories: []
+  languages: [english]
   tags: [money, fund, support, store, market]
   icon: fab fa-ebay
 #----------------------------------------------------------------------------------------------------
@@ -400,6 +460,7 @@
   username: jzlkws2z
   url: https://www.etsy.com/shop/ambratolm
   categories: []
+  languages: [english]
   tags: [money, fund, support, store, market]
   icon: fab fa-etsy
 #----------------------------------------------------------------------------------------------------
@@ -408,6 +469,7 @@
   username: ambratolm
   url: https://www.patreon.com/Ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fab fa-patreon
   fund: true
@@ -417,6 +479,7 @@
   username: ambratolm
   url: https://ko-fi.com/ambratolm
   categories: [image]
+  languages: [english]
   tags: []
   icon: fas fa-globe
   fund: true
@@ -426,6 +489,7 @@
   username: ambratolm
   url: https://www.paypal.me/ambratolm
   categories: []
+  languages: [english]
   tags: [money, support, fund, tip, contribute]
   icon: fab fa-paypal
   fund: true
@@ -435,32 +499,36 @@
   username: Ambratolm
   url: https://www.google.com/search?q=Ambratolm
   categories: []
+  languages: [english]
   tags: [search]
   icon: fa-brands fa-google
   search: true
-#----------------------------------------------------------------------------------------------------
-- title: Gmail
-  subtitle: Main Email
-  username: ambratolm@gmail.com
-  url: https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=ambratolm@gmail.com
-  categories: []
-  tags: []
-  icon: fa-brands fa-google
 #----------------------------------------------------------------------------------------------------
 - title: DevExpress
   subtitle: Main Profile
   username: ambratolm
   url: https://supportcenter.devexpress.com/ticket/list?searchString=Ambratolm
   categories: [program]
+  languages: [english]
   tags: []
   icon: fas fa-globe
   search: true
+#----------------------------------------------------------------------------------------------------
+- title: Oniromancie Forums
+  subtitle: Profile
+  username: 25359
+  url: https://www.rpg-maker.fr/index.php?page=membre&id=25359
+  categories: [game]
+  languages: [french]
+  tags: [rpgmaker]
+  icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------
 # - title:
 #   subtitle: Main Profile
 #   username: ambratolm
 #   url:
 #   categories: []
+# languages: [english]
 #   tags: []
 #   icon: fas fa-globe
 #----------------------------------------------------------------------------------------------------

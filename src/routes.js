@@ -4,10 +4,8 @@
 // 		Router routes.
 //====================================================================================================
 import HomeView from "./views/HomeView.vue";
-import SearchView from "./views/SearchView.vue";
 import NotFoundView from "./views/NotFoundView.vue";
-import AboutView from "./views/AboutView.vue";
-import ContactView from "./views/ContactView.vue";
+import ConnectView from "./views/ConnectView.vue";
 import WorksView from "./views/WorksView.vue";
 
 export default [
@@ -26,23 +24,11 @@ export default [
     $isNav: true,
   },
   {
-    name: "contact",
-    path: "/contact",
-    component: ContactView,
-    $icon: "fas fa-envelope",
+    name: "connect",
+    path: "/connect",
+    component: ConnectView,
+    $icon: "fas fa-circle-nodes",
     $isNav: true,
-  },
-  {
-    name: "about",
-    path: "/about",
-    component: AboutView,
-    $icon: "fas fa-info-circle",
-    $isNav: true,
-  },
-  {
-    name: "search",
-    path: "/search",
-    component: SearchView,
   },
   {
     name: "not-found",

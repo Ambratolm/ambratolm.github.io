@@ -68,7 +68,7 @@ function createFiltrableArrayStore(srcItems = [], keys = []) {
       (srcItems.length !== items.value.length ||
         Object.values(query).every(Boolean)),
   );
-  function filter() {
+  function filter(query) {
     items.value = searchFuzzy(
       searchExact(srcItems, {
         "categories.name": query.category,
@@ -76,14 +76,14 @@ function createFiltrableArrayStore(srcItems = [], keys = []) {
         tags: query.tag,
       }),
       keys,
-      query.keyword,
+      query.keyword?.trim(),
     );
   }
   function randomItem() {
-    return pickOne(items.value);
+    return pickOne(srcItems);
   }
   function randomItems(max = 5) {
-    return pickMany(items.value, max);
+    return pickMany(srcItems, max);
   }
   watch(query, filter);
   return {
