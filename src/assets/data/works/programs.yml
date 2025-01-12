@@ -5,81 +5,107 @@
 #====================================================================================================
 ---
 - name: ambratolm-ml
-  title: Ambratolm.ml
+  title: Ambratolm™ ML
   description: Official Ambratolm Website.
   categories: [program]
-  tags: [web, app, coding, programming, js, javascript, vue, html, css, bulma]
+  tags: [website, coding, js, javascript, vue, html, css, bulma]
   image: ambratolm
-  icon: fas fa-crown
+  icon: fas fa-certificate
   languages: ["english"]
   links:
-    - title: Ambratolm™ ML
-      description: Main Ambratolm Website.
+    - title: Ambratolm.ml
+      description: Original main domain.
       url: https://www.ambratolm.ml
-      icon: fas fa-crown
+      icon: fab fa-js
 #----------------------------------------------------------------------------------------------------
-- name: magninja
-  title: Magninja Forums
-  description: Old forums in variety of subjects.
-  categories: [program]
-  tags: [web, forums, community, phpbb, ahlamontada]
-  image: magninja
-  icon: fas fa-comments
-  languages: ["arabic"]
+- name: ambratolm-cf
+  title: Ambratolm™ CF
+  description: Website listing drawings and graphics used in various projects.
+  categories: [program, image]
+  languages: ["english"]
+  tags: [website, blogger, drawing, graphic, anime, comic, cartoon, art]
+  image: ambratolm-cf
+  icon: fas fa-palette
   links:
-    - title: Forums
-      url: http://magninja.forum.st
-      icon: fas fa-comments
+    - title: Ambratolm.cf
+      description: Main domain.
+      url: https://www.ambratolm.cf
+      icon: fab fa-blogger
+    - title: Elhafid-project.blogspot.com
+      description: Original domain.
+      url: http://elhafid-project.Blogspot.com
+      icon: fab fa-blogger
+#----------------------------------------------------------------------------------------------------
+- name: m-pixo
+  title: M~PiXo
+  description: Gallery of Photos
+  categories: [program, image]
+  languages: ["english"]
+  tags: [website, blogger, photo, camera]
+  image: mpixo
+  icon: fas fa-camera
+  links:
+    - title: Mpixo.blogspot.com
+      description: Original domain.
+      url: http://mpixo.blogspot.com
+      icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
 - name: manga-in-pdf
   title: Manga in PDF
   description: Download Manga in PDF Format
   categories: [program]
-  tags: [web, blogger, manga, anime, comic, book]
-  image: pdfmanga
-  icon: fas fa-book
   languages: ["arabic"]
+  tags: [website, blogger, manga, anime, comic, book]
+  image: pdfmanga
+  icon: fas fa-file-pdf
   links:
-    - title:
+    - title: Manga-in-pdf.blogspot.com
+      description: Original domain.
+      url: https://manga-in-pdf.blogspot.com
+      icon: fab fa-blogger
+    - title: Pdfman.ga
+      description: Main domain.
       url: https://www.pdfman.ga
-      icon: fas fa-book
+      icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
-- name: m-pixo
-  title: M~PiXo
-  description: Gallery of Photos
-  categories: [image, program]
-  tags: [web, blogger, photo, camera]
-  url: http://mpixo.blogspot.com
-  image: mpixo
-  icon: fas fa-image
-  languages: ["english"]
+- title: TDI.Get()
+  description: Programming exercises and solutions.
+  categories: [program]
+  tags: [website, blogger, coding, programming]
+  image: tdiget
+  icon: fas fa-code
+  languages: ["french"]
   links:
-    - title: M~PiXo
-      icon: fas fa-image
+    - title: Tdi-get.blogspot.com
+      description: Original domain.
+      url: https://tdi-get.blogspot.com
+      icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
 - name: topic2read
   title: Topic 2 Read
   description: Old blog using royalty free articles in variety of subjects.
   categories: [program]
-  tags: [web, blogger, article, newspaper, magazine]
+  tags: [website, blogger, article, newspaper, magazine]
   icon: fas fa-file-alt
+  image: topic2read
   links:
-    - title: Topic2Read
-      description: Blogger website.
+    - title: Topic2Read.blogspot.com
+      description: Original domain.
       url: http://topic2read.blogspot.com/
-      image: topic2read
-      icon: fas fa-link
+      icon: fab fa-blogger
       languages: "english"
 #----------------------------------------------------------------------------------------------------
-- title: TDI.Get()
-  description: Programming exercises and solutions.
+- name: magninja
+  title: Magninja Forums
+  description: Old forums in variety of subjects.
   categories: [program]
-  tags: [web, blogger, coding, programming]
-  image: tdiget
-  icon: fas fa-code
-  languages: ["french"]
+  tags: [website, blogger, forums, community, phpbb, ahlamontada]
+  image: magninja
+  icon: fas fa-comments
+  languages: ["arabic"]
   links:
-    - title: Blog
-      url: https://tdi-get.blogspot.com
-      icon: fas fa-code
+    - title: Magninja.forum.st
+      description: Original domain.
+      url: http://magninja.forum.st
+      icon: fab fa-php
 #----------------------------------------------------------------------------------------------------

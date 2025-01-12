@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { useImage } from "@vueuse/core";
-import { useDarkTheme } from "@/modules/theme";
+import { useDarkTheme } from "@/modules/composables";
 
 const props = defineProps({
   lightSrc: {

@@ -1,10 +1,76 @@
 //====================================================================================================
-// @ Theme
+// @ Composables
 //----------------------------------------------------------------------------------------------------
-// 		Reactive theme with data persistence
+// 		Vue composables
 //====================================================================================================
 import { useDark, useColorMode, useToggle, useCycleList } from "@vueuse/core";
-import { computed, reactive } from "vue";
+import {
+  computed,
+  reactive,
+  toRef,
+  toValue,
+  watch,
+  getCurrentInstance,
+  onMounted,
+} from "vue";
+import { useRouteQuery } from "@vueuse/router";
+
+//----------------------------------------------------------------------------------------------------
+// # Route Query Object
+//----------------------------------------------------------------------------------------------------
+export function useRouteQueryObject({
+  routeQueryDef = {},
+  query = {},
+  setQuery = () => {},
+}) {
+  const routeQuery = reactive(
+    Object.fromEntries(
+      Object.entries(query).map(([key]) => [
+        key,
+        useRouteQuery(routeQueryDef[key] || key),
+      ]),
+    ),
+  );
+  function setRouteQuery(newQuery = {}, denyFalsy = false) {
+    for (const key in newQuery) {
+      if (!Object.prototype.hasOwnProperty.call(routeQuery, key)) continue;
+      const value = toValue(newQuery[key]);
+      if (denyFalsy && !value) continue;
+      routeQuery[key] = value || undefined;
+    }
+  }
+  // function clearRouteQuery() {
+  //   for (const key in routeQuery) routeQuery[key] = undefined;
+  // }
+  watch(query, (newQuery) => setRouteQuery(newQuery, false));
+  watch(routeQuery, setQuery);
+  if (getCurrentInstance()) {
+    onMounted(() => {
+      setRouteQuery(query, true);
+      setQuery(routeQuery);
+    });
+  }
+  return { routeQuery };
+}
+
+//----------------------------------------------------------------------------------------------------
+// # Query
+//----------------------------------------------------------------------------------------------------
+export function useQuery(initQuery = {}) {
+  const query = reactive({ ...initQuery });
+  function setQuery(newQuery = {}) {
+    for (const key in newQuery) {
+      if (!Object.prototype.hasOwnProperty.call(query, key)) continue;
+      const value = toValue(newQuery[key]);
+      // if (value)
+      query[key] = toRef(value);
+    }
+  }
+  function clearQuery() {
+    for (const key in query) query[key] = "";
+  }
+  return { query, setQuery, clearQuery };
+}
 
 //----------------------------------------------------------------------------------------------------
 // # Dark Theme

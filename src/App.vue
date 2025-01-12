@@ -1,38 +1,27 @@
 <script setup>
-import TheNavBar from "./components/TheNavBar.vue";
+import TheHeader from "./components/TheHeader.vue";
+import TheFooter from "./components/TheFooter.vue";
+import { useTitle } from "@vueuse/core";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
+
+const route = useRoute();
+const title = computed(() => {
+  const websiteTitle = "Ambratolm";
+  const pageTitle = route.name === "home" ? "" : route.meta?.title;
+  return pageTitle ? `${websiteTitle} - ${pageTitle}` : websiteTitle;
+});
+useTitle(title);
 </script>
 
 <template>
-  <header class="mb-3">
-    <TheNavBar />
-  </header>
-
-  <!-------------------------------------------------------------------------------------------------------->
+  <TheHeader />
 
   <main class="container">
     <RouterView />
   </main>
 
-  <!-------------------------------------------------------------------------------------------------------->
-
-  <footer class="container-fluid border-top mt-4">
-    <section class="text-center p-5">
-      <div class="row">
-        <div class="col">
-          <a href="#" class="nav-link">
-            <i class="fas fa-square" /> Lorem ipsum dolor sit</a
-          >
-        </div>
-        <div class="col">
-          LOGO
-          <p>&copy; <strong>Ambratolm</strong> 2025</p>
-        </div>
-        <div class="col">
-          <a href="#" class="nav-link">Lorem ipsum dolor sit</a>
-        </div>
-      </div>
-    </section>
-  </footer>
+  <TheFooter />
 </template>
 
 <style scoped>

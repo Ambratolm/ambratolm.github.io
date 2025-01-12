@@ -1,5 +1,5 @@
 <script setup>
-import { useDarkTheme, useCoreTheme } from "@/modules/theme";
+import { useDarkTheme, useCoreTheme } from "@/modules/composables";
 
 const darkTheme = useDarkTheme();
 const coreTheme = useCoreTheme();

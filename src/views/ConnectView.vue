@@ -6,22 +6,25 @@ import {
 } from "@/modules/stores";
 import DataProfileCard from "@/components/DataProfileCard.vue";
 import avatarSrc from "@/assets/images/avatar.png";
+import { useRouteQueryObject } from "@/modules/composables";
 
 const profilesStore = useProfilesStore();
 const categoriesStore = useCategoriesStore();
 const languagesStore = useLanguagesStore();
-
-const featuredProfiles = profilesStore.items?.filter(
+const featuredProfiles = profilesStore.srcItems?.filter(
   (profile) => profile.feature,
 );
-const mainEmailProfile = profilesStore.items?.find((profile) => profile.email);
+const mainEmailProfile = profilesStore.srcItems?.find(
+  (profile) => profile.email,
+);
+useRouteQueryObject(profilesStore);
 </script>
 
 <template>
   <section class="row g-3">
     <div class="col-md-3">
       <article class="card">
-        <img v-img-src-alt :src="avatarSrc" alt="" class="card-img" />
+        <img v-img-src-alt :src="avatarSrc" alt="Ambratolm" class="card-img" />
         <div class="card-body">
           <article>
             <h5 class="card-title">
@@ -91,13 +94,7 @@ const mainEmailProfile = profilesStore.items?.find((profile) => profile.email);
             <div class="col-auto">
               <h6 class="p-0 m-0">
                 <a
-                  @click="
-                    profilesStore.query.category =
-                      profilesStore.query.language =
-                      profilesStore.query.tag =
-                      profilesStore.query.keyword =
-                        ''
-                  "
+                  @click="profilesStore.clearQuery()"
                   href="#"
                   role="button"
                   class="nav-link"
@@ -109,7 +106,7 @@ const mainEmailProfile = profilesStore.items?.find((profile) => profile.email);
                     :class="
                       profilesStore.isFiltered
                         ? profilesStore.items.length > 0
-                          ? 'text-bg-primary'
+                          ? 'text-bg-success'
                           : 'text-bg-danger'
                         : 'text-bg-secondary'
                     "
@@ -260,7 +257,13 @@ const mainEmailProfile = profilesStore.items?.find((profile) => profile.email);
           </div>
           <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
             <i class="fas fa-triangle-exclamation fa-3x" />
-            <div>No profiles found.</div>
+            <div class="mb-3">No profiles found.</div>
+            <button
+              @click="profilesStore.clearQuery()"
+              class="btn btn-sm btn-secondary"
+            >
+              Clear Filters
+            </button>
           </div>
         </div>
       </article>

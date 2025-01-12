@@ -9,6 +9,7 @@
 //----------------------------------------------------------------------------------------------------
 import "@fortawesome/fontawesome-free/css/all.css";
 import "animate.css";
+import "hover.css";
 import "halfmoon/css/halfmoon.css";
 import "halfmoon/css/cores/halfmoon.cores.css";
 import "./style.css";
@@ -55,7 +56,9 @@ app.use(MasonryWall);
 //----------------------------------------------------------------------------------------------------
 // # Global Properties
 //----------------------------------------------------------------------------------------------------
-app.config.globalProperties.$navRoutes = routes.filter((route) => route.$isNav);
+app.config.globalProperties.$navRoutes = routes.filter(
+  (route) => route.meta?.isNav,
+);
 
 //----------------------------------------------------------------------------------------------------
 // # Global Directives

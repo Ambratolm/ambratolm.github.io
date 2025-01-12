@@ -18,17 +18,17 @@ defineProps({
     <article
       v-if="view === 'icon'"
       v-tooltip="`${profile?.title}`"
-      class="specific-w-50 specific-h-50 text-center"
+      class="specific-w-50 specific-h-50 text-center hvr-icon-grow"
     >
       <a :href="profile?.url" target="_blank" class="nav-link">
-        <i :class="profile?.icon" class="fa-3x m-1" />
+        <i :class="profile?.icon" class="fa-3x m-1 hvr-icon" />
       </a>
     </article>
-    <article v-else class="card text-center">
+    <article v-else class="card text-center hvr-grow hvr-icon-shrink">
       <div class="card-body">
         <hgroup>
           <h5 class="card-title position-relative">
-            <i :class="profile?.icon" class="fa-3x" />
+            <i :class="profile?.icon" class="fa-3x hvr-icon" />
             <span
               v-if="profile?.fund"
               title="Fund"

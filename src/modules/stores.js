@@ -5,8 +5,9 @@
 //====================================================================================================
 import { DATA } from "./assets";
 import { searchFuzzy, searchExact, pickOne, pickMany } from "./utilities";
-import { ref, reactive, computed, watch } from "vue";
+import { ref, computed, watch } from "vue";
 import { defineStore } from "pinia";
+import { useQuery } from "./composables";
 
 //----------------------------------------------------------------------------------------------------
 // # Common Search Query Keys
@@ -35,15 +36,36 @@ export const useLanguagesStore = defineSimpleArrayStore(
   "languages",
   DATA.languages,
 );
+export const useWorksStore = defineFiltrableArrayStore("works", DATA.works, [
+  ...KEYS,
+  ["links", ...KEYS],
+]);
 export const useProfilesStore = defineFiltrableArrayStore(
   "profiles",
   DATA.profiles,
   KEYS,
 );
-export const useWorksStore = defineFiltrableArrayStore("works", DATA.works, [
-  ...KEYS,
-  ["links", ...KEYS],
-]);
+export const usePostsStore = defineFiltrableArrayStore(
+  "posts",
+  DATA.posts,
+  KEYS,
+);
+export const useGeneralStore = defineStore("general", () => {
+  const worksStore = useWorksStore();
+  const profilesStore = useProfilesStore();
+  const { query, setQuery, clearQuery } = useQuery({
+    category: "",
+    language: "",
+    tag: "",
+    keyword: "",
+  });
+  function filter() {
+    worksStore.setQuery(query);
+    profilesStore.setQuery(query);
+  }
+  watch(query, filter);
+  return { query, setQuery, clearQuery, filter };
+});
 
 //----------------------------------------------------------------------------------------------------
 // # General Store Logic
@@ -54,19 +76,26 @@ function defineSimpleArrayStore(name = "", srcItems = []) {
 function defineFiltrableArrayStore(name = "", srcItems = [], keys = []) {
   return defineStore(name, () => createFiltrableArrayStore(srcItems, keys));
 }
+
 function createFiltrableArrayStore(srcItems = [], keys = []) {
   const items = ref(srcItems);
-  const query = reactive({
+  const { query, setQuery, clearQuery } = useQuery({
     category: "",
     language: "",
     tag: "",
     keyword: "",
   });
+  const routeQueryDef = {
+    category: "cat",
+    language: "lang",
+    tag: "tag",
+    keyword: "q",
+  };
   const isFiltered = computed(
     () =>
       srcItems.length !== 0 &&
       (srcItems.length !== items.value.length ||
-        Object.values(query).every(Boolean)),
+        Object.values(query).some(Boolean)),
   );
   function filter(query) {
     items.value = searchFuzzy(
@@ -79,20 +108,18 @@ function createFiltrableArrayStore(srcItems = [], keys = []) {
       query.keyword?.trim(),
     );
   }
-  function randomItem() {
-    return pickOne(srcItems);
-  }
-  function randomItems(max = 5) {
-    return pickMany(srcItems, max);
-  }
   watch(query, filter);
   return {
     srcItems,
     items,
     query,
+    routeQueryDef,
     isFiltered,
-    filter,
-    randomItem,
-    randomItems,
+    setQuery,
+    clearQuery,
+    filter: () => filter(query),
+    getRandomItem: () => pickOne(srcItems),
+    getRandomItems: (max = 5) => pickMany(srcItems, max),
+    getItem: (name) => srcItems.find((item) => item.name === name),
   };
 }

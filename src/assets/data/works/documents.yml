@@ -3,4 +3,18 @@
 #----------------------------------------------------------------------------------------------------
 # 		Works in documents category.
 #====================================================================================================
-# ---
+---
+#----------------------------------------------------------------------------------------------------
+- name: wracurd-art-book
+  title: Wracurd Art Book
+  description: Artworks compilation book.
+  categories: [document, image]
+  tags: [art, book]
+  icon: fas fa-book
+  image: wracurd-art-book
+  links:
+    - title: Book on Lulu
+      url: http://www.lulu.com/shop/ambratolm/wracurd/ebook/product-23263158.html
+      description: Book Details and Purchase Page.
+      icon: fas fa-link
+#----------------------------------------------------------------------------------------------------

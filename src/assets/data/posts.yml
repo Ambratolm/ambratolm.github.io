@@ -1,0 +1,28 @@
+#====================================================================================================
+# @ Posts
+#----------------------------------------------------------------------------------------------------
+# 		News posts.
+#====================================================================================================
+---
+#----------------------------------------------------------------------------------------------------
+- name: ambratolm-io
+  title: Ambratolm IO
+  date: December, 2025
+  icon: fas fa-newspaper
+  content: ⏳ Working on this Website...
+#----------------------------------------------------------------------------------------------------
+- name: ambratolm-io
+  title: ALEAFW 2D 🦅
+  date: October, 2024
+  icon: fas fa-newspaper
+  content: ⏳ Working on a 2D action side-scrolling platformer game framework for Unity engine...
+#----------------------------------------------------------------------------------------------------
+- name: flower-in-pain-v1.1
+  title: Flower in Pain Version 1.1
+  date: July, 2024
+  icon: fas fa-gamepad
+  content: 🚀 Released game update!
+  embed:
+    title: Flower in Pain - Game Trailer
+    src: https://player.vimeo.com/video/992647098?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
+  #----------------------------------------------------------------------------------------------------

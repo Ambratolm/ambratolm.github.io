@@ -1,14 +1,16 @@
 <script setup>
+import DataWorkCard from "@/components/DataWorkCard.vue";
 import {
   useCategoriesStore,
   useLanguagesStore,
   useWorksStore,
 } from "@/modules/stores";
-import DataWorkCard from "@/components/DataWorkCard.vue";
+import { useRouteQueryObject } from "@/modules/composables";
 
 const worksStore = useWorksStore();
 const categoriesStore = useCategoriesStore();
 const languagesStore = useLanguagesStore();
+useRouteQueryObject(worksStore);
 </script>
 
 <template>
@@ -18,13 +20,7 @@ const languagesStore = useLanguagesStore();
         <div class="col-auto">
           <h6 class="p-0 m-0">
             <a
-              @click="
-                worksStore.query.category =
-                  worksStore.query.language =
-                  worksStore.query.tag =
-                  worksStore.query.keyword =
-                    ''
-              "
+              @click="worksStore.clearQuery()"
               href="#"
               role="button"
               class="nav-link"
@@ -36,7 +32,7 @@ const languagesStore = useLanguagesStore();
                 :class="
                   worksStore.isFiltered
                     ? worksStore.items.length > 0
-                      ? 'text-bg-primary'
+                      ? 'text-bg-success'
                       : 'text-bg-danger'
                     : 'text-bg-secondary'
                 "
@@ -190,7 +186,13 @@ const languagesStore = useLanguagesStore();
       </masonry-wall>
       <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
         <i class="fas fa-triangle-exclamation fa-3x" />
-        <div>No works found.</div>
+        <div class="mb-3">No works found.</div>
+        <button
+          @click="worksStore.clearQuery()"
+          class="btn btn-sm btn-secondary"
+        >
+          Clear Filters
+        </button>
       </div>
       <!-- <div class="row g-3">
         <div

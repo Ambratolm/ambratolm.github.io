@@ -13,26 +13,38 @@ export default [
     name: "home",
     path: "/",
     component: HomeView,
-    $icon: "fas fa-home",
-    $isNav: true,
+    meta: {
+      title: "Home",
+      icon: "fas fa-home",
+      isNav: true,
+    },
   },
   {
     name: "works",
     path: "/works",
     component: WorksView,
-    $icon: "fas fa-landmark",
-    $isNav: true,
+    meta: {
+      title: "Works",
+      icon: "fas fa-landmark",
+      isNav: true,
+    },
   },
   {
     name: "connect",
     path: "/connect",
     component: ConnectView,
-    $icon: "fas fa-circle-nodes",
-    $isNav: true,
+    meta: {
+      title: "Connect",
+      icon: "fas fa-circle-nodes",
+      isNav: true,
+    },
   },
   {
     name: "not-found",
     path: "/:pathMatch(.*)*",
     component: NotFoundView,
+    meta: {
+      title: "Not Found",
+    },
   },
 ];

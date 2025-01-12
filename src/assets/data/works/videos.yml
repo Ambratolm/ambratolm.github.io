@@ -7,7 +7,7 @@
 #----------------------------------------------------------------------------------------------------
 - name: films
   title: Films
-  description: Live and Animation clips and movies.
+  description: Live and animation clips and movies.
   categories: [video]
   tags: [film, movie, cinema, clip, serie, tv, youtube, animation, art]
   icon: fas fa-film
@@ -51,7 +51,7 @@
       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9-qTt19zZ8RRHPe4WYfXIH
       description: Contains all of my League of Legends videos.
       icon: fab fa-youtube
-    - title: Videos on Twitch
+    - title: Playlist on Twitch
       url: https://www.twitch.tv/ambratolm/videos
       description: Contains all of my imported youtube League of Legends videos.
       icon: fab fa-twitch

@@ -19,7 +19,7 @@ defineEmits(["category-click", "language-click", "tag-click"]);
 </script>
 
 <template>
-  <article class="card">
+  <article class="card hvr-glow">
     <img
       v-img-src-alt
       :src="work?.image"
@@ -28,7 +28,7 @@ defineEmits(["category-click", "language-click", "tag-click"]);
     />
     <div class="card-body m-0 py-2">
       <h5 class="card-title mb-1">
-        <i :class="work?.icon" /> {{ work?.title }}
+        <i :class="work?.icon" class="hvr-icon" /> {{ work?.title }}
       </h5>
       <p class="card-text text-secondary lh-1 mb-2">
         {{ work?.description }}
@@ -68,10 +68,10 @@ defineEmits(["category-click", "language-click", "tag-click"]);
         :href="link.url"
         :title="link.url"
         target="_blank"
-        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-2"
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-center p-2 hvr-icon-grow"
       >
         <div class="specific-w-50 me-2 text-center">
-          <i :class="link.icon" :title="link.title" class="fa-2x" />
+          <i :class="link.icon" :title="link.title" class="fa-2x hvr-icon" />
         </div>
         <div class="w-100">
           <div class="fw-bold">{{ link.title }}</div>

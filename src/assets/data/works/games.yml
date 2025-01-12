@@ -12,43 +12,38 @@
   tags: [pc, windows, 2d, rpg, puzzle, adventure]
   icon: fab fa-windows
   image: flower-in-pain
-  languages: [english, french]
+  languages: [english]
   links:
-    - title: Official Website
+    - title: Main Page
       url: http://flowerinpain.blogspot.com
-      description: Flower in Pain Vide-Game Official Website is the official Website containing all informations about the game.
-      icon: fas fa-link
-    - title: Page on Ambratolm CF
-      url: http://elhafid-project.blogspot.com/2014/01/flower-in-pain-game-project-screen-shots.html
-      description: Ambratolm CF is my gallery of Drawings and Graphics used in my various Creative Projects.
-      icon: fas fa-link
-    - title: Page on Oniromancie
-      url: http://www.rpg-maker.fr/jeux-675-flower-in-pain.html
-      description: Oniromancie is a french game making community.
-      icon: fas fa-link
-    - title: Page on The Daily Cick
-      url: https://www.create-games.com/download.asp?id=8929
-      description: The Daily Cick is a game making community.
-      icon: fas fa-link
-    # - title: Page on Tashiro World
-    #   url: http://www.tashiroworld.com/fr/jeux-independants/flower-in-pain
-    #   description: Tashiro World is a game making community.
-    #   icon: fas fa-link
-    - title: Download
-      url: https://docs.google.com/file/d/0B0DuWGurSUq_WGNucXNyREk5X00
-      description: Download the game from Google Drive Server.
-      icon: fab fa-windows
-      download: true
+      description: Details and download.
+      icon: fab fa-blogger
+    - title: Page on Itch.io
+      url: https://ambratolm.itch.io/flower-in-pain
+      description: Details and download.
+      icon: fab fa-itch-io
+    - title: Page on GameJolt
+      url: https://gamejolt.com/games/flower-in-pain/915519
+      description: Details and download.
+      icon: fas fa-bolt
+    - title: Repository on GitHub
+      url: https://github.com/ambratolm-games/flower-in-pain
+      description: Source project and assets.
+      icon: fab fa-github
+    - title: OST Playlist on Itch.io
+      url: https://ambratolm.itch.io/flower-in-pain-ost
+      description: Original soundtrack music.
+      icon: fas fa-music
 #----------------------------------------------------------------------------------------------------
-- name: darkina
-  title: Darkina
-  description: Free 2D arcade video-game for Android.
+- name: mini-games
+  title: Mini-Games
+  description: Free 2D arcade video-games for Mobile.
   categories: [game]
   tags: [android, 2d, arcade]
   icon: fab fa-android
   image: darkina
   links:
-    - title: Page on itch.io
-      url: https://ambratolm.itch.io/darkina
-      description: Game Details and Download page.
+    - title: Itch.io Page
+      url: https://itch.io/c/4689689/minigames
+      description: Details and download.
       icon: fab fa-itch-io

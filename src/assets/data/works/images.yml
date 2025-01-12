@@ -5,28 +5,18 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
-- name: ambratolm-cf
-  title: Ambratolm™ CF
-  description: Gallery of Drawings and Graphics used in my various Creative Projects
-  image: cf.ambratolm
-  icon: fas fa-crown
-  languages: ["english"]
-  links:
-    - title:
-      url: https://www.ambratolm.cf
-      icon: fas fa-crown
-#----------------------------------------------------------------------------------------------------
 - name: artworks
   title: Artworks
   description: Drawings and Graphics.
   categories: [image]
+  languages: ["english"]
   tags: [drawing, graphic, anime, comic, cartoon, art]
   icon: fas fa-palette
   image: artworks
   links:
     - title: Gallery on Ambratolm CF
       url: http://elhafid-project.blogspot.com
-      description: Gallery of Drawings and Graphics used in my various Creative Projects.
+      description: Drawings and graphics used in various projects.
       icon: fab fa-blogger
     - title: Gallery on DeviantArt
       url: https://deviantart.com/ambratolm
@@ -52,7 +42,7 @@
 #----------------------------------------------------------------------------------------------------
 - name: photos
   title: Photos
-  description: Taken Photos and Pictures.
+  description: Taken photos and pictures.
   categories: [image]
   tags: [photo, picture, art]
   icon: fas fa-photo
@@ -62,16 +52,3 @@
       url: http://mpixo.blogspot.com
       description: Gallery of taken photos.
       icon: fab fa-blogger
-#----------------------------------------------------------------------------------------------------
-- name: wracurd-art-book
-  title: Wracurd Art Book
-  description: Artworks compilation book.
-  categories: [image, document]
-  tags: [art, book]
-  icon: fas fa-book
-  image: wracurd-art-book
-  links:
-    - title: Book on Lulu
-      url: http://www.lulu.com/shop/ambratolm/wracurd/ebook/product-23263158.html
-      description: Book Details and Purchase Page.
-      icon: fas fa-link

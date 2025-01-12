@@ -7,7 +7,7 @@
 #----------------------------------------------------------------------------------------------------
 - name: music
   title: Music
-  description: Background Music.
+  description: Background music.
   categories: [audio]
   tags: [music, bgm, ost, soundtrack]
   image: music
@@ -15,23 +15,27 @@
   links:
     - title: Music on SoundCloud
       url: https://soundcloud.com/ambratolm
-      description: Contains my music albums and playlists.
+      description: Music albums and playlists.
       icon: fab fa-soundcloud
     - title: Music on Youtube
       url: https://www.youtube.com/channel/UC90YiMGgUMGFsfzHXt2bLsQ
-      description: Contains videos with my music.
+      description: Videos with music.
       icon: fab fa-youtube
 #----------------------------------------------------------------------------------------------------
-- name: voice-over
-  title: Voice Over
-  description: Stories and Dialogues through voice recordings.
-  categories: [audio]
-  tags: [voice, sound]
-  image: voice-over
-  icon: fas fa-microphone
-  links:
-    - title: RPG videos on Youtube
-      url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
-      description: Contains rpg video which uses voice-over.
-      icon: fab fa-youtube
+# - name: voice-over
+#   title: Voice Over
+#   description: Stories and dialogues through voice recordings.
+#   categories: [audio]
+#   tags: [voice, sound]
+#   image: voice-over
+#   icon: fas fa-microphone
+#   links:
+#     - title: RPG Videos on Youtube
+#       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
+#       description: RPG videos with voice-over.
+#       icon: fab fa-youtube
+#     - title: RPG Videos on Twitch
+#       url: https://www.twitch.tv/collections/HUmqy8A9ShXkog
+#       description: RPG videos with voice-over.
+#       icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------
