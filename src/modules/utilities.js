@@ -6,7 +6,7 @@
 import Fuse from "fuse.js";
 
 //----------------------------------------------------------------------------------------------------
-// # Fuzzy Search
+// # Search Fuzzy
 //----------------------------------------------------------------------------------------------------
 /**
  * @example searchFuzzy(works, ["categories.name", "tags"], "game windows")
@@ -19,7 +19,7 @@ export function searchFuzzy(items = [], keys = [], query = "") {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Exact Search
+// # Search Exact
 //----------------------------------------------------------------------------------------------------
 /**
  * @example searchExact(works, { "categories.name": "game", tags: "windows" })
@@ -38,7 +38,7 @@ export function searchExact(items = [], query = {}, operator = "$and") {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Random Pick
+// # Pick Random (One/Many)
 //----------------------------------------------------------------------------------------------------
 export function pickOne(items = []) {
   return items[Math.floor(Math.random() * items.length)];
@@ -64,7 +64,7 @@ export function resolveKeys(keys = [], refObj = {}) {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # Object Entries
+// # Get Object Entries
 //----------------------------------------------------------------------------------------------------
 export function getObjectEntries(obj = {}, includeFalsy = false) {
   const entries = Object.entries(obj).map(([key, value]) =>
@@ -116,13 +116,70 @@ export function flattenObjectToArray(obj = {}, depth = 0) {
 }
 
 //----------------------------------------------------------------------------------------------------
-// # String Limit
+// # Limit String
 //----------------------------------------------------------------------------------------------------
-export function strLimit(value, size = 50, dotsSuffix = "...") {
+export function limitString(value, size = 50, dotsSuffix = "...") {
   value = value ? String(value) : "";
   return value
     ? value.length <= size
       ? value
       : value.substr(0, size) + dotsSuffix
     : "";
+}
+
+//----------------------------------------------------------------------------------------------------
+// # Prefix Suffix Strings
+//----------------------------------------------------------------------------------------------------
+/**
+ * @example affixSubStrings("wordA wordB", "<", ">"); // Returns "<wordA> <wordB>"
+ */
+function affixSubStrings(str = "", separator = " ", prefix = "", suffix = "") {
+  return str
+    .split(separator)
+    .filter(Boolean)
+    .map((subStr) => `${prefix}${subStr}${suffix}`)
+    .join(separator);
+}
+/**
+ * @example affixStrings(["wordA", "wordB"], "<", ">"); // Returns ["<wordA>", "<wordB>"]
+ */
+// function affixStrings(strList = [], prefix = "", suffix = "") {
+//   return strList.map((str) => `${prefix}${str}${suffix}`);
+// }
+
+//----------------------------------------------------------------------------------------------------
+// # CSS Class Insertion
+//----------------------------------------------------------------------------------------------------
+export function useCssLibrary(classes = "", prefix = "", element = null) {
+  classes = affixSubStrings(classes, " ", prefix);
+  return element
+    ? insertCssClass(element, classes.split(" "), "animationend")
+    : classes;
+}
+function insertCssClass(
+  htmlElement = new HTMLElement(),
+  cssClassList = [],
+  cleanupEventName = "",
+) {
+  if (!(htmlElement instanceof HTMLElement)) {
+    console.error("Element is not a valid HTMLElement:", htmlElement);
+    return;
+  }
+  htmlElement.classList.add(...cssClassList);
+  if (!cleanupEventName) return { htmlElement, cssClassList };
+  return new Promise((resolve) => {
+    htmlElement.addEventListener(
+      cleanupEventName,
+      (event) => {
+        event.stopPropagation();
+        htmlElement.classList.remove(...cssClassList);
+        resolve({
+          htmlElement,
+          cssClassList,
+          event,
+        });
+      },
+      { once: true },
+    );
+  });
 }

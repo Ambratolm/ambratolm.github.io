@@ -1,5 +1,5 @@
 <script setup>
-import { strLimit } from "@/modules/utilities";
+import { limitString } from "@/modules/utilities";
 defineProps({
   profile: {
     type: Object,
@@ -45,13 +45,14 @@ defineProps({
         <span class="text-break">
           <a
             :href="profile?.url"
+            :title="profile?.username"
             target="_blank"
             class="nav-link stretched-link text-lowercase"
           >
             <i v-if="profile?.email" class="fas fa-envelope fa-sm" />
             <i v-else-if="profile?.search" class="fas fa-search fa-sm" />
             <i v-else class="fas fa-at fa-sm" />
-            {{ strLimit(profile?.username, 10) }}
+            {{ limitString(profile?.username, 10) }}
           </a>
         </span>
       </div>

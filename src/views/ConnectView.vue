@@ -246,25 +246,40 @@ useRouteQueryObject(profilesStore);
           </nav>
         </header>
         <div class="card-body">
-          <div v-if="profilesStore.items.length" class="row g-3">
-            <div
-              v-for="profile in profilesStore.items"
-              :key="profile.name"
-              class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
-            >
-              <DataProfileCard :profile="profile" class="h-100" />
+          <Transition
+            :enter-active-class="$animate('bounceIn')"
+            :leave-active-class="$animate('bounceOut')"
+            mode="out-in"
+          >
+            <div v-if="profilesStore.items.length" class="row g-3">
+              <TransitionGroup
+                :enter-active-class="$animate('bounceInUp')"
+                :leave-active-class="$animate('bounceOutDown')"
+                :move-class="$animate('bounce')"
+              >
+                <div
+                  v-for="(profile, i) in profilesStore.items"
+                  :key="i"
+                  class="col-xl-3 col-lg-3 col-md-4 col-sm-6"
+                >
+                  <DataProfileCard :profile="profile" class="h-100" />
+                </div>
+              </TransitionGroup>
             </div>
-          </div>
-          <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
-            <i class="fas fa-triangle-exclamation fa-3x" />
-            <div class="mb-3">No profiles found.</div>
-            <button
-              @click="profilesStore.clearQuery()"
-              class="btn btn-sm btn-secondary"
+            <div
+              v-else
+              class="col text-center text-secondary fst-italic p-5 m-5"
             >
-              Clear Filters
-            </button>
-          </div>
+              <i class="fas fa-triangle-exclamation fa-3x" />
+              <div class="mb-3">No profiles found.</div>
+              <button
+                @click="profilesStore.clearQuery()"
+                class="btn btn-sm btn-secondary"
+              >
+                Clear Filters
+              </button>
+            </div>
+          </Transition>
         </div>
       </article>
     </div>

@@ -56,10 +56,12 @@ app.use(MasonryWall);
 //----------------------------------------------------------------------------------------------------
 // # Global Properties
 //----------------------------------------------------------------------------------------------------
+import { useCssLibrary } from "./modules/utilities";
 app.config.globalProperties.$navRoutes = routes.filter(
   (route) => route.meta?.isNav,
 );
-
+app.config.globalProperties.$animate = (classes, event) =>
+  useCssLibrary(`animated ${classes}`, "animate__", event?.target);
 //----------------------------------------------------------------------------------------------------
 // # Global Directives
 //----------------------------------------------------------------------------------------------------

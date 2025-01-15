@@ -15,13 +15,17 @@ useTitle(title);
 </script>
 
 <template>
-  <TheHeader />
+  <TheHeader :class="$animate('slideInDown')" />
 
   <main class="container">
-    <RouterView />
+    <router-view v-slot="{ Component }">
+      <transition :enter-active-class="$animate('fadeIn faster')" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
 
-  <TheFooter />
+  <TheFooter :class="$animate('slideInUp')" />
 </template>
 
 <style scoped>

@@ -158,43 +158,59 @@ useRouteQueryObject(worksStore);
       </nav>
     </header>
     <div class="card-body">
-      <masonry-wall
-        v-if="worksStore.items.length"
-        :items="worksStore.items"
-        :ssr-columns="1"
-        :column-width="300"
-        :gap="16"
+      <Transition
+        :enter-active-class="$animate('fadeIn faster')"
+        :leave-active-class="$animate('fadeOut faster')"
+        mode="out-in"
       >
-        <template #default="{ item }">
-          <DataWorkCard
-            :work="item"
-            :selected="{
-              categories: [worksStore.query.category],
-              languages: [worksStore.query.language],
-              tags: [worksStore.query.tag],
-            }"
-            @category-click="
-              (category) => (worksStore.query.category = category)
-            "
-            @language-click="
-              (language) => (worksStore.query.language = language)
-            "
-            @tag-click="(tag) => (worksStore.query.tag = tag)"
-            class=""
-          />
-        </template>
-      </masonry-wall>
-      <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
-        <i class="fas fa-triangle-exclamation fa-3x" />
-        <div class="mb-3">No works found.</div>
-        <button
-          @click="worksStore.clearQuery()"
-          class="btn btn-sm btn-secondary"
-        >
-          Clear Filters
-        </button>
-      </div>
-      <!-- <div class="row g-3">
+        <div v-if="worksStore.items.length">
+          <!-- <TransitionGroup
+          :enter-active-class="$animate('bounceInUp')"
+          :leave-active-class="$animate('bounceOutDown')"
+          :move-class="$animate('bounce')"
+        > -->
+          <MasonryWall
+            :items="worksStore.items"
+            :ssr-columns="1"
+            :column-width="300"
+            :gap="16"
+            :key-mapper="(work) => work.name"
+          >
+            <template #default="{ item }">
+              <DataWorkCard
+                :work="item"
+                :selected="{
+                  categories: [worksStore.query.category],
+                  languages: [worksStore.query.language],
+                  tags: [worksStore.query.tag],
+                }"
+                @category-click="
+                  (category) => (worksStore.query.category = category)
+                "
+                @language-click="
+                  (language) => (worksStore.query.language = language)
+                "
+                @tag-click="(tag) => (worksStore.query.tag = tag)"
+                class=""
+              />
+            </template>
+          </MasonryWall>
+          <!-- </TransitionGroup> -->
+        </div>
+        <div v-else class="col text-center text-secondary fst-italic p-5 m-5">
+          <i class="fas fa-triangle-exclamation fa-3x" />
+          <div class="mb-3">No works found.</div>
+          <button
+            @click="worksStore.clearQuery()"
+            class="btn btn-sm btn-secondary"
+          >
+            Clear Filters
+          </button>
+        </div>
+      </Transition>
+    </div>
+
+    <!-- <div class="row g-3">
         <div
           v-for="work in worksStore.items"
           :key="work.name"
@@ -202,6 +218,5 @@ useRouteQueryObject(worksStore);
         >
         </div>
       </div> -->
-    </div>
   </section>
 </template>

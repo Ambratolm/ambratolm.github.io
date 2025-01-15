@@ -22,10 +22,12 @@ const profilesStore = useProfilesStore();
         <div class="navbar-brand align-self-center">
           <RouterLink :to="{ name: 'home' }">
             <ThemeImage
+              @click="$animate('rubberBand', $event)"
               :light-src="logos['ambratolm-logo-light']"
               :dark-src="logos['ambratolm-logo-dark']"
               width="180px"
               alt="Ambratolm Logo"
+              class="hvr-skew-backward"
             />
           </RouterLink>
         </div>
@@ -82,16 +84,28 @@ const profilesStore = useProfilesStore();
               >
                 <i :class="meta?.icon" class="me-1" aria-hidden="true" />
                 {{ meta?.title }}
-                <SearchBadge
-                  v-if="name === 'works' && worksStore.isFiltered"
-                  :name="name"
-                  :value="worksStore.items.length"
-                />
-                <SearchBadge
-                  v-if="name === 'connect' && profilesStore.isFiltered"
-                  :name="name"
-                  :value="profilesStore.items.length"
-                />
+                <Transition
+                  :enter-active-class="$animate('flash')"
+                  :leave-active-class="$animate('fadeOut')"
+                  mode="out-in"
+                >
+                  <SearchBadge
+                    v-if="name === 'works' && worksStore.isFiltered"
+                    :name="name"
+                    :value="worksStore.items.length"
+                  />
+                </Transition>
+                <Transition
+                  :enter-active-class="$animate('flash')"
+                  :leave-active-class="$animate('fadeOut')"
+                  mode="out-in"
+                >
+                  <SearchBadge
+                    v-if="name === 'connect' && profilesStore.isFiltered"
+                    :name="name"
+                    :value="profilesStore.items.length"
+                  />
+                </Transition>
               </RouterLink>
             </li>
             <li class="nav-item ms-3">

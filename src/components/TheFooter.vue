@@ -30,6 +30,7 @@ const profilesStore = useProfilesStore();
             width="64px"
             alt="Ambratolm Logo"
             class="mb-3"
+            :class="$animate('pulse infinite')"
           />
           <p>&copy; <strong>Ambratolm</strong> 2025</p>
         </div>

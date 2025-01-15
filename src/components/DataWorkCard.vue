@@ -1,5 +1,5 @@
 <script setup>
-import { strLimit } from "@/modules/utilities";
+import { limitString } from "@/modules/utilities";
 defineProps({
   work: {
     type: Object,
@@ -12,6 +12,15 @@ defineProps({
       categories: [],
       languages: [],
       tags: [],
+    }),
+  },
+  hidden: {
+    type: Object,
+    default: () => ({
+      categories: false,
+      languages: false,
+      tags: false,
+      links: false,
     }),
   },
 });
@@ -33,35 +42,37 @@ defineEmits(["category-click", "language-click", "tag-click"]);
       <p class="card-text text-secondary lh-1 mb-2">
         {{ work?.description }}
       </p>
-      <button
-        @click="$emit('category-click', category.name)"
-        v-for="(category, i) in work?.categories"
-        :key="i"
-        class="btn btn-sm fw-bold text-capitalize me-1"
-        :class="
-          selected.categories?.includes(category.name)
-            ? 'btn-primary disabled'
-            : 'btn-secondary'
-        "
-      >
-        <i :class="category.icon" />
-        {{ category.title }}
-      </button>
-      <button
-        @click="$emit('language-click', language.name)"
-        v-for="(language, i) in work?.languages"
-        :key="i"
-        class="btn btn-sm text-capitalize me-1"
-        :class="
-          selected.languages?.includes(language.name)
-            ? 'btn-primary disabled'
-            : 'btn-secondary'
-        "
-      >
-        <i :class="language.icon" /> {{ language.title }}
-      </button>
+      <div v-if="!hidden.categories">
+        <button
+          @click="$emit('category-click', category.name)"
+          v-for="(category, i) in work?.categories"
+          :key="i"
+          class="btn btn-sm fw-bold text-capitalize me-1"
+          :class="
+            selected.categories?.includes(category.name)
+              ? 'btn-primary disabled'
+              : 'btn-secondary'
+          "
+        >
+          <i :class="category.icon" />
+          {{ category.title }}
+        </button>
+        <button
+          @click="$emit('language-click', language.name)"
+          v-for="(language, i) in work?.languages"
+          :key="i"
+          class="btn btn-sm text-capitalize me-1"
+          :class="
+            selected.languages?.includes(language.name)
+              ? 'btn-primary disabled'
+              : 'btn-secondary'
+          "
+        >
+          <i :class="language.icon" /> {{ language.title }}
+        </button>
+      </div>
     </div>
-    <div class="list-group list-group-flush">
+    <div v-if="!hidden.links" class="list-group list-group-flush">
       <a
         v-for="(link, i) in work?.links"
         :key="i"
@@ -79,12 +90,12 @@ defineEmits(["category-click", "language-click", "tag-click"]);
             :title="link.description"
             class="text-body-secondary pe-2 py-0 m-0 lh-1"
           >
-            {{ strLimit(link.description, 50) }}
+            {{ limitString(link.description, 50) }}
           </p>
         </div>
       </a>
     </div>
-    <div class="card-footer">
+    <div v-if="!hidden.tags" class="card-footer">
       <button
         @click="$emit('tag-click', tag)"
         v-for="(tag, i) in work?.tags"
