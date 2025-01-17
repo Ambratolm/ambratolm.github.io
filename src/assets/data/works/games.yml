@@ -4,12 +4,25 @@
 # 		Works in games category
 #====================================================================================================
 ---
+- name: ambratolm-games
+  title: Ambratolm Games
+  description: Game development works.
+  categories: [game]
+  tags: [windows, android, web, 2d, 3d, action, platformer]
+  icon: fas fa-gamepad
+  image: ambratolm-games
+  languages: [english]
+  links:
+    - title: Organization on GitHub
+      url: https://github.com/ambratolm-games
+      description: Source projects and assets.
+      icon: fab fa-github
 #----------------------------------------------------------------------------------------------------
 - name: flower-in-pain
   title: Flower in Pain
   description: Free 2D enigmatic-adventure and puzzle video-game for Windows.
   categories: [game]
-  tags: [pc, windows, 2d, rpg, puzzle, adventure]
+  tags: [windows, 2d, rpg, puzzle, adventure]
   icon: fab fa-windows
   image: flower-in-pain
   languages: [english]
@@ -39,9 +52,9 @@
   title: Mini-Games
   description: Free 2D arcade video-games for Mobile.
   categories: [game]
-  tags: [android, 2d, arcade]
+  tags: [android, windows, 2d, arcade]
   icon: fab fa-android
-  image: darkina
+  image: mini-games
   links:
     - title: Itch.io Page
       url: https://itch.io/c/4689689/minigames

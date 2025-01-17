@@ -22,7 +22,7 @@
   date: July, 2024
   icon: fas fa-gamepad
   content: 🚀 Released game update!
-  # embed:
-  #   title: Flower in Pain - Game Trailer
-  #   src: https://player.vimeo.com/video/992647098?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
+  embed:
+    title: Flower in Pain - Game Trailer
+    src: https://player.vimeo.com/video/992647098?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479
   #----------------------------------------------------------------------------------------------------

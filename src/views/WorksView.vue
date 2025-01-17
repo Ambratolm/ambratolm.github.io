@@ -146,6 +146,7 @@ useRouteQueryObject(worksStore);
             <li v-for="language in languagesStore.items" :key="language.name">
               <a
                 href="#"
+                :title="language.nativeTitle"
                 @click="worksStore.query.language = language.name"
                 :class="{ active: language.name === worksStore.query.language }"
                 class="dropdown-item"

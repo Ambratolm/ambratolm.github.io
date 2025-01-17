@@ -39,7 +39,7 @@ defineProps({
           <p class="lead mb-0">
             {{ post?.content }}
           </p>
-          <div v-if="post?.embed" class="mt-2">
+          <div v-if="post?.embed" class="mt-2 me-3">
             <div class="card position-relative" style="padding: 75% 0 0 0">
               <iframe
                 :title="post?.embed?.title"

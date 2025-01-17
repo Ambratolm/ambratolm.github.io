@@ -5,54 +5,55 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
-- name: films
-  title: Films
-  description: Live and animation clips and movies.
+- name: live-action-films
+  title: Live Action Films
+  description: Live action clips and movies.
   categories: [video]
-  tags: [film, movie, cinema, clip, serie, tv, youtube, animation, art]
+  tags:
+    [film, movie, cinema, clip, serie, tv, editing, montage, vfx, visual effect]
   icon: fas fa-film
-  image: films
+  image: live-action-films
   links:
-    - title: Student First Series
+    - title: Student First
       url: http://www.mediafire.com/folder/nx777jx0279to/STUDENT_FIRST
-      description: Series about a good student who gets in trouble few weeks before his final graduation exam involving himself in a problem of his best friend and thus putting his career into a cruel challenge.
+      description: Series about a good student who risks his career by aiding his best friend in a crisis, which threatens his final exam performance and jeopardizes his graduation.
       icon: fas fa-film
-      download: true
-    - title: Confrontation Movies
+    - title: Confrontation
       url: http://www.mediafire.com/folder/xwdxcxarodfg8/CONFRONTATION
-      description: Short movie series about an eternal fight between two super powerful rivals.
+      description: Short movie series about two immensely powerful rivals locked in an eternal battle for supremacy.
       icon: fas fa-film
-      download: true
 #----------------------------------------------------------------------------------------------------
 - name: rpg-videos
   title: RPG Videos
-  description: RPG styled Stories & Conversations.
-  categories: [video]
-  tags: [rpg, game, youtube]
-  icon: fas fa-video
+  description: Retro RPG game styled clips and movies with voice-over.
+  categories: [video, audio, game]
+  tags: [rpg, maker, voice, sound, editing, montage]
+  icon: fas fa-microphone
+  image: rpg-videos
   links:
     - title: Playlist on Youtube
       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
-      description: Contains all of my rpg videos.
+      description: RPG videos.
       icon: fab fa-youtube
     - title: Playlist on Twitch
       url: https://www.twitch.tv/collections/HUmqy8A9ShXkog
-      description: Contains all of my imported youtube rpg videos.
+      description: RPG videos.
       icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------
-- name: league-of-legends
-  title: League of Legends Content
-  description: League of Legends videos.
+- name: league-of-legends-videos
+  title: League of Legends Videos.
+  description: League of Legends content edits.
   categories: [video]
-  tags: [League of Legends, YouTube]
+  tags: [League of Legends, editing, montage]
   icon: fas fa-gamepad
+  image: league-of-legends-videos
   links:
     - title: Playlist on Youtube
       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9-qTt19zZ8RRHPe4WYfXIH
-      description: Contains all of my League of Legends videos.
+      description: League of Legends videos.
       icon: fab fa-youtube
     - title: Playlist on Twitch
       url: https://www.twitch.tv/ambratolm/videos
-      description: Contains all of my imported youtube League of Legends videos.
+      description: League of Legends videos.
       icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------

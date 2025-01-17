@@ -26,10 +26,21 @@ function onRandomWorksCardHover(hovered) {
 
 <template>
   <section class="container-fluid g-0">
-    <div class="row g-3">
+    <div class="row g-3 mb-3">
       <div class="col-lg-3">
         <DataWorkCard
           :work="worksStore.getItem('flower-in-pain')"
+          @category-click="
+            (cat) => $router.push({ name: 'works', query: { cat } })
+          "
+          @language-click="
+            (lang) => $router.push({ name: 'works', query: { lang } })
+          "
+          @tag-click="(tag) => $router.push({ name: 'works', query: { tag } })"
+          class="mb-3"
+        />
+        <DataWorkCard
+          :work="worksStore.getItem('mini-games')"
           @category-click="
             (cat) => $router.push({ name: 'works', query: { cat } })
           "

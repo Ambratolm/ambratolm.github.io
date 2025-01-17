@@ -233,6 +233,7 @@ useRouteQueryObject(profilesStore);
                   <a
                     href="#"
                     @click="profilesStore.query.language = language.name"
+                    :title="language.nativeTitle"
                     :class="{
                       active: language.name === profilesStore.query.language,
                     }"

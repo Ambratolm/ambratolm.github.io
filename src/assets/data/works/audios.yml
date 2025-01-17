@@ -5,12 +5,12 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
-- name: music
-  title: Music
+- name: background-music
+  title: Background Music
   description: Background music.
   categories: [audio]
   tags: [music, bgm, ost, soundtrack]
-  image: music
+  image: background-music
   icon: fas fa-music
   links:
     - title: Music on SoundCloud
@@ -21,21 +21,4 @@
       url: https://www.youtube.com/channel/UC90YiMGgUMGFsfzHXt2bLsQ
       description: Videos with music.
       icon: fab fa-youtube
-#----------------------------------------------------------------------------------------------------
-# - name: voice-over
-#   title: Voice Over
-#   description: Stories and dialogues through voice recordings.
-#   categories: [audio]
-#   tags: [voice, sound]
-#   image: voice-over
-#   icon: fas fa-microphone
-#   links:
-#     - title: RPG Videos on Youtube
-#       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z9K-5yLrOFViObbBd7R1CIk
-#       description: RPG videos with voice-over.
-#       icon: fab fa-youtube
-#     - title: RPG Videos on Twitch
-#       url: https://www.twitch.tv/collections/HUmqy8A9ShXkog
-#       description: RPG videos with voice-over.
-#       icon: fab fa-twitch
 #----------------------------------------------------------------------------------------------------

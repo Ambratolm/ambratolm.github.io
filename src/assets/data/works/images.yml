@@ -5,6 +5,23 @@
 #====================================================================================================
 ---
 #----------------------------------------------------------------------------------------------------
+- name: wracurd-artworks
+  title: Wracurd Artworks
+  description: Wordless picture book artworks.
+  categories: [document, image]
+  tags: [art, book]
+  icon: fas fa-palette
+  image: wracurd-artworks
+  links:
+    - title: Comics on Webtoons
+      url: https://www.webtoons.com/en/canvas/wracurd/list?title_no=378284
+      description: Wracurd silent comics.
+      icon: fas fa-book-open
+    - title: Artbook on Lulu
+      description: Classic Wracurd artworks compilation book for purchase.
+      url: http://www.lulu.com/shop/ambratolm/wracurd/ebook/product-23263158.html
+      icon: fas fa-book
+#----------------------------------------------------------------------------------------------------
 - name: artworks
   title: Artworks
   description: Drawings and Graphics.
@@ -16,16 +33,17 @@
   links:
     - title: Gallery on Ambratolm CF
       url: http://elhafid-project.blogspot.com
-      description: Drawings and graphics used in various projects.
+      description: Drawings and graphics.
       icon: fab fa-blogger
     - title: Gallery on DeviantArt
       url: https://deviantart.com/ambratolm
-      description: DeviantArt is a community for artwork, videography, and photography.
+      description: Drawings and graphics.
       icon: fab fa-deviantart
     - title: Gallery on ArtStation
       url: https://ambratolm.artstation.com
-      description: ArtStation is an art showcase platform.
+      description: Drawings and graphics.
       icon: fab fa-artstation
+
 #----------------------------------------------------------------------------------------------------
 - name: animations
   title: Animations
@@ -37,18 +55,22 @@
   links:
     - title: Playlist on YouTube
       url: https://www.youtube.com/playlist?list=PLsPDvHe4E0Z-UvgHKv6ofIaSOLMIlEFwt
-      description: Contains some videos with animation effects.
+      description: Some videos with effects.
       icon: fab fa-youtube
 #----------------------------------------------------------------------------------------------------
-- name: photos
-  title: Photos
-  description: Taken photos and pictures.
-  categories: [image]
-  tags: [photo, picture, art]
-  icon: fas fa-photo
-  image: photos
-  links:
-    - title: Gallery on M~PiXo
-      url: http://mpixo.blogspot.com
-      description: Gallery of taken photos.
-      icon: fab fa-blogger
+# - name: photo-edits
+#   title: Photo Edits
+#   description: Photo edits and manipulations.
+#   categories: [image, video]
+#   tags: [graphic, photo, visual, effect, art]
+#   icon: fas fa-cat
+#   image: photo-edits
+#----------------------------------------------------------------------------------------------------
+# - name: graphic-designs
+#   title: Graphic Designs
+#   description: Graphic designs.
+#   categories: [image]
+#   tags: [graphic, photo, visual, effect, art]
+#   icon: fas fa-cat
+#   image: photo-edits
+#----------------------------------------------------------------------------------------------------

@@ -12,6 +12,62 @@ french:
   code: fr
   icon: fas fa-flag
 
+spanish:
+  name: spanish
+  title: Spanish
+  nativeTitle: Español
+  code: es
+  icon: fas fa-flag
+
+portuguese:
+  name: portuguese
+  title: Portuguese
+  nativeTitle: Português
+  code: pt
+  icon: fas fa-flag
+
+italian:
+  name: italian
+  title: Italian
+  nativeTitle: Italiano
+  code: it
+  icon: fas fa-flag
+
+german:
+  name: german
+  title: German
+  nativeTitle: Deutsch
+  code: de
+  icon: fas fa-flag
+
+japanese:
+  name: japanese
+  title: Japanese
+  nativeTitle: 日本語
+  code: ja
+  icon: fas fa-flag
+
+korean:
+  name: korean
+  title: Korean
+  nativeTitle: 한국어
+  code: ko
+  icon: fas fa-flag
+
+chinese:
+  name: chinese
+  title: Chinese
+  nativeTitle: 中文
+  code: zh
+  icon: fas fa-flag
+
+turkish:
+  name: turkish
+  title: Turkish
+  nativeTitle: Türkçe
+  code: tr
+  icon: fas fa-flag
+
 arabic:
   name: arabic
   title: Arabic

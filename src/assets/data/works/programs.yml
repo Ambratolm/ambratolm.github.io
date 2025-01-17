@@ -4,12 +4,49 @@
 # 		Works in programs category.
 #====================================================================================================
 ---
+#----------------------------------------------------------------------------------------------------
+- name: ambratolm-softwares
+  title: Ambratolm Softwares
+  description: Software development works.
+  categories: [program]
+  tags: [windows, web]
+  icon: fas fa-computer
+  image: ambratolm-softwares
+  languages: [english]
+  links:
+    - title: Ambratolm on GitHub
+      url: https://github.com/ambratolm
+      description: Source projects and assets.
+      icon: fab fa-github
+    - title: Simple Works on GitHub
+      url: https://github.com/simple-works
+      description: Source projects and assets.
+      icon: fab fa-github
+    - title: Practical Works on GitHub
+      url: https://github.com/practical-works
+      description: Source projects and assets.
+      icon: fab fa-github
+#----------------------------------------------------------------------------------------------------
+- name: ambratolm-io
+  title: Ambratolm™ IO
+  description: Official Website.
+  categories: [program]
+  tags: [website, coding, js, javascript, vue, html, css, halfmoon, bootstrap]
+  image: ambratolm-io
+  icon: fas fa-certificate
+  languages: ["english"]
+  links:
+    - title: Ambratolm.github.io
+      description: Original domain.
+      url: https://www.ambratolm.github.io
+      icon: fab fa-js
+#----------------------------------------------------------------------------------------------------
 - name: ambratolm-ml
   title: Ambratolm™ ML
-  description: Official Ambratolm Website.
+  description: Old official Website.
   categories: [program]
-  tags: [website, coding, js, javascript, vue, html, css, bulma]
-  image: ambratolm
+  tags: [abandoned, website, coding, js, javascript, vue, html, css, bulma]
+  image: ambratolm-ml
   icon: fas fa-certificate
   languages: ["english"]
   links:
@@ -20,7 +57,7 @@
 #----------------------------------------------------------------------------------------------------
 - name: ambratolm-cf
   title: Ambratolm™ CF
-  description: Website listing drawings and graphics used in various projects.
+  description: Art portfolio with drawings and graphics used in various projects.
   categories: [program, image]
   languages: ["english"]
   tags: [website, blogger, drawing, graphic, anime, comic, cartoon, art]
@@ -38,10 +75,10 @@
 #----------------------------------------------------------------------------------------------------
 - name: m-pixo
   title: M~PiXo
-  description: Gallery of Photos
+  description: Old blog with a stock of taken raw photos.
   categories: [program, image]
   languages: ["english"]
-  tags: [website, blogger, photo, camera]
+  tags: [abandoned, website, blogger, photo, picture, camera, art]
   image: mpixo
   icon: fas fa-camera
   links:
@@ -52,10 +89,10 @@
 #----------------------------------------------------------------------------------------------------
 - name: manga-in-pdf
   title: Manga in PDF
-  description: Download Manga in PDF Format
+  description: Old blog with free Manga PDF downloads.
   categories: [program]
   languages: ["arabic"]
-  tags: [website, blogger, manga, anime, comic, book]
+  tags: [abandoned, website, blogger, manga, anime, comic, book]
   image: pdfmanga
   icon: fas fa-file-pdf
   links:
@@ -68,11 +105,12 @@
       url: https://www.pdfman.ga
       icon: fab fa-blogger
 #----------------------------------------------------------------------------------------------------
-- title: TDI.Get()
-  description: Programming exercises and solutions.
+- name: tdi-get
+  title: TDI.Get()
+  description: Old blog with school programming exercises and solutions.
   categories: [program]
-  tags: [website, blogger, coding, programming]
-  image: tdiget
+  tags: [abandoned, website, blogger, coding, programming]
+  image: tdi-get
   icon: fas fa-code
   languages: ["french"]
   links:
@@ -85,7 +123,7 @@
   title: Topic 2 Read
   description: Old blog using royalty free articles in variety of subjects.
   categories: [program]
-  tags: [website, blogger, article, newspaper, magazine]
+  tags: [abandoned, website, blogger, article, newspaper, magazine]
   icon: fas fa-file-alt
   image: topic2read
   links:
@@ -99,7 +137,7 @@
   title: Magninja Forums
   description: Old forums in variety of subjects.
   categories: [program]
-  tags: [website, blogger, forums, community, phpbb, ahlamontada]
+  tags: [abandoned, website, blogger, forums, community, phpbb, ahlamontada]
   image: magninja
   icon: fas fa-comments
   languages: ["arabic"]
