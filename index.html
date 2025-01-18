@@ -5,10 +5,49 @@
     <link rel="icon" type="image/ico" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ambratolm</title>
-    <script type="module" crossorigin src="/assets/index-CVOebJqE.js"></script>
+    <script type="module" crossorigin src="/assets/index-gRzbCy0V.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BZZBkYvB.css">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div id="app-loading">
+        <h1>Ambratolm</h1>
+        <p>⏳ Loading...</p>
+      </div>
+    </div>
+    <style>
+      #app-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+        font-size: 1.5rem;
+        font-style: italic;
+        z-index: 9999;
+        background-color: black;
+        color: white;
+      }
+      #app-loading * {
+        margin: 0;
+        animation: loading 1.5s infinite;
+      }
+      @keyframes loading {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
   </body>
 </html>
