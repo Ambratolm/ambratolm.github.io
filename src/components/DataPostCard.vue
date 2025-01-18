@@ -39,6 +39,11 @@ defineProps({
           <p class="lead mb-0">
             {{ post?.content }}
           </p>
+          <div v-if="post?.video" class="mt-2 me-3">
+            <video :src="post?.video" width="100%" height="100%" controls>
+              <a :href="post?.video">Download {{ post?.name }} video</a>
+            </video>
+          </div>
           <div v-if="post?.embed" class="mt-2 me-3">
             <div class="card position-relative" style="padding: 75% 0 0 0">
               <iframe

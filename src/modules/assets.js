@@ -21,12 +21,12 @@ const VIDEOS = getDocuments(importCollection("videos"), {
 //----------------------------------------------------------------------------------------------------
 DATA.works = (() => {
   const works = flattenObjectToArray(DATA.works, 2);
-  const worksImages = flattenObject(IMAGES.works, 2);
+  const workImages = flattenObject(IMAGES.works, 2);
   const { categories, languages } = DATA;
   for (const work of works) {
     work.categories = resolveKeys(work.categories, categories);
     work.languages = resolveKeys(work.languages, languages);
-    work.image = worksImages[work.image] || worksImages["_work"];
+    work.image = workImages[work.image] || workImages["_work"];
   }
   return works;
 })();
@@ -38,6 +38,14 @@ DATA.profiles = (() => {
     profile.languages = resolveKeys(profile.languages, languages);
   }
   return profiles;
+})();
+DATA.posts = (() => {
+  const posts = DATA.posts;
+  const postVideos = flattenObject(VIDEOS.posts, 2);
+  for (const post of posts) {
+    if (post.video) post.video = postVideos[post.video] || postVideos["_post"];
+  }
+  return posts;
 })();
 export { DATA, IMAGES, VIDEOS };
 

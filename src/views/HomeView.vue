@@ -11,7 +11,7 @@ const postsStore = usePostsStore();
 const randomWorks = ref();
 randomizeWorks();
 function randomizeWorks() {
-  randomWorks.value = worksStore.getRandomItems(12);
+  randomWorks.value = worksStore.getRandomItems(4);
 }
 
 const { pause, resume } = useIntervalFn(
