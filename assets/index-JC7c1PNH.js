@@ -175,18 +175,12 @@ arabic:\r
 #====================================================================================================\r
 ---\r
 #----------------------------------------------------------------------------------------------------\r
-- name: ambratolm-io\r
-  title: Ambratolm IO\r
-  date: December, 2025\r
-  icon: fas fa-newspaper\r
-  content: ⏳ Working on this Website...\r
-#----------------------------------------------------------------------------------------------------\r
-- name: aleafw2d\r
-  title: ALEAFW 2D 🦅\r
-  date: October, 2024\r
-  icon: fas fa-newspaper\r
-  content: ⏳ Working on a 2D action side-scrolling platformer game framework for Unity engine...\r
-  video: aleafw2d\r
+# - name: aleafw2d\r
+#   title: ALEAFW 2D 🦅\r
+#   date: October, 2024\r
+#   icon: fas fa-newspaper\r
+#   content: ⏳ Working on a 2D action side-scrolling platformer game framework for Unity engine...\r
+#   video: aleafw2d\r
 #----------------------------------------------------------------------------------------------------\r
 - name: flower-in-pain-v1.1\r
   title: Flower in Pain Version 1.1\r
